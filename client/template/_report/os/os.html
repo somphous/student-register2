@@ -1,0 +1,68 @@
+<!--Form-->
+<template name="osRpt">
+    <!--<h2 class="page-header">Report</h2>-->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <legend>Out Standing Report</legend>
+        </div>
+        <div class="panel-body">
+            {{#autoForm schema="Schema.OsRpt" id="osRpt"}}
+                <fieldset>
+                    {{>afQuickField name= "asAt"}}
+                </fieldset>
+                <Button type="submit" class="btn btn-primary"> View</Button>
+            {{/autoForm}}
+        </div>
+    </div>
+</template>
+
+<template name="osRptGen">
+    <h2 style="text-align: center">Rabbit IT Solution</h2>
+    <h3 style="text-align: center">OS Payment Report</h3>
+    Date: {{data.header.date}}
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>No</th>
+                <th>Reg ID</th>
+                <th>Reg Date</th>
+                <th>Student</th>
+                <th>Subject</th>
+                <th>Amount</th>
+                <th>Sum Amount</th>
+                <th>OS Amount</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each data.content}}
+                <tr>
+                    <td>{{no @index}}</td>
+                    <td>{{_id}}</td>
+                    <td>{{moFormat regDate "DD/MM/YYYY"}}</td>
+                    <td>{{studentId}}</td>
+                    <td>{{subjectId}}</td>
+                    <td>{{numFormat amount "$ 0,0.00"}}</td>
+                    <td>{{numFormat sumAmount "$ 0,0.00"}}</td>
+                    <td>{{numFormat osAmount "$ 0,0.00"}}</td>
+                </tr>
+            {{/each}}
+            <!--<tr>-->
+            <!--<td colspan="4"></td>-->
+            <!--<td align="center">Grand Total</td>-->
+            <!--<td align="center">{{numFormat data.paidAmount "$ 0,0.00"}}</td>-->
+            <!--</tr>-->
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+
+        <div class="pull-right" style="text-align: left; width: 30%;">
+            Date:........<br><br>
+            Prepared By
+
+        </div>
+    </div>
+</template>
+
