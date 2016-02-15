@@ -17,9 +17,11 @@ Template.teacherAction.events({
 //Update
 Template.teacherUpdate.onCreated(function () {
     let teacherId = FlowRouter.getParam("id");
-    let selector = {_id: teacherId};//dynamic
+    this.subscribe("teacher", teacherId);
+
+    //let selector = {_id: teacherId};//dynamic
     //let selector={};// find all
-    this.subscribe("teacher", selector);
+    //this.subscribe("teacher", selector);
 });
 Template.teacherUpdate.helpers({
     data: function () {

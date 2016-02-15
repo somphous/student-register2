@@ -17,9 +17,10 @@ Template.studentAction.events({
 //Update
 Template.studentUpdate.onCreated(function () {
     let studentId = FlowRouter.getParam("id");
-    let selector = {_id: studentId};//dynamic
+    this.subscribe("student", studentId);
+    //let selector = {_id: studentId};//dynamic
     //let selector={};// find all
-    this.subscribe("student", selector);
+    //this.subscribe("student", selector);
 });
 
 Template.studentUpdate.helpers({
@@ -31,10 +32,10 @@ Template.studentUpdate.helpers({
 });
 //hook
 AutoForm.hooks({
-        studentInsert:{//id autoform
-            before:{
-                insert:function(doc){
-                    doc._id=idGenerator.gen(Collection.Student, 3);
+        studentInsert: {//id autoform
+            before: {
+                insert: function (doc) {
+                    doc._id = idGenerator.gen(Collection.Student, 3);
                     return doc;
                 }
             },
@@ -48,7 +49,7 @@ AutoForm.hooks({
                 //Bert.alert(error.message, 'danger', 'growl-top-right');
             }
         },
-        studentUpdate:{//id autoform
+        studentUpdate: {//id autoform
             onSuccess(formType, id){
                 //Bert.Alert('Successfully Added', 'success', 'growl-top-right');
                 alertify.alert('Successfully Added');

@@ -17,9 +17,11 @@ Template.paymentAction.events({
 //Update
 Template.paymentUpdate.onCreated(function () {
     let paymentId = FlowRouter.getParam("id");
-    let selector = {_id: paymentId};//dynamic
+    this.subscribe("payment", paymentId);
+
+    //let selector = {_id: paymentId};//dynamic
     //let selector={};// find all
-    this.subscribe("payment", selector);
+    //this.subscribe("payment", selector);
 });
 Template.paymentUpdate.helpers({
     data: function () {

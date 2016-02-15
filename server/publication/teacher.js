@@ -1,14 +1,24 @@
-Meteor.publish('teacher', function (selector) {
+Meteor.publish('teacher', function (id) {
     //console.log(selector);
 
     //waiting
     Meteor._sleepForMs(1000);
 
-    let data = Collection.Teacher.find(selector);
+    let data = Collection.Teacher.find({_id:id});
     return data;
 });
+//Meteor.publish('teacher', function (selector) {
+//    //console.log(selector);
+//
+//    //waiting
+//    Meteor._sleepForMs(1000);
+//
+//    let data = Collection.Teacher.find(selector);
+//    return data;
+//});
 
-Meteor.publish('teachers', ()=>{
-   let data=Collection.Teacher.find();
-    return data;
-});
+//Global
+//Meteor.publish('teachers', ()=>{
+//   let data=Collection.Teacher.find();
+//    return data;
+//});

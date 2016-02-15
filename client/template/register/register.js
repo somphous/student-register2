@@ -17,9 +17,10 @@ Template.registerAction.events({
 //Update
 Template.registerUpdate.onCreated(function () {
     let registerId = FlowRouter.getParam("id");
-    let selector = {_id: registerId};//dynamic
+    this.subscribe("register", registerId);
+    //let selector = {_id: registerId};//dynamic
     //let selector={};// find all
-    this.subscribe("register", selector);
+    //this.subscribe("register", selector);
 });
 
 Template.registerUpdate.helpers({

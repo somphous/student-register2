@@ -17,9 +17,9 @@ Template.subjectAction.events({
 //Update
 Template.subjectUpdate.onCreated(function () {
     let subjectId = FlowRouter.getParam("id");
-    let selector = {_id: subjectId};//dynamic
+    //let selector = {_id: subjectId};//dynamic
     //let selector={};// find all
-    this.subscribe("subject", selector);
+    this.subscribe("subject", subjectId);
 });
 
 Template.subjectUpdate.helpers({

@@ -31,6 +31,16 @@ Meteor.methods({
                obj.osAmount=obj.amount;
                content.push(obj);
            }
+
+           // find student
+           let studentDoc = Collection.Student.findOne(obj.studentId);
+           obj._student = studentDoc;
+
+           // find subject
+           let subjectDoc = Collection.Subject.findOne(obj.subjectId);
+           obj._subject = subjectDoc;
+
+
        });
 
        data.content = content;
