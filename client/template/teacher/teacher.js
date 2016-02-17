@@ -6,8 +6,12 @@ Template.teacherAction.events({
         var self = this;
         alertify.confirm("Are you sure want to delete?",
             function () {
-                Collection.Teacher.remove({_id: self._id}); /// remove by _id?
-                alertify.success('Deleted');
+                // Collection.Teacher.remove({_id: self._id}); /// remove by _id?
+                Meteor.call('teacher.remove', self._id,function (error,result) {
+                    if(!error){
+                        alertify.success('Deleted');
+                    }
+                })
             },
             function () {
                 alertify.error('Cancel');
@@ -33,31 +37,31 @@ Template.teacherUpdate.helpers({
 //hook
 AutoForm.hooks({
         teacherInsert:{//id autoform
-            before:{
-                insert:function(doc){
-                    doc._id=idGenerator.gen(Collection.Teacher, 3);
-                    return doc;
-                }
+            onSubmit: function (insertDoc, updateDoc, CurrentDoc) {
+                this.event.preventDefault();
+                Meteor.call('teacher.insert', insertDoc);
+                this.done();
             },
-            onSuccess(formType, id){
-                //Bert.Alert('Successfully Added', 'success', 'growl-top-right');
-                alertify.alert('Successfully Added');
-                FlowRouter.go('teacher');
+            onSuccess(formType, result){
+                alertify.success('Successfully Added');
             },
             onError(formType, error){
                 alertify.error(error.message);
-                //Bert.alert(error.message, 'danger', 'growl-top-right');
             }
         },
         teacherUpdate:{//id autoform
-            onSuccess(formType, id){
-                //Bert.Alert('Successfully Added', 'success', 'growl-top-right');
-                alertify.alert('Successfully Added');
-                FlowRouter.go('teacher');
+              onSubmit: function (insertDoc,updateDoc,currentDoc) {
+                  this.event.preventDefault();
+                  Meteor.call('teacher.update',currentDoc._id,updateDoc);
+                  this.done();
+              },
+
+            onSuccess(formType, result){
+                alertify.success('Successfully Added');
+                 FlowRouter.go('teacher');
             },
             onError(formType, error){
                 alertify.error(error.message);
-                //Bert.alert(error.message, 'danger', 'growl-top-right');
             }
         }
     }

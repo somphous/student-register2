@@ -6,8 +6,12 @@ Template.studentAction.events({
         var self = this;
         alertify.confirm("Are you sure want to delete?",
             function () {
-                Collection.Student.remove({_id: self._id}); /// remove by _id?
-                alertify.success('Deleted');
+                //Collection.Student.remove({_id: self._id}); /// remove by _id?
+                Meteor.call('student.remove', self._id, function (error, result) {
+                    if (!error) {
+                        alertify.success('Deleted');
+                    }
+                });
             },
             function () {
                 alertify.error('Cancel');
@@ -33,18 +37,19 @@ Template.studentUpdate.helpers({
 //hook
 AutoForm.hooks({
         studentInsert: {//id autoform
-            before: {
-                insert: function (doc) {
-                    doc._id = idGenerator.gen(Collection.Student, 3);
-                    return doc;
-                }
+            onSubmit: function (insertDoc, updateDoc, CurrentDoc) {
+                this.event.preventDefault();
+                Meteor.call('student.insert', insertDoc);
+                this.done();
             },
-            onSuccess(formType, id){
-                //Bert.Alert('Successfully Added', 'success', 'growl-top-right');
-                alertify.alert('Successfully Added');
-                FlowRouter.go('student');
-            },
-            onError(formType, error){
+            onSuccess(onSubmit, result)
+            {
+                alertify.success('Successfully Added');
+
+            }
+            ,
+            onError(formType, error)
+            {
                 alertify.error(error.message);
                 //Bert.alert(error.message, 'danger', 'growl-top-right');
             }
@@ -61,6 +66,6 @@ AutoForm.hooks({
             }
         }
     }
-)
+);
 
 

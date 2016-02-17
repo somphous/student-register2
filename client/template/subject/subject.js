@@ -6,8 +6,12 @@ Template.subjectAction.events({
         var self = this;
         alertify.confirm("Are you sure want to delete?",
             function () {
-                Collection.Subject.remove({_id: self._id}); /// remove by _id?
-                alertify.success('Deleted');
+                //Collection.Subject.remove({_id: self._id}); /// remove by _id?
+                Meteor.call('subject.remove',self._id, function(error,resul){
+                    if(!error){
+                        alertify.success('Deleted');
+                    }
+                });
             },
             function () {
                 alertify.error('Cancel');

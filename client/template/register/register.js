@@ -6,8 +6,12 @@ Template.registerAction.events({
         var self = this;
         alertify.confirm("Are you sure want to delete?",
             function () {
-                Collection.Register.remove({_id: self._id}); /// remove by _id?
-                alertify.success('Deleted');
+                //Collection.Register.remove({_id: self._id}); /// remove by _id?
+                Meteor.call('register.remove',self._id,function (error,result) {
+                    if(!error){
+                        alertify.success('Deleted');
+                    }
+                });
             },
             function () {
                 alertify.error('Cancel');
@@ -18,9 +22,11 @@ Template.registerAction.events({
 Template.registerUpdate.onCreated(function () {
     let registerId = FlowRouter.getParam("id");
     this.subscribe("register", registerId);
+
     //let selector = {_id: registerId};//dynamic
-    //let selector={};// find all
     //this.subscribe("register", selector);
+    //let selector={};// find all
+
 });
 
 Template.registerUpdate.helpers({

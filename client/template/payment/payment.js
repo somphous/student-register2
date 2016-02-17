@@ -6,8 +6,12 @@ Template.paymentAction.events({
         var self = this;
         alertify.confirm("Are you sure want to delete?",
             function () {
-                Collection.Payment.remove({_id: self._id}); /// remove by _id?
-                alertify.success('Deleted');
+                //Collection.Payment.remove({_id: self._id}); /// remove by _id?
+                Meteor.call('payment.remove',self._id,function (error,result) {
+                    if(!error){
+                        alertify.success('Deleted');
+                    }
+                });
             },
             function () {
                 alertify.error('Cancel');
