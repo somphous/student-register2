@@ -7,15 +7,16 @@ Meteor.publish('teacher', function (id) {
     let data = Collection.Teacher.find({_id:id});
     return data;
 });
-//Meteor.publish('teacher', function (selector) {
+// Meteor.publish('teacherList', function (selector) {
 //    //console.log(selector);
 //
 //    //waiting
-//    Meteor._sleepForMs(1000);
+//    // Meteor._sleepForMs(1000);
 //
 //    let data = Collection.Teacher.find(selector);
-//    return data;
-//});
+//
+//     return data;
+// });
 
 //Global
 //Meteor.publish('teachers', ()=>{

@@ -7,8 +7,8 @@ Template.teacherAction.events({
         alertify.confirm("Are you sure want to delete?",
             function () {
                 // Collection.Teacher.remove({_id: self._id}); /// remove by _id?
-                Meteor.call('teacher.remove', self._id,function (error,result) {
-                    if(!error){
+                Meteor.call('teacher.remove', self._id, function (error, result) {
+                    if (!error) {
                         alertify.success('Deleted');
                     }
                 })
@@ -18,6 +18,16 @@ Template.teacherAction.events({
             });
     }
 });
+
+// Insert
+// Template.teacherInsert.onCreated(function () {
+//     let self = this;
+//
+//     self.autorun(function () {
+//         self.subscribe("teacherList", {});
+//     })
+// });
+
 //Update
 Template.teacherUpdate.onCreated(function () {
     let teacherId = FlowRouter.getParam("id");
@@ -36,11 +46,17 @@ Template.teacherUpdate.helpers({
 });
 //hook
 AutoForm.hooks({
-        teacherInsert:{//id autoform
-            onSubmit: function (insertDoc, updateDoc, CurrentDoc) {
-                this.event.preventDefault();
-                Meteor.call('teacher.insert', insertDoc);
-                this.done();
+        teacherInsert: {//id autoform
+            // onSubmit: function (insertDoc, updateDoc, CurrentDoc) {
+            //     this.event.preventDefault();
+            //     Meteor.call('teacher.insert', insertDoc);
+            //     this.done();
+            // },
+            before: {
+                insert: function (doc) {
+                    doc._id = idGenerator.gen(Collection.Teacher, 3);
+                    return doc;
+                }
             },
             onSuccess(formType, result){
                 alertify.success('Successfully Added');
@@ -49,16 +65,16 @@ AutoForm.hooks({
                 alertify.error(error.message);
             }
         },
-        teacherUpdate:{//id autoform
-              onSubmit: function (insertDoc,updateDoc,currentDoc) {
-                  this.event.preventDefault();
-                  Meteor.call('teacher.update',currentDoc._id,updateDoc);
-                  this.done();
-              },
+        teacherUpdate: {//id autoform
+            // onSubmit: function (insertDoc,updateDoc,currentDoc) {
+            //     this.event.preventDefault();
+            //     Meteor.call('teacher.update',currentDoc._id,updateDoc);
+            //     this.done();
+            // },
 
             onSuccess(formType, result){
                 alertify.success('Successfully Added');
-                 FlowRouter.go('teacher');
+                FlowRouter.go('teacher');
             },
             onError(formType, error){
                 alertify.error(error.message);

@@ -15,7 +15,7 @@
             <legend>Teacher Insert</legend>
         </div>
         <div class="panel-body">
-            {{#autoForm collection="Collection.Teacher" id="teacherInsert"}}
+            {{#autoForm collection="Collection.Teacher" id="teacherInsert" type="insert"}}
                 <fieldset>
                     <div class="row">
                         <div class="col-md-6">
@@ -41,7 +41,7 @@
                 <legend>Teacher Update</legend>
             </div>
             <div class="panel-body">
-                {{#autoForm collection="Collection.Teacher" doc=data id="teacherUpdate"}}
+                {{#autoForm collection="Collection.Teacher" doc=data id="teacherUpdate" type="update"}}
                     <fieldset>
                         <div class="row">
                             <div class="col-md-6">

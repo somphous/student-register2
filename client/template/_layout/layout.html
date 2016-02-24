@@ -2,7 +2,8 @@
     <link rel="icon" href="rabbit.ico">
     <title>Rabbit</title>
 </head>
-<template name="mainLayout">    <body style="margin-top: 60px">
+<template name="mainLayout">
+    <body style="margin-top: 60px">
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -20,8 +21,8 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{pathFor 'home'}}">Home</a></li>
 
-                    {{#if currentUser}}
-
+                    <!--Data-->
+                    {{#if isInRole 'Data'}}
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Data
                                 <span class="caret"></span></a>
@@ -31,8 +32,10 @@
                                 <li><a href="{{pathFor 'payment'}}">Payment</a></li>
                             </ul>
                         </li>
+                    {{/if}}
 
-                        <!--Setting-->
+                    <!--Setting-->
+                    {{#if isInRole 'Setting'}}
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Setting
                                 <span class="caret"></span></a>
@@ -41,8 +44,10 @@
                                 <li><a href="{{pathFor 'teacher'}}">Teacher</a></li>
                             </ul>
                         </li>
+                    {{/if}}
 
-                        <!--Report-->
+                    <!--Report-->
+                    {{#if isInRole 'Report'}}
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Report
                                 <span class="caret"></span></a>
@@ -52,8 +57,10 @@
                                 <li><a href="{{pathFor 'osRpt'}}">Out Standing</a></li>
                             </ul>
                         </li>
-
                     {{/if}}
+
+                    <!--User add roles-->
+                    <li><a href="{{pathFor 'userToRole'}}">Role</a></li>
 
                 </ul>
 

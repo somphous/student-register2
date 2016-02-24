@@ -18,6 +18,12 @@ Template.registerAction.events({
             });
     }
 });
+
+// Insert
+Template.registerInsert.onCreated(function () {
+
+});
+
 //Update
 Template.registerUpdate.onCreated(function () {
     let registerId = FlowRouter.getParam("id");

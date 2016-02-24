@@ -1,0 +1,22 @@
+<template name="userToRole">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <legend>User Insert</legend>
+        </div>
+        <div class="panel-body">
+            {{#autoForm schema="Schema.UserToRole" id="userToRole"}}
+                <fieldset>
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{>afQuickField name= "usersId"}}
+                        </div>
+                        <div class="col-md-6">
+                            {{>afQuickField name= "roles"}}
+                        </div>
+                    </div>
+                </fieldset>
+                <Button type="submit" class="btn btn-primary"> Save</Button>
+            {{/autoForm}}
+        </div>
+    </div>
+</template>
