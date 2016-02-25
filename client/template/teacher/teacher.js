@@ -46,41 +46,40 @@ Template.teacherUpdate.helpers({
 });
 //hook
 AutoForm.hooks({
-        teacherInsert: {//id autoform
-            // onSubmit: function (insertDoc, updateDoc, CurrentDoc) {
-            //     this.event.preventDefault();
-            //     Meteor.call('teacher.insert', insertDoc);
-            //     this.done();
-            // },
-            before: {
-                insert: function (doc) {
-                    doc._id = idGenerator.gen(Collection.Teacher, 3);
-                    return doc;
-                }
-            },
-            onSuccess(formType, result){
-                alertify.success('Successfully Added');
-            },
-            onError(formType, error){
-                alertify.error(error.message);
+    teacherInsert: {//id autoform
+        // onSubmit: function (insertDoc, updateDoc, CurrentDoc) {
+        //     this.event.preventDefault();
+        //     Meteor.call('teacher.insert', insertDoc);
+        //     this.done();
+        // },
+        before: {
+            insert: function (doc) {
+                doc._id = idGenerator.gen(Collection.Teacher, 3);
+                return doc;
             }
         },
-        teacherUpdate: {//id autoform
-            // onSubmit: function (insertDoc,updateDoc,currentDoc) {
-            //     this.event.preventDefault();
-            //     Meteor.call('teacher.update',currentDoc._id,updateDoc);
-            //     this.done();
-            // },
+        onSuccess(formType, result){
+            alertify.success('Successfully Added');
+        },
+        onError(formType, error){
+            alertify.error(error.message);
+        }
+    },
+    teacherUpdate: {//id autoform
+        // onSubmit: function (insertDoc,updateDoc,currentDoc) {
+        //     this.event.preventDefault();
+        //     Meteor.call('teacher.update',currentDoc._id,updateDoc);
+        //     this.done();
+        // },
 
-            onSuccess(formType, result){
-                alertify.success('Successfully Added');
-                FlowRouter.go('teacher');
-            },
-            onError(formType, error){
-                alertify.error(error.message);
-            }
+        onSuccess(formType, result){
+            alertify.success('Successfully Added');
+            FlowRouter.go('teacher');
+        },
+        onError(formType, error){
+            alertify.error(error.message);
         }
     }
-)
+});
 
 

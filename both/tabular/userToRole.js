@@ -1,12 +1,12 @@
-Schema.UserToRole = new Tabular.Table({
-    name: "Role",
+TabularTables.User = new Tabular.Table({
+    name: "User",
     collection: Meteor.users,
     columns: [
         {data: "_id", title: "ID"},
-        {data: "name", title: "Name"},
+        {data: "usersId", title: "Email"},
         {
             title: "Action",
-            tmpl: Meteor.isClient && Template.usersAction
+            tmpl: Meteor.isClient && Template.userToRoleAction
         }
     ]
 });
