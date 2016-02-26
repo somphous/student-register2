@@ -10,10 +10,14 @@ Schema.UserToRole = new SimpleSchema({
                 users.forEach(function (obj) {
 
                     var userId = obj._id;
+                    var address = '';
                     // obj.emails.forEach((email)=> { //es6
                     obj.emails.forEach(function (email) {
-                        list.push({label: email.address, value: obj._id})
+                        address = email.address;
                     });
+
+                    list.push({label: address, value: obj._id})
+
                 });
 
                 return list;

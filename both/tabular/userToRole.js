@@ -3,7 +3,19 @@ TabularTables.User = new Tabular.Table({
     collection: Meteor.users,
     columns: [
         {data: "_id", title: "ID"},
-        {data: "usersId", title: "Email"},
+        {
+            data: "emails",
+            title: "Email",
+            render: function (val, type, doc) {
+                let address = '';
+                val.forEach(function (email) {
+                    address = email.address;
+                });
+
+                return address;
+            }
+        },
+        {data: "roles", title: "Roles"},
         {
             title: "Action",
             tmpl: Meteor.isClient && Template.userToRoleAction

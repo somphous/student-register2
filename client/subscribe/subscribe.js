@@ -3,3 +3,4 @@
 //Meteor.subscribe('subjects');
 //Meteor.subscribe('payments');
 //Meteor.subscribe('teachers');
+Meteor.subscribe('user');

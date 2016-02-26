@@ -9,17 +9,6 @@ rabbitRoutes.route('/userToRole', {
     }
 });
 
-rabbitRoutes.route('/userToRoleInsert', {
-    name: "userToRoleInsert",
-    action: function (params, queryParams) {
-        BlazeLayout.render('mainLayout', {content: "userToRoleInsert"});
-    },
-    breadcrumb: {
-        title: 'userToRoleInsert',
-        parent:'userToRole'
-    }
-
-});
 rabbitRoutes.route('/userToRoleUpdate/:id', {
     name: "userToRoleUpdate",
     action: function (params, queryParams) {
@@ -27,7 +16,7 @@ rabbitRoutes.route('/userToRoleUpdate/:id', {
     },
     breadcrumb: {
         title: 'userToRoleUpdate',
-        parent:'userToRoleInsert'
+        parent:'userToRole'
     }
 
 });

@@ -1,9 +1,10 @@
-//insert
 Meteor.methods({
-    'userToRole.insert': function (insertDoc) {
-        Roles.addUsersToRoles(insertDoc.usersId, insertDoc.roles);
-    },
+    //Update
     'userToRole.update': function (updateDoc) {
         Roles.setUserRoles(updateDoc.usersId, updateDoc.roles);
-    }
+    },
+    // //Remove
+    // 'userToRole.remove': function (removeDoc) {
+    //     Roles.removeUsersFromRoles(removeDoc._userId,removeDoc.roles)
+    // }
 });
