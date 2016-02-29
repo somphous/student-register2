@@ -8,7 +8,7 @@ Template.userToRoleAction.events({
         var self = this;
         alertify.confirm("Are you sure want to delete?",
             function () {
-                Meteor.call('userToRole.remove',removeDoc, function (error, result) {
+                Meteor.call('userToRole.remove',self._id, function (error, result) {
                     if (!error) {
                         alertify.success('Deleted');
                     }
