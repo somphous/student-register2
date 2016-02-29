@@ -29,6 +29,15 @@ Template.registerUpdate.onCreated(function () {
     let registerId = FlowRouter.getParam("id");
     this.subscribe("register", registerId);
 
+    let subjectId = FlowRouter.getParam("id");
+    this.subscribe("subject", subjectId);
+
+    let studentId = FlowRouter.getParam("id");
+    this.subscribe("student", studentId);
+
+    let teacherId = FlowRouter.getParam("id");
+    this.subscribe("teacher", teacherId);
+
     //let selector = {_id: registerId};//dynamic
     //this.subscribe("register", selector);
     //let selector={};// find all

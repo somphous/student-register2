@@ -6,26 +6,20 @@ Template.subjectAction.events({
         var self = this;
         alertify.confirm("Are you sure want to delete?",
             function () {
-                //Collection.Subject.remove({_id: self._id}); /// remove by _id?
-                Meteor.call('subject.remove',self._id, function(error,resul){
-                    if(!error){
-                        alertify.success('Deleted');
-                    }
-                });
+                Collection.Subject.remove({_id: self._id}); /// remove by _id?
+                alertify.success('Deleted');
             },
             function () {
                 alertify.error('Cancel');
             });
     }
 });
+
 //Update
 Template.subjectUpdate.onCreated(function () {
     let subjectId = FlowRouter.getParam("id");
-    //let selector = {_id: subjectId};//dynamic
-    //let selector={};// find all
     this.subscribe("subject", subjectId);
 });
-
 Template.subjectUpdate.helpers({
     data: function () {
         var id = FlowRouter.getParam('id');
@@ -35,16 +29,16 @@ Template.subjectUpdate.helpers({
 });
 //hook
 AutoForm.hooks({
-        subjectInsert: {//id autoform
-            before: {
-                insert: function (doc) {
-                    doc._id = idGenerator.gen(Collection.Subject, 3);
+        subjectInsert:{//id autoform
+            before:{
+                insert:function(doc){
+                    doc._id=idGenerator.gen(Collection.Subject, 3);
                     return doc;
                 }
             },
             onSuccess(formType, id){
                 //Bert.Alert('Successfully Added', 'success', 'growl-top-right');
-                alertify.alert('Successfully Added');
+                alertify.success('Successfully Added');
                 FlowRouter.go('subject');
             },
             onError(formType, error){
@@ -52,10 +46,10 @@ AutoForm.hooks({
                 //Bert.alert(error.message, 'danger', 'growl-top-right');
             }
         },
-        subjectUpdate: {//id autoform
+        subjectUpdate:{//id autoform
             onSuccess(formType, id){
                 //Bert.Alert('Successfully Added', 'success', 'growl-top-right');
-                alertify.alert('Successfully Added');
+                alertify.success('Successfully Added');
                 FlowRouter.go('subject');
             },
             onError(formType, error){
@@ -64,5 +58,4 @@ AutoForm.hooks({
             }
         }
     }
-)
-
+);

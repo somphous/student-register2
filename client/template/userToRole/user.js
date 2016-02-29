@@ -1,16 +1,18 @@
 Template.userToRoleAction.events({
-    'click .jsUpdate': function () {
-        FlowRouter.go('userToRoleUpdate', {id: this._id});
+    'click .jsUpdate': function() {
+        FlowRouter.go('userToRoleUpdate', {
+            id: this._id
+        });
     },
-    'click .jsRemove': function () {
+    'click .jsRemove': function() {
         var self = this;
         alertify.confirm("Are you sure want to delete?",
             function () {
-                Meteor.call('userToRole.remove', self._id, function (error, result) {
+                Meteor.call('userToRole.remove',removeDoc, function (error, result) {
                     if (!error) {
                         alertify.success('Deleted');
                     }
-                })
+                });
             },
             function () {
                 alertify.error('Cancel');
@@ -19,31 +21,47 @@ Template.userToRoleAction.events({
 });
 
 Template.userToRoleUpdate.helpers({
-    data: function () {
+    data: function() {
         var id = FlowRouter.getParam('id');
-        var user = Meteor.users.findOne({_id: id});
-        // console.log(user);
+        var user = Meteor.users.findOne({
+            _id: id
+        });
         return user;
     }
 });
 
 //hook
 AutoForm.hooks({
-    userToRoleUpdate: {//id autoform
-        onSubmit: function (insertDoc, updateDoc, currentDoc) {
+    userToRoleInsert: { //id autoform
+        onSubmit: function(insertDoc, updateDoc, currentDoc) {
             this.event.preventDefault();
-            Meteor.call('userToRole.update', currentDoc._id, updateDoc);
+            Meteor.call('userToRole.insert', insertDoc);
             this.done();
         },
-        onSuccess(formType, result){
+        onSuccess(formType, result) {
             alertify.success('Successfully Added');
-            FlowRouter.go('teacher');
         },
-        onError(formType, error){
+        onError(formType, error) {
+            alertify.error(error.message);
+        }
+    },
+    userToRoleUpdate: { //id autoform
+        onSubmit: function(insertDoc, updateDoc, currentDoc) {
+            this.event.preventDefault();
+            var self = this;
+
+            Meteor.call('userToRole.update', updateDoc, function(error, result) {
+                if (!error) {
+                    self.done();
+                }
+            });
+        },
+        onSuccess(formType, result) {
+            alertify.success('Successfully Updated');
+            FlowRouter.go('userToRole')
+        },
+        onError(formType, error) {
             alertify.error(error.message);
         }
     }
-
 });
-
-

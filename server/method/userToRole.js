@@ -1,10 +1,16 @@
 Meteor.methods({
-    //Update
-    'userToRole.update': function (updateDoc) {
-        Roles.setUserRoles(updateDoc.usersId, updateDoc.roles);
+    //insert
+    'userToRole.insert': function(insertDoc) {
+        Roles.addUsersToRoles(insertDoc.usersId, insertDoc.roles);
     },
-    // //Remove
-    // 'userToRole.remove': function (removeDoc) {
-    //     Roles.removeUsersFromRoles(removeDoc._userId,removeDoc.roles)
-    // }
+
+    //Update
+    'userToRole.update': function(updateDoc) {
+        console.log(updateDoc);
+        Roles.setUserRoles(updateDoc.$set.usersId, updateDoc.$set.roles);
+    },
+    //Remove
+    'userToRole.remove': function (removeDoc) {
+        Roles.removeUsersFromRoles(removeDoc);
+    }
 });

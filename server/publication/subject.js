@@ -1,12 +1,17 @@
 //static
 Meteor.publish('subjectById', function (id) {
-    //console.log('subject sub: ' + id);
     //waiting
     Meteor._sleepForMs(1000);
 
     let data = Collection.Subject.find({_id: id});
     return data;
 });
+
+
+// Meteor.publish('subjects',function(){
+//     return Collection.Subject.find();
+// });
+
 
 ////dynamic
 //Meteor.publish('subject', function (selector) {

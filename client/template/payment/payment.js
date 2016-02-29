@@ -23,6 +23,12 @@ Template.paymentUpdate.onCreated(function () {
     let paymentId = FlowRouter.getParam("id");
     this.subscribe("payment", paymentId);
 
+    let studentId = FlowRouter.getParam("id");
+    this.subscribe("student", studentId);
+
+    let registerId = FlowRouter.getParam("id");
+    this.subscribe("register", registerId);
+
     //let selector = {_id: paymentId};//dynamic
     //let selector={};// find all
     //this.subscribe("payment", selector);

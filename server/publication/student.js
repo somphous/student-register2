@@ -20,7 +20,7 @@ Meteor.publish('student', function (id) {
 //});
 
 
-Meteor.publish('students', ()=> {
-    let data =Collection.Student.find();
-    return data;
-});
+// Meteor.publish('students', ()=> {
+//     let data =Collection.Student.find();
+//     return data;
+// });

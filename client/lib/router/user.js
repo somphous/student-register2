@@ -8,6 +8,16 @@ rabbitRoutes.route('/userToRole', {
         parent:'home'
     }
 });
+rabbitRoutes.route('/userToRoleInsert', {
+    name: "userToRoleInsert",
+    action: function (params, queryParams) {
+        BlazeLayout.render('mainLayout', {content: "userToRoleInsert"});
+    },
+    breadcrumb: {
+        title: 'userToRoleInsert',
+        parent:'userToRole'
+    }
+});
 
 rabbitRoutes.route('/userToRoleUpdate/:id', {
     name: "userToRoleUpdate",
