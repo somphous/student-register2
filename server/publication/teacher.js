@@ -8,8 +8,9 @@ Meteor.publish('teacher', function (id) {
     return data;
 });
 
-// Global
-// Meteor.publish('teachers', ()=>{
-//   let data=Collection.Teacher.find();
-//    return data;
-// });
+
+Meteor.publish('teachers', function() {
+  let data=Collection.Teacher.find();
+    console.log(data.fetch());
+   return data;
+});

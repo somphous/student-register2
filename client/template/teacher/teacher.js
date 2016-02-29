@@ -33,13 +33,7 @@ Template.teacherUpdate.helpers({
 });
 //hook
 AutoForm.hooks({
-        teacherInsert:{//id autoform
-            before:{
-                insert:function(doc){
-                    doc._id=idGenerator.gen(Collection.Teacher, 3);
-                    return doc;
-                }
-            },
+        teacherInsert: {//id autofor
             onSuccess(formType, id){
                 //Bert.Alert('Successfully Added', 'success', 'growl-top-right');
                 alertify.success('Successfully Added');
@@ -50,7 +44,7 @@ AutoForm.hooks({
                 //Bert.alert(error.message, 'danger', 'growl-top-right');
             }
         },
-        teacherUpdate:{//id autoform
+        teacherUpdate: {//id autoform
             onSuccess(formType, id){
                 //Bert.Alert('Successfully Added', 'success', 'growl-top-right');
                 alertify.success('Successfully Added');
