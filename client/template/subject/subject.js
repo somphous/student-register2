@@ -30,16 +30,10 @@ Template.subjectUpdate.helpers({
 //hook
 AutoForm.hooks({
         subjectInsert:{//id autoform
-            before:{
-                insert:function(doc){
-                    doc._id=idGenerator.gen(Collection.Subject, 3);
-                    return doc;
-                }
-            },
             onSuccess(formType, id){
                 //Bert.Alert('Successfully Added', 'success', 'growl-top-right');
                 alertify.success('Successfully Added');
-                FlowRouter.go('subject');
+                // FlowRouter.go('subject');
             },
             onError(formType, error){
                 alertify.error(error.message);

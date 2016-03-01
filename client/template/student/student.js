@@ -30,12 +30,12 @@ Template.studentUpdate.helpers({
 //hook
 AutoForm.hooks({
         studentInsert: {//id autoform
-            before: {
-                insert: function (doc) {
-                    doc._id = idGenerator.gen(Collection.Student, 3);
-                    return doc;
-                }
-            },
+            // before: {
+            //     insert: function (doc) {
+            //         doc._id = idGenerator.gen(Collection.Student, 3);
+            //         return doc;
+            //     }
+            // },
             onSuccess(formType, id){
                 //Bert.Alert('Successfully Added', 'success', 'growl-top-right');
                 alertify.success('Successfully Added');

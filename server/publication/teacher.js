@@ -8,9 +8,7 @@ Meteor.publish('teacher', function (id) {
     return data;
 });
 
-
-Meteor.publish('teachers', function() {
-  let data=Collection.Teacher.find();
-    console.log(data.fetch());
-   return data;
+Meteor.publish('teachers', ()=> {
+    let data = Collection.Teacher.find();
+    return data;
 });

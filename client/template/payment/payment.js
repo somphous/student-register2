@@ -6,32 +6,30 @@ Template.paymentAction.events({
         var self = this;
         alertify.confirm("Are you sure want to delete?",
             function () {
-                //Collection.Payment.remove({_id: self._id}); /// remove by _id?
-                Meteor.call('payment.remove',self._id,function (error,result) {
-                    if(!error){
-                        alertify.success('Deleted');
-                    }
-                });
+                Collection.Payment.remove({_id: self._id}); /// remove by _id?
+                alertify.success('Deleted');
             },
             function () {
                 alertify.error('Cancel');
             });
     }
 });
+//Insert
+Template.paymentInsert.onCreated(function () {
+    this.subscribe("registers");
+    this.subscribe("students");
+    this.subscribe("payments");
+    this.subscribe("subjects");
+});
+
 //Update
 Template.paymentUpdate.onCreated(function () {
     let paymentId = FlowRouter.getParam("id");
     this.subscribe("payment", paymentId);
+    this.subscribe("registers");
+    this.subscribe("students");
+    this.subscribe("subjects");
 
-    let studentId = FlowRouter.getParam("id");
-    this.subscribe("student", studentId);
-
-    let registerId = FlowRouter.getParam("id");
-    this.subscribe("register", registerId);
-
-    //let selector = {_id: paymentId};//dynamic
-    //let selector={};// find all
-    //this.subscribe("payment", selector);
 });
 Template.paymentUpdate.helpers({
     data: function () {
@@ -43,21 +41,27 @@ Template.paymentUpdate.helpers({
 //hook
 AutoForm.hooks({
         paymentInsert:{//id autoform
-            before:{
-                insert:function(doc){
-                    doc._id=idGenerator.gen(Collection.Payment, 3);
-                    return doc;
-                }
-            },
             onSuccess(formType, id){
                 //Bert.Alert('Successfully Added', 'success', 'growl-top-right');
-                alertify.alert('Successfully Added');
-                FlowRouter.go('payment');
+                alertify.success('Successfully Added');
+                // FlowRouter.go('payment');
             },
             onError(formType, error){
                 alertify.error(error.message);
                 //Bert.alert(error.message, 'danger', 'growl-top-right');
+            },
+            paymentUpdate: {//id autoform
+                onSuccess(formType, id){
+                    //Bert.Alert('Successfully Added', 'success', 'growl-top-right');
+                    alertify.success('Successfully Updated');
+                    FlowRouter.go('register');
+                },
+                onError(formType, error){
+                    alertify.error(error.message);
+                    //Bert.alert(error.message, 'danger', 'growl-top-right');
+                }
             }
+
         }
     }
 )

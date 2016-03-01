@@ -43,7 +43,7 @@ Schema.Payment = new SimpleSchema({
                 //console.log(studentId);
 
                 var data = Collection.Register.find({studentId: studentId});
-                var list = [{label: '(Select One)', value: ''}];
+                var list = [];
 
                 if (data) {
                     data.forEach(function (obj) {
@@ -52,9 +52,12 @@ Schema.Payment = new SimpleSchema({
                         var subject = Collection.Subject.findOne(obj.subjectId);
 
                         // Check last paid
-                        var lastPaid = Collection.Payment.findOne({registerId: obj._id}, {$sort: {regDate: -1}});
+                        var lastPaid = Collection.Payment.findOne({registerId: obj._id}, {sort: {_id: -1}});
+
+                        console.log(lastPaid);
+
                         if (lastPaid) {
-                            if (lastPaid.osAmount > 0) {
+                            if (math.round(lastPaid.osAmount, 2) > 0) {
                                 label = obj._id + ' | ' + subject.name + ' | ' + lastPaid.osAmount;
                                 list.push({label: label, value: obj._id});
                             }

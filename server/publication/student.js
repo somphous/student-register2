@@ -8,6 +8,12 @@ Meteor.publish('student', function (id) {
     let data = Collection.Student.find({_id: id});
     return data;
 });
+
+Meteor.publish('students', ()=> {
+    let data =Collection.Student.find();
+    return data;
+});
+
 //dynamic
 //Meteor.publish('student', function (selector) {
 //    //console.log(selector);
@@ -20,7 +26,3 @@ Meteor.publish('student', function (id) {
 //});
 
 
-// Meteor.publish('students', ()=> {
-//     let data =Collection.Student.find();
-//     return data;
-// });

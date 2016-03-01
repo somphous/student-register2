@@ -6,12 +6,8 @@ Template.registerAction.events({
         var self = this;
         alertify.confirm("Are you sure want to delete?",
             function () {
-                //Collection.Register.remove({_id: self._id}); /// remove by _id?
-                Meteor.call('register.remove',self._id,function (error,result) {
-                    if(!error){
-                        alertify.success('Deleted');
-                    }
-                });
+                Collection.Register.remove({_id: self._id}); /// remove by _id?
+                alertify.success('Deleted');
             },
             function () {
                 alertify.error('Cancel');
@@ -21,7 +17,9 @@ Template.registerAction.events({
 
 // Insert
 Template.registerInsert.onCreated(function () {
-
+    this.subscribe("teachers");
+    this.subscribe("students");
+    this.subscribe("subjects");
 });
 
 //Update
@@ -29,19 +27,9 @@ Template.registerUpdate.onCreated(function () {
     let registerId = FlowRouter.getParam("id");
     this.subscribe("register", registerId);
 
-    let subjectId = FlowRouter.getParam("id");
-    this.subscribe("subject", subjectId);
-
-    let studentId = FlowRouter.getParam("id");
-    this.subscribe("student", studentId);
-
-    let teacherId = FlowRouter.getParam("id");
-    this.subscribe("teacher", teacherId);
-
-    //let selector = {_id: registerId};//dynamic
-    //this.subscribe("register", selector);
-    //let selector={};// find all
-
+    this.subscribe("teachers", registerId);
+    this.subscribe("students", registerId);
+    this.subscribe("subjects", registerId);
 });
 
 Template.registerUpdate.helpers({
@@ -54,16 +42,10 @@ Template.registerUpdate.helpers({
 //hook
 AutoForm.hooks({
     registerInsert: {//id autoform
-        before: {
-            insert: function (doc) {
-                doc._id = idGenerator.gen(Collection.Register, 3);
-                return doc;
-            }
-        },
         onSuccess(formType, id){
             //Bert.Alert('Successfully Added', 'success', 'growl-top-right');
-            alertify.alert('Successfully Added');
-            FlowRouter.go('register');
+            alertify.Success('Successfully Added');
+            // FlowRouter.go('register');
         },
         onError(formType, error){
             alertify.error(error.message);
@@ -73,7 +55,7 @@ AutoForm.hooks({
     registerUpdate: {//id autoform
         onSuccess(formType, id){
             //Bert.Alert('Successfully Added', 'success', 'growl-top-right');
-            alertify.alert('Successfully Updated');
+            alertify.success('Successfully Updated');
             FlowRouter.go('register');
         },
         onError(formType, error){
