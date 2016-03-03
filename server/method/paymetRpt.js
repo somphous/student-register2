@@ -13,7 +13,7 @@ Meteor.methods({
        let selector = {
            paidDate: {$gte: fromDate, $lte: toDate}
        };
-       let option = {$sort: {paidDate: 1}};
+       let option = {sort: {paidDate: 1}};
 
        let tempContent = Collection.Payment.find(selector, option);
        let content = [];
@@ -25,7 +25,7 @@ Meteor.methods({
            obj._student = studentDoc;
 
            // find subject
-           let registerDoc=Collection.Register.findOne(obj.registerId)
+           let registerDoc= Collection.Register.findOne(obj.registerId)
            let subjectDoc = Collection.Subject.findOne(registerDoc.subjectId);
            obj._subject = subjectDoc;
 

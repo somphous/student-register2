@@ -11,6 +11,6 @@ Meteor.methods({
     },
     //Remove
     'userToRole.remove': function (userId) {
-        let roles=['Setting','Data','Report'];
+        let roles=['Setting','Data','Report','Role'];
         Roles.removeUsersFromRoles(userId, roles)    }
 });

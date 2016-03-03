@@ -91,10 +91,11 @@ Schema.Payment = new SimpleSchema({
                     dueAmount = data.amount;
 
                     // Check last paid
-                    var lastPaid = Collection.Payment.findOne({registerId: registerId}, {$sort: {regDate: -1}});
+                    var lastPaid = Collection.Payment.findOne({registerId: registerId}, {sort: {_id: -1}}); // _id in payment,
                     if (lastPaid) {
                         dueAmount = lastPaid.osAmount;
                     }
+                    // dueAmount = data.amount;
                 }
 
                 return dueAmount;
@@ -114,10 +115,10 @@ Schema.Payment = new SimpleSchema({
         autoform: {
             //readonly: true,
             value: function () {
-                let osAmount=0;
+                let osAmount = 0;
                 let dueAmount = AutoForm.getFieldValue('dueAmount');
                 let paidAmount = AutoForm.getFieldValue('paidAmount');
-                return dueAmount-paidAmount;
+                return dueAmount - paidAmount;
 
             },
             type: "inputmask",

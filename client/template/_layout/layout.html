@@ -60,7 +60,9 @@
                     {{/if}}
 
                     <!--User add roles-->
-                    <li><a href="{{pathFor 'userToRole'}}">Role</a></li>
+                    {{#if isInRole 'Role'}}
+                        <li><a href="{{pathFor 'userToRole'}}">Role</a></li>
+                    {{/if}}
 
                 </ul>
 

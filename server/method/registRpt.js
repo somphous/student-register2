@@ -27,8 +27,8 @@ Meteor.methods({
             obj._student = studentDoc;
 
             // find subject
-            let registerDoc=Collection.Register.findOne(obj.registerId);
-            let subjectDoc = Collection.Subject.findOne(registerDoc.subjectId);
+            //let registerDoc= Collection.Register.findOne(obj.registerId);
+            let subjectDoc = Collection.Subject.findOne(obj.subjectId);
             obj._subject = subjectDoc;
 
             content.push(obj);

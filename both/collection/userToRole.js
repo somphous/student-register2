@@ -35,7 +35,8 @@ Schema.UserToRole = new SimpleSchema({
                 return [
                     {label: "Data", value: 'Data'},
                     {label: "Setting", value: 'Setting'},
-                    {label: "Report", value: 'Report'}
+                    {label: "Report", value: 'Report'},
+                    {label: "Role", value: 'Role'}
                 ];
             }
         }

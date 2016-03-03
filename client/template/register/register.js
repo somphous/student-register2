@@ -44,7 +44,7 @@ AutoForm.hooks({
     registerInsert: {//id autoform
         onSuccess(formType, id){
             //Bert.Alert('Successfully Added', 'success', 'growl-top-right');
-            alertify.Success('Successfully Added');
+            alertify.success('Successfully Added');
             // FlowRouter.go('register');
         },
         onError(formType, error){
