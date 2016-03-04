@@ -1,7 +1,12 @@
 rabbitRoutes.route('/teacher', {
     name: "teacher",
     action: function (params, queryParams) {
-        BlazeLayout.render('mainLayout', {content: "teacher"});
+        if(Roles.userIsInRole(Meteor.userId(),['Setting'])){
+            BlazeLayout.render('mainLayout', {content: "teacher"});
+        }
+        else{
+            FlowRouter.go('home');
+        }
     },
     breadcrumb: {
         title: 'Teacher',

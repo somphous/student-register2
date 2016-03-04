@@ -1,34 +1,47 @@
 rabbitRoutes.route('/userToRole', {
     name: "userToRole",
     action: function (params, queryParams) {
-        //if(Roles.userIsInRole(Meteor.userId(), ['Data', 'Setting','Report'])){
+        if (Roles.userIsInRole(Meteor.userId(), ['Setting'])) {
             BlazeLayout.render('mainLayout', {content: "userToRole"});
-        //}
+        }
+        else {
+            FlowRouter.go('home');
+        }
     },
     breadcrumb: {
         title: 'userToRole',
-        parent:'home'
+        parent: 'home'
     }
 });
 rabbitRoutes.route('/userToRoleInsert', {
     name: "userToRoleInsert",
     action: function (params, queryParams) {
-        BlazeLayout.render('mainLayout', {content: "userToRoleInsert"});
+        if (Roles.userIsInRole(Meteor.userId(), ['Setting'])) {
+            BlazeLayout.render('mainLayout', {content: "userToRoleInsert"});
+        }
+        else {
+            FlowRouter.go('home');
+        }
     },
     breadcrumb: {
         title: 'userToRoleInsert',
-        parent:'userToRole'
+        parent: 'userToRole'
     }
 });
 
 rabbitRoutes.route('/userToRoleUpdate/:id', {
     name: "userToRoleUpdate",
     action: function (params, queryParams) {
-        BlazeLayout.render('mainLayout', {content: "userToRoleUpdate"});
+        if (Roles.userIsInRole(Meteor.userId(), ['Setting'])) {
+            BlazeLayout.render('mainLayout', {content: "userToRoleUpdate"});
+        }
+        else {
+            FlowRouter.go('home');
+        }
     },
     breadcrumb: {
         title: 'userToRoleUpdate',
-        parent:'userToRole'
+        parent: 'userToRole'
     }
 
 });
