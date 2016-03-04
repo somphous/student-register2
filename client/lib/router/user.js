@@ -1,7 +1,9 @@
 rabbitRoutes.route('/userToRole', {
     name: "userToRole",
     action: function (params, queryParams) {
-        BlazeLayout.render('mainLayout', {content: "userToRole"});
+        //if(Roles.userIsInRole(Meteor.userId(), ['Data', 'Setting','Report'])){
+            BlazeLayout.render('mainLayout', {content: "userToRole"});
+        //}
     },
     breadcrumb: {
         title: 'userToRole',
