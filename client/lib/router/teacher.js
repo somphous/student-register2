@@ -16,7 +16,12 @@ rabbitRoutes.route('/teacher', {
 rabbitRoutes.route('/teacherInsert', {
     name: "teacherInsert",
     action: function (params, queryParams) {
-        BlazeLayout.render('mainLayout', {content: "teacherInsert"});
+        if(Roles.userIsInRole(Meteor.userId(),['Settiing'])){
+            BlazeLayout.render('mainLayout', {content: "teacherInsert"});
+        }
+        else {
+            FlowRouter.go('home');
+        }
     },
     breadcrumb: {
         title: 'Teacher Insert',
@@ -26,7 +31,12 @@ rabbitRoutes.route('/teacherInsert', {
 rabbitRoutes.route('/teacherUpdate/:id', {
     name: "teacherUpdate",
     action: function (params, queryParams) {
-        BlazeLayout.render('mainLayout', {content: "teacherUpdate"});
+        if(Roles.userIsInRole(Meteor.userId(),['Setting'])){
+            BlazeLayout.render('mainLayout', {content: "teacherUpdate"});
+        }
+        else {
+            FlowRouter.go('home');
+        }
     },
     breadcrumb: {
         title: 'Teacher Update',

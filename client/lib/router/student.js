@@ -1,7 +1,12 @@
 rabbitRoutes.route('/student', {
     name: "student",
     action: function (params, queryParams) {
-        BlazeLayout.render('mainLayout', {content: "student"});
+        if(Roles.userIsInRole(Meteor.userId(),['Data'])){
+            BlazeLayout.render('mainLayout', {content: "student"});
+        }
+        else {
+            FlowRouter.go('home');
+        }
     },
     breadcrumb: {
         title: 'Student',
@@ -11,7 +16,12 @@ rabbitRoutes.route('/student', {
 rabbitRoutes.route('/studentInsert', {
     name: "studentInsert",
     action: function (params, queryParams) {
-        BlazeLayout.render('mainLayout', {content: "studentInsert"});
+        if(Roles.userIsInRole(Meteor.userId(),['Data'])){
+            BlazeLayout.render('mainLayout', {content: "studentInsert"});
+        }
+        else {
+            FlowRouter.go('home');
+        }
     },
     breadcrumb: {
         title: 'Student Insert',
@@ -21,7 +31,12 @@ rabbitRoutes.route('/studentInsert', {
 rabbitRoutes.route('/studentUpdate/:id', {
     name: "studentUpdate",
     action: function (params, queryParams) {
-        BlazeLayout.render('mainLayout', {content: "studentUpdate"});
+        if(Roles.userIsInRole(Meteor.userId(),['Data'])){
+            BlazeLayout.render('mainLayout', {content: "studentUpdate"});
+        }
+        else {
+            FlowRouter.go('home');
+        }
     },
     breadcrumb: {
         title: 'Student Update',

@@ -1,27 +1,42 @@
-FlowRouter.route('/payment', {
+rabbitRoutes.route('/payment', {
     name: "payment",
     action: function (params, queryParams) {
-        BlazeLayout.render('mainLayout', {content: "payment"});
+        if(Roles.userIsInRole(Meteor.userId(),['Data'])){
+            BlazeLayout.render('mainLayout', {content: "payment"});
+        }
+        else {
+            FlowRouter.go('home');
+        }
     },
     breadcrumb: {
         title: 'Payment',
         parent:'home'
     }
 });
-FlowRouter.route('/paymentInsert', {
+rabbitRoutes.route('/paymentInsert', {
     name: "paymentInsert",
     action: function (params, queryParams) {
-        BlazeLayout.render('mainLayout', {content: "paymentInsert"});
+        if(Roles.userIsInRole(Meteor.userId(),['Data'])){
+            BlazeLayout.render('mainLayout', {content: "paymentInsert"});
+        }
+        else {
+            FlowRouter.go('home');
+        }
     },
     breadcrumb: {
         title: 'Payment Insert',
         parent:'payment'
     }
 });
-FlowRouter.route('/paymentUpdate/:id', {
+rabbitRoutes.route('/paymentUpdate/:id', {
     name: "paymentUpdate",
     action: function (params, queryParams) {
-        BlazeLayout.render('mainLayout', {content: "paymentUpdate"});
+        if(Roles.userIsInRole(Meteor.userId(),['Data'])){
+            BlazeLayout.render('mainLayout', {content: "paymentUpdate"});
+        }
+        else {
+            FlowRouter.go('home');
+        }
     },
     breadcrumb: {
         title: 'Payment Update',

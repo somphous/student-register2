@@ -1,7 +1,12 @@
 rabbitRoutes.route('/register', {
     name: "register",
     action: function (params, queryParams) {
-        BlazeLayout.render('mainLayout', {content: "register"});
+        if(Roles.userIsInRole(Meteor.userId(),['Data'])){
+            BlazeLayout.render('mainLayout', {content: "register"});
+        }
+        else {
+            FlowRouter.go('home');
+        }
     },
     breadcrumb: {
         title: 'Register',
@@ -11,7 +16,12 @@ rabbitRoutes.route('/register', {
 rabbitRoutes.route('/registerInsert', {
     name: "registerInsert",
     action: function (params, queryParams) {
-        BlazeLayout.render('mainLayout', {content: "registerInsert"});
+        if(Roles.userIsInRole(Meteor.userId(),['Data'])){
+            BlazeLayout.render('mainLayout', {content: "registerInsert"});
+        }
+        else {
+            FlowRouter.go('home');
+        }
     },
     breadcrumb: {
         title: 'Register Insert',
@@ -21,7 +31,12 @@ rabbitRoutes.route('/registerInsert', {
 rabbitRoutes.route('/registerUpdate/:id', {
     name: "registerUpdate",
     action: function (params, queryParams) {
-        BlazeLayout.render('mainLayout', {content: "registerUpdate"});
+        if(Roles.userIsInRole(Meteor.userId(),['Data'])){
+            BlazeLayout.render('mainLayout', {content: "registerUpdate"});
+        }
+        else {
+            FlowRouter.go('home');
+        }
     },
     breadcrumb: {
         title: 'Register Update',
