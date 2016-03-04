@@ -1,23 +1,23 @@
-rabbitRoutes.route('/paymentRpt', {
-    name: "paymentRpt",
+rabbitRoutes.route('/registerRpt', {
+    name: "registerRpt",
     action: function (params, queryParams) {
+        BlazeLayout.render('mainLayout', {content: "registerRpt"});
         if(Roles.userIsInRole(Meteor.userId(),['Report'])){
-            BlazeLayout.render('mainLayout', {content: "paymentRpt"});
         }
         else {
-            FlowRouter.go('home');;
+            FlowRouter.go('home');
         }
     },
     breadcrumb: {
-        title: 'Payment Report',
+        title: 'Register Report',
         parent:'home'
     }
 });
-rabbitRoutes.route('/paymentRptGen', {
-    name: "paymentRptGen",
+rabbitRoutes.route('/registerRptGen', {
+    name: "registerRptGen",
     action: function (params, queryParams) {
         if(Roles.userIsInRole(Meteor.userId(),['Report'])){
-            BlazeLayout.render('reportLayout', {content: "paymentRptGen"});
+            BlazeLayout.render('reportLayout', {content: "registerRptGen"});
         }
         else {
             FlowRouter.go('home');

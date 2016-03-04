@@ -1,16 +1,26 @@
-FlowRouter.route('/osRpt', {
+rabbitRoutes.route('/osRpt', {
     name: "osRpt",
     action: function (params, queryParams) {
-        BlazeLayout.render('mainLayout', {content: "osRpt"});
+        if(Roles.userIsInRole(Meteor.userId(),['Report'])){
+            BlazeLayout.render('mainLayout', {content: "osRpt"});
+        }
+        else {
+            FlowRouter.go('home');
+        }
     },
     breadcrumb: {
         title: 'Out Standing Report',
         parent:'home'
     }
 });
-FlowRouter.route('/osRptGen', {
+rabbitRoutes.route('/osRptGen', {
     name: "osRptGen",
     action: function (params, queryParams) {
-        BlazeLayout.render('reportLayout', {content: "osRptGen"});
+        if(Roles.userIsInRole(Meteor.userId(),['Report'])){
+            BlazeLayout.render('reportLayout', {content: "osRptGen"});
+        }
+        else {
+            FlowRouter.go('home');
+        }
     }
 });
