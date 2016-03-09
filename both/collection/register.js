@@ -160,6 +160,19 @@ Schema.Register = new SimpleSchema({
             }
 
         }
+    },
+    additionalInfo: {
+        type: String,
+        label: "Additional Info",
+        optional: true,
+        autoform: {
+            afFieldInput: {
+                type: 'summernote',
+                class: 'editor',
+                settings:''
+            }
+        }
     }
+
 });
 Collection.Register.attachSchema(Schema.Register);

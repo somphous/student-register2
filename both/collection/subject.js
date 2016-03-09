@@ -22,7 +22,14 @@ Schema.Subject = new SimpleSchema({
     description: {
         type: String,
         label: "Description",
-        optional: true
+        optional: true,
+        autoform: {
+            afFieldInput: {
+                type: 'summernote',
+                class: 'editor',
+                settings:''
+            }
+        }
     }
 });
 Collection.Subject.attachSchema(Schema.Subject);

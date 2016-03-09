@@ -1,5 +1,5 @@
 //static
-Meteor.publish('subjectById', function (id) {
+Meteor.publish('subject', function (id) {
     //waiting
     Meteor._sleepForMs(1000);
 

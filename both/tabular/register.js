@@ -40,6 +40,7 @@ TabularTables.Register = new Tabular.Table({
                 return numeral(val).format('$ 0,0.00');
             }
         },
+        {data: "additionalInfo", title: "Additional Info"},
         {
             title: "Action",
             tmpl: Meteor.isClient && Template.registerAction

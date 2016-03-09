@@ -17,6 +17,19 @@ Schema.Teacher = new SimpleSchema({
             }
         }
     },
+    birthDate: {
+        type: Date,
+        label: "Date Of Birth",
+        autoform: {
+            type: "bootstrap-datetimepicker",
+            afFieldInput: {
+                dateTimePickerOptions: {
+                    format: 'DD/MM/YYYY',
+                    pickTime: false
+                }
+            }
+        }
+    },
     telephone: {
         type: Number,
         label: "Telephone",
