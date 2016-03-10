@@ -16,7 +16,7 @@ rabbitRoutes.route('/teacher', {
 rabbitRoutes.route('/teacherInsert', {
     name: "teacherInsert",
     action: function (params, queryParams) {
-        if(Roles.userIsInRole(Meteor.userId(),['Settiing'])){
+        if(Roles.userIsInRole(Meteor.userId(),['Setting'])){
             BlazeLayout.render('mainLayout', {content: "teacherInsert"});
         }
         else {

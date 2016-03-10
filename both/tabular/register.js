@@ -3,9 +3,36 @@ TabularTables.Register = new Tabular.Table({
     collection: Collection.Register,
     columns: [
         {data: "_id", title: "ID"},
-        {data: "studentId", title: "StudentID"},
-        {data: "subjectId", title: "SubjectID"},
-        {data: "teacherId", title: "TeacherID"},
+        {
+            data: "_student",
+            title: "Student Name",
+            render(val){
+                if (!_.isUndefined(val)) {
+                    return val.name;
+                }
+                return '';
+            }
+        },
+        {
+            data: "_subject",
+            title: "Subject Name",
+            render(val){
+                if(!_.isUndefined(val)){
+                    return val.name;
+                }
+                return '';
+            }
+        },
+        {
+            data: "_teacher",
+            title: "Teacher Name",
+            render(val){
+                if(!_.isUndefined(val)){
+                    return val.name;
+                }
+                return '';
+            }
+        },
         {
             data: "regDate",
             title: "RegisterDate",

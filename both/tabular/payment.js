@@ -14,10 +14,19 @@ TabularTables.Payment = new Tabular.Table({
                 }
             }
         },
-        {data: "studentId", title: "StudentID"},
         {
             data: "registerId",
-            title: "RegisterID",
+            title: "RegisterID"
+        },
+        {
+            data: "_student",
+            title: "Student Name",
+            render(val){
+                if (!_.isUndefined(val)) {
+                    return val.name;
+                }
+                return '';
+            }
         },
         {
             data: "dueAmount",

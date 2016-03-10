@@ -14,16 +14,18 @@ Template.teacherAction.events({
             });
     }
 });
+// Insert
+Template.teacherInsert.onCreated(function () {
+    this.subscribe("subjects");
+});
 
 //Update
 Template.teacherUpdate.onCreated(function () {
     let teacherId = FlowRouter.getParam("id");
     this.subscribe("teacher", teacherId);
+    this.subscribe("subjects", teacherId);
+
 });
-//
-// Template.teacherInsert.onCreated(function () {
-//     this.subscribe("teachers");
-// });
 Template.teacherUpdate.helpers({
     data: function () {
         var id = FlowRouter.getParam('id');

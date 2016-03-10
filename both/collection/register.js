@@ -7,14 +7,11 @@ Schema.Register = new SimpleSchema({
             type: "select",
             options: function () {
                 var data = Collection.Student.find();
-                var list = [
-                    {label: '(Select One)', value: ''}
-                ];
+                var list = [];
 
                 data.forEach(function (obj) {
                     list.push({label: obj._id + ' : ' + obj.name, value: obj._id})
                 });
-
                 return list;
             }
         }
@@ -26,14 +23,11 @@ Schema.Register = new SimpleSchema({
             type: "select",
             options: function () {
                 var data = Collection.Subject.find();
-                var list = [
-                    {label: '(Select One)', value: ''}
-                ];
+                var list = [];
 
                 data.forEach(function (obj) {
                     list.push({label: obj._id + ' : ' + obj.name + ' | Price: ' + obj.price, value: obj._id});
                 });
-
                 return list;
             }
         }
@@ -45,9 +39,7 @@ Schema.Register = new SimpleSchema({
             type: "select",
             options: function () {
                 var data = Collection.Teacher.find();
-                var list = [
-                    {label: '(Select One)', value: ''}
-                ];
+                var list = [];
 
                 data.forEach(function (obj) {
                     list.push({label: obj._id + ' : ' + obj.name, value: obj._id})
@@ -78,9 +70,8 @@ Schema.Register = new SimpleSchema({
             type: "select",
             options: function () {
                 return [
-                    {label: '(Select One)', value: ''},
-                    {label: "Monday-Friday", value: 'Monday-Friday'},
-                    {label: "Saturday-Sunday", value: 'Saturday-Sunday'}
+                    {label: "Monday-Friday", value: 'mondayFriday'},
+                    {label: "Saturday-Sunday", value: 'saturdaySunday'}
                 ];
             }
 
@@ -92,18 +83,27 @@ Schema.Register = new SimpleSchema({
         autoform: {
             type: "select",
             options: function () {
-                return [
-                    {label: '(Select One)', value: ''},
-                    {label: "7:00-8:00am", value: '7:00-8:00'},
-                    {label: "8:00-9:00am", value: '8:00-9:00'},
-                    {label: "9:00-10:00am", value: '9:00-10:00'},
-                    {label: "10:00-11:00am", value: '10:00-11:00'},
-                    {label: "11:00-12:00am", value: '22:00-12:00'},
-                    {label: "2:00-3:00pm", value: '2:00-3:00'},
-                    {label: "3:00-4:00pm", value: '3:00-4:00'},
-                    {label: "4:00-5:00pm", value: '4:00-5:00'},
-                    {label: "5:00-6:00pm", value: '5:00-6:00'}
-                ];
+                let day = AutoForm.getFieldValue('day');
+                if (day == "mondayFriday") {
+                    return [
+                        {label: "8:00-9:00am", value: '8:00-9:00'},
+                        {label: "9:00-10:00am", value: '9:00-10:00'},
+                        {label: "10:00-11:00am", value: '10:00-11:00'},
+                        {label: "11:00-12:00am", value: '11:00-12:00'},
+                        {label: "2:00-3:00pm", value: '2:00-3:00'},
+                        {label: "3:00-4:00pm", value: '3:00-4:00'},
+                        {label: "4:00-5:00pm", value: '4:00-5:00'},
+                        {label: "5:00-6:00pm", value: '5:00-6:00'}
+                    ];
+                }
+                else {
+                    return [
+                        {label: "8:00-10:00am", value: '8:00-10:00'},
+                        {label: "10:00-12:00am", value: '10:00-12:00'},
+                        {label: "2:00-4:00pm", value: '2:00-4:00'},
+                        {label: "4:00-6:00pm", value: '4:00-6:00'},
+                    ];
+                }
             }
         }
     },
@@ -133,7 +133,7 @@ Schema.Register = new SimpleSchema({
         defaultValue: function () {
             let discount = AutoForm.getFieldValue('discount');
         },
-        autoform:{
+        autoform: {
             type: "inputmask",
             afFieldInput: {
                 inputmaskOptions: inputmaskOptions.currency()
@@ -150,8 +150,6 @@ Schema.Register = new SimpleSchema({
             value: function () {
                 let price = AutoForm.getFieldValue('price');
                 let discount = AutoForm.getFieldValue('discount');
-                //console.log(price);
-                //console.log(discount);
                 return price - discount;
             },
             type: "inputmask",
@@ -169,7 +167,7 @@ Schema.Register = new SimpleSchema({
             afFieldInput: {
                 type: 'summernote',
                 class: 'editor',
-                settings:''
+                settings: ''
             }
         }
     }

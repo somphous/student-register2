@@ -34,7 +34,23 @@ Schema.Teacher = new SimpleSchema({
         type: Number,
         label: "Telephone",
         optional: true
+    },
+    subject: {
+        type: [String],
+        label: "Subject",
+        autoform: {
+            type: "select",
+            multiple: true,
+            options: function () {
+                var data = Collection.Subject.find();
+                var list = [];
 
+                data.forEach(function (obj) {
+                    list.push({label:obj.name, value: obj.name});
+                });
+                return list;
+            }
+        }
     }
 });
 Collection.Teacher.attachSchema(Schema.Teacher);

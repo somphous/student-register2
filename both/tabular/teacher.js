@@ -17,6 +17,17 @@ TabularTables.Teacher = new Tabular.Table({
             }
         },
         {data: "telephone", title: "Telephone"},
+        {data: "subject", title: "Subject"},
+        // {
+        //     data: "_subject",
+        //     title: "Subject Name",
+        //     render(val){
+        //         if(!_.isUndefined(val)){
+        //             return val.name;
+        //         }
+        //         return '';
+        //     }
+        // },
         {
             title: "Action",
             tmpl: Meteor.isClient && Template.teacherAction
