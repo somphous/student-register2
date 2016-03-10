@@ -38,14 +38,23 @@ Schema.Register = new SimpleSchema({
         autoform: {
             type: "select",
             options: function () {
-                var data = Collection.Teacher.find();
-                var list = [];
+                let subjectId= AutoForm.getFieldValue('subjectId');
+                if(!_.isUndefined(subjectId)){
+                    let subject = Collection.Subject.findOne(subjectId);
+                    let arr =[
+                        subject.name
+                    ];
 
-                data.forEach(function (obj) {
-                    list.push({label: obj._id + ' : ' + obj.name, value: obj._id})
-                });
+                    var data = Collection.Teacher.find({subject: {$in: arr}});
+                    var list = [];
 
-                return list;
+                    data.forEach(function (obj) {
+                        list.push({label: obj._id + ' : ' + obj.name, value: obj._id})
+                    });
+
+                    return list;
+                }
+                return [];
             }
         }
     },
