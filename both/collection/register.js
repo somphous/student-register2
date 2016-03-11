@@ -10,7 +10,7 @@ Schema.Register = new SimpleSchema({
                 var list = [];
 
                 data.forEach(function (obj) {
-                    list.push({label: obj._id + ' : ' + obj.latinname, value: obj._id})
+                    list.push({label: obj._id + ' : ' + obj.latinName, value: obj._id})
                 });
                 return list;
             }
@@ -179,7 +179,7 @@ Schema.Register = new SimpleSchema({
                 class: 'editor',
                 settings: {
                     height: 95,
-                    placeholeder:'Text here',
+                    placeholder:'Text here',
                     toolbar: [
                         //[groupname, [button list]]
                         ['style', ['bold', 'italic', 'underline']],

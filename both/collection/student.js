@@ -1,10 +1,10 @@
 Collection.Student = new Mongo.Collection('student');
 Schema.Student = new SimpleSchema({
-    khmername: {
+    khmerName: {
         type: String,
         label: "Khmer Name"
     },
-    latinname: {
+    latinName: {
         type: String,
         label: "Latin Name"
     },

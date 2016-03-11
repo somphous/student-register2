@@ -11,7 +11,7 @@ TabularTables.Register = new Tabular.Table({
             title: "Student Name",
             render(val){
                 if (!_.isUndefined(val)) {
-                    return val.latinname;
+                    return val.latinName;
                 }
                 return '';
             }

@@ -29,7 +29,7 @@ Schema.Subject = new SimpleSchema({
                 class: 'editor',
                 settings: {
                     height: 130,
-                    placeholeder:'Text here',
+                    placeholder:'Text here',
                     toolbar: [
                         //[groupname, [button list]]
                         ['style', ['bold', 'italic', 'underline']],

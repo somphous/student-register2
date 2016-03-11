@@ -3,8 +3,8 @@ TabularTables.Student = new Tabular.Table({
     collection: Collection.Student,
     columns: [
         {data: "_id", title: "ID"},
-        {data: "khmername", title: "Khmer Name"},
-        {data: "latinname", title: "Latin Name"},
+        {data: "khmerName", title: "Khmer Name"},
+        {data: "latinName", title: "Latin Name"},
         {data: "gender", title: "Gender"},
         {
             data: "birthDate",
