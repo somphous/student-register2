@@ -10,7 +10,7 @@ Schema.Register = new SimpleSchema({
                 var list = [];
 
                 data.forEach(function (obj) {
-                    list.push({label: obj._id + ' : ' + obj.name, value: obj._id})
+                    list.push({label: obj._id + ' : ' + obj.latinname, value: obj._id})
                 });
                 return list;
             }
@@ -138,10 +138,11 @@ Schema.Register = new SimpleSchema({
     },
     discount: {
         type: Number,
+        defaultValue:0,
         label: "Discount Amount",
-        defaultValue: function () {
-            let discount = AutoForm.getFieldValue('discount');
-        },
+        // defaultValue: function () {
+        //     let discount = AutoForm.getFieldValue('discount');
+        // },
         autoform: {
             type: "inputmask",
             afFieldInput: {

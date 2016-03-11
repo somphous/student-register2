@@ -1,8 +1,12 @@
 Collection.Student = new Mongo.Collection('student');
 Schema.Student = new SimpleSchema({
-    name: {
+    khmername: {
         type: String,
-        label: "Name"
+        label: "Khmer Name"
+    },
+    latinname: {
+        type: String,
+        label: "Latin Name"
     },
     gender: {
         type: String,
@@ -30,9 +34,27 @@ Schema.Student = new SimpleSchema({
             }
         }
     },
+    maritalStatus: {
+        type: String,
+        label: "Marital Status",
+        autoform: {
+            type: "select",
+            options: function () {
+                return [
+                    {label: "Single", value: 'single'},
+                    {label: "Married", value: 'married'}
+                ];
+            }
+        }
+    },
     telephone: {
         type: Number,
         label: "Telephone",
+        optional: true
+    },
+    email: {
+        type: Number,
+        label: "Email",
         optional: true
     }
 });

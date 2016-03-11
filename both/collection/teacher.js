@@ -39,7 +39,7 @@ Schema.Teacher = new SimpleSchema({
         type: [String],
         label: "Subject",
         autoform: {
-            type: "select",
+            type: "select-multiple",
             multiple: true,
             options: function () {
                 var data = Collection.Subject.find();

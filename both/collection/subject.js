@@ -11,7 +11,7 @@ Schema.Subject = new SimpleSchema({
     price: {
         type: Number,
         label: "Price",
-        autoform:{
+        autoform: {
             type: "inputmask",
             afFieldInput: {
                 inputmaskOptions: inputmaskOptions.currency()
@@ -27,7 +27,19 @@ Schema.Subject = new SimpleSchema({
             afFieldInput: {
                 type: 'summernote',
                 class: 'editor',
-                settings:''
+                settings: {
+                    height: 130,
+                    placeholeder:'Text here',
+                    toolbar: [
+                        //[groupname, [button list]]
+                        ['style', ['bold', 'italic', 'underline']],
+                        ['font', ['strikethrough']],
+                        ['fontsize', ['fontsize']],
+                        ['color', ['color']],
+                        ['para', ['ul', 'ol', 'paragraph']],
+                        ['misc', ['fullscreen']],
+                    ]
+                }
             }
         }
     }

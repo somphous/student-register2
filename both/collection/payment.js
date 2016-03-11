@@ -26,7 +26,7 @@ Schema.Payment = new SimpleSchema({
                 ];
 
                 data.forEach(function (obj) {
-                    list.push({label: obj._id + ' : ' + obj.name, value: obj._id})
+                    list.push({label: obj._id + ' : ' + obj.latinname, value: obj._id})
                 });
 
                 return list;

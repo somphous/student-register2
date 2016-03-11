@@ -3,7 +3,8 @@ TabularTables.Student = new Tabular.Table({
     collection: Collection.Student,
     columns: [
         {data: "_id", title: "ID"},
-        {data: "name", title: "Name"},
+        {data: "khmername", title: "Khmer Name"},
+        {data: "latinname", title: "Latin Name"},
         {data: "gender", title: "Gender"},
         {
             data: "birthDate",
@@ -16,7 +17,9 @@ TabularTables.Student = new Tabular.Table({
                 }
             }
         },
+        {data: "maritalStatus", title: "Marital Status"},
         {data: "telephone", title: "Telephone"},
+        {data: "email", title: "Email"},
         {
             title: "Action",
             tmpl: Meteor.isClient && Template.studentAction
