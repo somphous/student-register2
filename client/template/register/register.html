@@ -17,18 +17,20 @@
             {{#autoForm collection="Collection.Register" id="registerInsert" type="insert"}}
                 <fieldset>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-xs-6 col-md-4">
                             {{>afQuickField name= "regDate"}}
                             {{>afQuickField name= "studentId"}}
                             {{>afQuickField name= "subjectId"}}
                             {{>afQuickField name= "teacherId"}}
-                            {{>afQuickField name= "day"}}
-                            {{>afQuickField name= "time"}}
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-xs-6 col-md-4">
                             {{>afQuickField name= "price"}}
                             {{>afQuickField name= "discount"}}
                             {{>afQuickField name= "amount"}}
+                            {{>afQuickField name= "day"}}
+                        </div>
+                        <div class="col-xs-6 col-md-4">
+                            {{>afQuickField name= "time"}}
                             {{>afQuickField name= "additionalInfo"}}
                         </div>
                     </div>
@@ -51,18 +53,20 @@
                 {{#autoForm collection="Collection.Register" doc=data id="registerUpdate" type="update"}}
                     <fieldset>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-xs-6 col-md-4">
                                 {{>afQuickField name= "regDate"}}
                                 {{>afQuickField name= "studentId"}}
                                 {{>afQuickField name= "subjectId"}}
                                 {{>afQuickField name= "teacherId"}}
-                                {{>afQuickField name= "day"}}
-                                {{>afQuickField name= "time"}}
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-xs-6 col-md-4">
                                 {{>afQuickField name= "price"}}
                                 {{>afQuickField name= "discount"}}
                                 {{>afQuickField name= "amount"}}
+                                {{>afQuickField name= "day"}}
+                            </div>
+                            <div class="col-xs-6 col-md-4">
+                                {{>afQuickField name= "time"}}
                                 {{>afQuickField name= "additionalInfo"}}
                             </div>
                         </div>

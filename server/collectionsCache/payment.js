@@ -1,1 +1,1 @@
-Collection.Payment.cacheDoc('student',Collection.Student,['name']);
+Collection.Payment.cacheDoc('student',Collection.Student,['latinname']);

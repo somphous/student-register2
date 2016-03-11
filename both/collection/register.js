@@ -177,7 +177,19 @@ Schema.Register = new SimpleSchema({
             afFieldInput: {
                 type: 'summernote',
                 class: 'editor',
-                settings: ''
+                settings: {
+                    height: 95,
+                    placeholeder:'Text here',
+                    toolbar: [
+                        //[groupname, [button list]]
+                        ['style', ['bold', 'italic', 'underline']],
+                        ['font', ['strikethrough']],
+                        ['fontsize', ['fontsize']],
+                        ['color', ['color']],
+                        ['para', ['ul', 'ol', 'paragraph']],
+                        ['misc', ['fullscreen']],
+                    ]
+                }
             }
         }
     }

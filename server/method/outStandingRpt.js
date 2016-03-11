@@ -33,21 +33,7 @@ Meteor.methods({
                 obj.osAmount = obj.amount;
                 content.push(obj);
             }
-
-            // let registerId = Collection.Register.find(obj.registerId);
-            // //check lastpaid
-            // let lastPaid = Collection.Payment.findOne(
-            //     {registerId: obj._id},
-            //     {sort:{_id: -1}}
-            // ); //PaymentID
-            //
-            // if(lastPaid){
-            //     if(lastPaid.osAmount>0){
-            //         totalOsAmount += lastPaid.osAmount;
-            //         content.push(lastPaid);
-            //     }
-            // }
-
+            totalOsAmount += obj.osAmount;
             //find student
             let studentDoc = Collection.Student.findOne(obj.studentId);
             obj._student = studentDoc;
@@ -59,7 +45,7 @@ Meteor.methods({
 
         });
         data.content = content;
-        data.osAmount =totalOsAmount ;
+        data.osAmount = totalOsAmount;
 
         return data;
 

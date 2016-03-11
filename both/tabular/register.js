@@ -2,7 +2,10 @@ TabularTables.Register = new Tabular.Table({
     name: "Register",
     collection: Collection.Register,
     columns: [
-        {data: "_id", title: "ID"},
+        {
+            data: "_id",
+            title: "ID"
+        },
         {
             data: "_student",
             title: "Student Name",
@@ -17,7 +20,7 @@ TabularTables.Register = new Tabular.Table({
             data: "_subject",
             title: "Subject Name",
             render(val){
-                if(!_.isUndefined(val)){
+                if (!_.isUndefined(val)) {
                     return val.name;
                 }
                 return '';
@@ -27,7 +30,7 @@ TabularTables.Register = new Tabular.Table({
             data: "_teacher",
             title: "Teacher Name",
             render(val){
-                if(!_.isUndefined(val)){
+                if (!_.isUndefined(val)) {
                     return val.name;
                 }
                 return '';
@@ -44,8 +47,14 @@ TabularTables.Register = new Tabular.Table({
                 }
             }
         },
-        {data: "day", title: "Study Day"},
-        {data: "time", title: "Study Time"},
+        {
+            data: "day",
+            title: "Study Day"
+        },
+        {
+            data: "time",
+            title: "Study Time"
+        },
         {
             data: "price",
             title: "Price",

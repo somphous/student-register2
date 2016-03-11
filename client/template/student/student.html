@@ -16,16 +16,20 @@
             {{#autoForm collection="Collection.Student" id="studentInsert" type="insert"}}
                 <fieldset>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-xs-6 col-md-4">
                             {{>afQuickField name= "khmername"}}
                             {{>afQuickField name= "latinname"}}
                             {{>afQuickField name= "gender"}}
-                            {{>afQuickField name= "maritalStatus"}}
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-xs-6 col-md-4">
+                            {{>afQuickField name= "maritalStatus"}}
                             {{>afQuickField name= "birthDate"}}
                             {{>afQuickField name= "telephone"}}
+                        </div>
+                        <div class="col-xs-6 col-md-4">
                             {{>afQuickField name= "email"}}
+                            {{>afQuickField name= "currentAddress"}}
+                            {{>afQuickField name= "emergencyContact"}}
                         </div>
                     </div>
                 </fieldset>
@@ -45,16 +49,20 @@
                 {{#autoForm collection="Collection.Student" doc=data id="studentUpdate" type="update"}}
                     <fieldset>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-xs-6 col-md-4">
                                 {{>afQuickField name= "khmername"}}
                                 {{>afQuickField name= "latinname"}}
                                 {{>afQuickField name= "gender"}}
-                                {{>afQuickField name= "maritalStatus"}}
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-xs-6 col-md-4">
+                                {{>afQuickField name= "maritalStatus"}}
                                 {{>afQuickField name= "birthDate"}}
                                 {{>afQuickField name= "telephone"}}
+                            </div>
+                            <div class="col-xs-6 col-md-4">
                                 {{>afQuickField name= "email"}}
+                                {{>afQuickField name= "currentAddress"}}
+                                {{>afQuickField name= "emergencyContact"}}
                             </div>
                         </div>
                     </fieldset>

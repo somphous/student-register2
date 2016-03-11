@@ -48,13 +48,23 @@ Schema.Student = new SimpleSchema({
         }
     },
     telephone: {
-        type: Number,
+        type: String,
         label: "Telephone",
         optional: true
     },
     email: {
-        type: Number,
+        type: String,
         label: "Email",
+        optional: true
+    },
+    currentAddress: {
+        type: Number,
+        label: "Crrent Address",
+        optional: true
+    },
+    emergencyContact: {
+        type: Number,
+        label: "Emergency Contact",
         optional: true
     }
 });

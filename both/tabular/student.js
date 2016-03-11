@@ -20,6 +20,8 @@ TabularTables.Student = new Tabular.Table({
         {data: "maritalStatus", title: "Marital Status"},
         {data: "telephone", title: "Telephone"},
         {data: "email", title: "Email"},
+        {data: "currentAddress", title: "Current Address"},
+        {data: "emergencyContact", title: "Emergency Contact"},
         {
             title: "Action",
             tmpl: Meteor.isClient && Template.studentAction
