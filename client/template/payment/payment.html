@@ -17,15 +17,17 @@
             {{#autoForm collection="Collection.Payment" id="paymentInsert" type="insert"}}
                 <fieldset>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-xs-6 col-md-4">
                             {{>afQuickField name= "paidDate"}}
                             {{>afQuickField name= "studentId"}}
                             {{>afQuickField name= "registerId"}}
-                            {{>afQuickField name= "dueAmount"}}
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-xs-6 col-md-4">
+                            {{>afQuickField name= "dueAmount"}}
                             {{>afQuickField name= "paidAmount"}}
                             {{>afQuickField name= "osAmount"}}
+                        </div>
+                        <div class="col-xs-6 col-md-4">
                             {{>afQuickField name= "voucherId"}}
                         </div>
                     </div>
@@ -48,15 +50,17 @@
                 {{#autoForm collection="Collection.Payment" doc=data id="paymentUpdate" type="update"}}
                     <fieldset>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-xs-6 col-md-4">
                                 {{>afQuickField name= "paidDate"}}
                                 {{>afQuickField name= "studentId"}}
                                 {{>afQuickField name= "registerId"}}
-                                {{>afQuickField name= "dueAmount"}}
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-xs-6 col-md-4">
+                                {{>afQuickField name= "dueAmount"}}
                                 {{>afQuickField name= "paidAmount"}}
                                 {{>afQuickField name= "osAmount"}}
+                            </div>
+                            <div class="col-xs-6 col-md-4">
                                 {{>afQuickField name= "voucherId"}}
                             </div>
                         </div>

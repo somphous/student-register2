@@ -69,7 +69,7 @@ AutoForm.hooks({
         studentUpdate: {//id autoform
             onSuccess(formType, id){
                 //Bert.Alert('Successfully Added', 'success', 'growl-top-right');
-                alertify.alert('Successfully Added');
+                alertify.success('Successfully Added');
                 FlowRouter.go('student');
             },
             onError(formType, error){

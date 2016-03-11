@@ -2,30 +2,30 @@ Collection.Student = new Mongo.Collection('student');
 Schema.Student = new SimpleSchema({
     khmerName: {
         type: String,
-        label: "Khmer Name"
+        label: 'Khmer Name'
     },
     latinName: {
         type: String,
-        label: "Latin Name"
+        label: 'Latin Name'
     },
     gender: {
         type: String,
-        label: "Gender",
+        label: 'Gender',
         autoform: {
-            type: "select",
+            type: 'select',
             options: function () {
                 return [
-                    {label: "Male", value: 'M'},
-                    {label: "Female", value: 'F'}
+                    {label: 'Male', value: 'M'},
+                    {label: 'Female', value: 'F'}
                 ];
             }
         }
     },
     birthDate: {
         type: Date,
-        label: "Date Of Birth",
+        label: 'Date Of Birth',
         autoform: {
-            type: "bootstrap-datetimepicker",
+            type: 'bootstrap-datetimepicker',
             afFieldInput: {
                 dateTimePickerOptions: {
                     format: 'DD/MM/YYYY',
@@ -36,36 +36,77 @@ Schema.Student = new SimpleSchema({
     },
     maritalStatus: {
         type: String,
-        label: "Marital Status",
+        label: 'Marital Status',
         autoform: {
-            type: "select",
+            type: 'select',
             options: function () {
                 return [
-                    {label: "Single", value: 'single'},
-                    {label: "Married", value: 'married'}
+                    {label: 'Single', value: 'single'},
+                    {label: 'Married', value: 'married'}
                 ];
             }
         }
     },
     telephone: {
-        type: String,
-        label: "Telephone",
+        type: Number,
+        label: 'Telephone',
         optional: true
     },
     email: {
         type: String,
-        label: "Email",
+        label: 'Email',
         optional: true
     },
     currentAddress: {
-        type: Number,
-        label: "Crrent Address",
+        type: Object,
         optional: true
     },
+    'currentAddress.numberHouse': {
+        type: String
+    },
+    'currentAddress.groupHouse': {
+        type: String
+    },
+    'currentAddress.village': {
+        type: String
+    },
+    'currentAddress.commune': {
+        type: String
+    },
+    'currentAddress.district': {
+        type: String
+    },
+    'currentAddress.province': {
+        type: String
+    },
     emergencyContact: {
-        type: Number,
-        label: "Emergency Contact",
+        type: Object,
         optional: true
+    },
+    'emergencyContact.name': {
+        type: String
+    },
+    'emergencyContact.gender': {
+        type: String,
+        autoform: {
+            type: 'select',
+            options: function () {
+                return [
+                    {label: 'Male', value: 'M'},
+                    {label: 'Female', value: 'F'}
+                ];
+            }
+        }
+    },
+    'emergencyContact.relation': {
+        type: String
+    },
+    'emergencyContact.telephone': {
+        type: String
+    },
+    'emergencyContact.email': {
+        type: String
     }
+
 });
 Collection.Student.attachSchema(Schema.Student);

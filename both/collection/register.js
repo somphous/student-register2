@@ -169,6 +169,16 @@ Schema.Register = new SimpleSchema({
 
         }
     },
+    studentStatus: {
+        type: String,
+        label: "Student Status",
+        optional: true,
+        min: 20,
+        max: 1000,
+        autoform: {
+            rows: 6
+        }
+    },
     additionalInfo: {
         type: String,
         label: "Additional Info",
@@ -193,6 +203,5 @@ Schema.Register = new SimpleSchema({
             }
         }
     }
-
 });
 Collection.Register.attachSchema(Schema.Register);
