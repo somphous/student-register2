@@ -12,9 +12,10 @@ Schema.Student = new SimpleSchema({
         type: String,
         label: 'Gender',
         autoform: {
-            type: 'select',
+            type: 'select2',
             options: function () {
                 return [
+                    {label: '(Select One)', value: ''},
                     {label: 'Male', value: 'M'},
                     {label: 'Female', value: 'F'}
                 ];
@@ -38,9 +39,10 @@ Schema.Student = new SimpleSchema({
         type: String,
         label: 'Marital Status',
         autoform: {
-            type: 'select',
+            type: 'select2',
             options: function () {
                 return [
+                    {label: '(Select One)', value: ''},
                     {label: 'Single', value: 'single'},
                     {label: 'Married', value: 'married'}
                 ];
@@ -89,9 +91,10 @@ Schema.Student = new SimpleSchema({
     'emergencyContact.gender': {
         type: String,
         autoform: {
-            type: 'select',
+            type: 'select2',
             options: function () {
                 return [
+                    {label: '(Select One)', value: ''},
                     {label: 'Male', value: 'M'},
                     {label: 'Female', value: 'F'}
                 ];

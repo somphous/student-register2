@@ -3,11 +3,11 @@ Schema.UserToRole = new SimpleSchema({
         type: String,
         label: "User Name",
         autoform: {
-            type: "select",
+            type: "select2",
             options: function () {
                 let user = Meteor.users.find();
                 let list = [
-                    // {label: "select one", value: ''}
+                    {label: "(Select One)", value: ''}
                 ];
 
                 user.forEach(function (obj) {

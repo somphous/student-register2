@@ -18,11 +18,11 @@ Schema.Payment = new SimpleSchema({
         type: String,
         label: "StudentID",
         autoform: {
-            type: "select",
+            type: "select2",
             options: function () {
                 var data = Collection.Student.find();
                 var list = [
-                    //{label: '(Select One)', value: ''}
+                    {label: '(Select One)', value: ''}
                 ];
 
                 data.forEach(function (obj) {
@@ -37,13 +37,15 @@ Schema.Payment = new SimpleSchema({
         type: String,
         label: "Register ID",
         autoform: {
-            type: "select",
+            type: "select2",
             options: function () {
                 var studentId = AutoForm.getFieldValue('studentId');
                 //console.log(studentId);
 
                 var data = Collection.Register.find({studentId: studentId});
-                var list = [];
+                var list = [
+                    {label: '(Select One)', value: ''}
+                ];
 
                 if (data) {
                     data.forEach(function (obj) {

@@ -67,6 +67,7 @@ momentjs:moment@2.10.6
 mongo@1.1.3
 mongo-id@1.0.1
 mpowaga:autoform-summernote@0.4.3
+natestrauser:select2@3.5.1
 npm-bcrypt@0.7.8_2
 npm-mongo@1.4.39_1
 numeral:numeral@1.5.3_1
@@ -97,6 +98,7 @@ templating@1.1.5
 templating-tools@1.0.0
 theara:autoform-inputmask@0.4.6
 theara:collection-cache@0.3.8
+theara:fa-helpers@0.0.2
 theara:flow-router-breadcrumb@0.2.8
 theara:id-generator@0.0.7
 theara:inputmask@3.2.6_7

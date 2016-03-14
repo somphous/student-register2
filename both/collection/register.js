@@ -4,10 +4,12 @@ Schema.Register = new SimpleSchema({
         type: String,
         label: "StudentID",
         autoform: {
-            type: "select",
+            type: "select2",
             options: function () {
                 var data = Collection.Student.find();
-                var list = [];
+                var list = [
+                    {label: '(Select One)', value: ''}
+                ];
 
                 data.forEach(function (obj) {
                     list.push({label: obj._id + ' : ' + obj.latinName, value: obj._id})
@@ -20,10 +22,12 @@ Schema.Register = new SimpleSchema({
         type: String,
         label: "SubjectID",
         autoform: {
-            type: "select",
+            type: "select2",
             options: function () {
                 var data = Collection.Subject.find();
-                var list = [];
+                var list = [
+                    {label: '(Select One)', value: ''}
+                ];
 
                 data.forEach(function (obj) {
                     list.push({label: obj._id + ' : ' + obj.name + ' | Price: ' + obj.price, value: obj._id});
@@ -36,7 +40,7 @@ Schema.Register = new SimpleSchema({
         type: String,
         label: "TeacherID",
         autoform: {
-            type: "select",
+            type: "select2",
             options: function () {
                 let subjectId= AutoForm.getFieldValue('subjectId');
                 if(!_.isUndefined(subjectId)){
@@ -46,7 +50,8 @@ Schema.Register = new SimpleSchema({
                     ];
 
                     var data = Collection.Teacher.find({subject: {$in: arr}});
-                    var list = [];
+                    var list = [
+                    ];
 
                     data.forEach(function (obj) {
                         list.push({label: obj._id + ' : ' + obj.name, value: obj._id})
@@ -54,7 +59,9 @@ Schema.Register = new SimpleSchema({
 
                     return list;
                 }
-                return [];
+                return [
+                    {label: '(Select One)', value: ''}
+                ];
             }
         }
     },
@@ -76,9 +83,10 @@ Schema.Register = new SimpleSchema({
         type: String,
         label: "Study Day",
         autoform: {
-            type: "select",
+            type: "select2",
             options: function () {
                 return [
+                    {label: '(Select One)', value: ''},
                     {label: "Monday-Friday", value: 'mondayFriday'},
                     {label: "Saturday-Sunday", value: 'saturdaySunday'}
                 ];
@@ -90,11 +98,12 @@ Schema.Register = new SimpleSchema({
         type: String,
         label: "Study Time",
         autoform: {
-            type: "select",
+            type: "select2",
             options: function () {
                 let day = AutoForm.getFieldValue('day');
                 if (day == "mondayFriday") {
                     return [
+                        {label: '(Select One)', value: ''},
                         {label: "8:00-9:00am", value: '8:00-9:00'},
                         {label: "9:00-10:00am", value: '9:00-10:00'},
                         {label: "10:00-11:00am", value: '10:00-11:00'},
@@ -107,10 +116,9 @@ Schema.Register = new SimpleSchema({
                 }
                 else {
                     return [
-                        {label: "8:00-10:00am", value: '8:00-10:00'},
-                        {label: "10:00-12:00am", value: '10:00-12:00'},
-                        {label: "2:00-4:00pm", value: '2:00-4:00'},
-                        {label: "4:00-6:00pm", value: '4:00-6:00'},
+                        {label: '(Select One)', value: ''},
+                        {label: "8:00-11:00am", value: '8:00-11:00'},
+                        {label: "2:00-3:00pm", value: '2:00-3:00'}
                     ];
                 }
             }

@@ -8,9 +8,10 @@ Schema.Teacher = new SimpleSchema({
         type: String,
         label: "Gender",
         autoform: {
-            type: "select",
+            type: "select2",
             options: function () {
                 return [
+                    {label: '(Select One)', value: ''},
                     {label: "Male", value: 'M'},
                     {label: "Female", value: 'F'}
                 ];
@@ -59,6 +60,7 @@ Schema.Teacher = new SimpleSchema({
             type: "select-multiple",
             options: function () {
                 return [
+                    {label: '(Select One)', value: ''},
                     {label: "Weekday", value: 'weekday'},
                     {label: "Weekend", value: 'weekend'}
                 ];

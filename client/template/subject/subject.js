@@ -1,6 +1,36 @@
+//Alertify
+Template.subject.onRendered(function () {
+    // Create new  alertify
+    createNewAlertify('subject'); //subject is name of alertify
+
+});
+
+//insert
+Template.subject.events({
+    'click #js-insert': function (error, result) {
+
+        alertify.subject(renderTemplate(Template.subjectInsert))
+            .set({
+                title: fa('plus', ' Subject')
+            })
+            .maximize();
+    }
+});
+
 Template.subjectAction.events({
-    'click .jsUpdate': function () {
-        FlowRouter.go('subjectUpdate', {id: this._id});
+    'click #js-update': function (error, result) {
+        Meteor.call('findOne', 'Collection.Subject', {_id: this._id}, {}, function (error, subject) {
+            if (error) {
+                Bert.alert(error.message, 'danger', 'growl-bottom-right');
+            }
+            else {
+                alertify.subject(renderTemplate(Template.subjectUpdate, subject))
+                    .set({
+                        title: fa('edit', ' Subject')
+                    })
+                    .maximize();
+            }
+        });
     },
     'click .jsRemove': function () {
         var self = this;
@@ -15,18 +45,35 @@ Template.subjectAction.events({
     }
 });
 
+// Template.subjectAction.events({
+//     'click .jsUpdate': function () {
+//         FlowRouter.go('subjectUpdate', {id: this._id});
+//     },
+//     'click .jsRemove': function () {
+//         var self = this;
+//         alertify.confirm("Are you sure want to delete?",
+//             function () {
+//                 Collection.Subject.remove({_id: self._id}); /// remove by _id?
+//                 alertify.success('Deleted');
+//             },
+//             function () {
+//                 alertify.error('Cancel');
+//             });
+//     }
+// });
+
 //Update
-Template.subjectUpdate.onCreated(function () {
-    let subjectId = FlowRouter.getParam("id");
-    this.subscribe("subject", subjectId);
-});
-Template.subjectUpdate.helpers({
-    data: function () {
-        var id = FlowRouter.getParam('id');
-        var subject = Collection.Subject.findOne({_id: id});
-        return subject;
-    }
-});
+// Template.subjectUpdate.onCreated(function () {
+//     let subjectId = FlowRouter.getParam("id");
+//     this.subscribe("subject", subjectId);
+// });
+// Template.subjectUpdate.helpers({
+//     data: function () {
+//         var id = FlowRouter.getParam('id');
+//         var subject = Collection.Subject.findOne({_id: id});
+//         return subject;
+//     }
+// });
 //hook
 AutoForm.hooks({
         subjectInsert:{//id autoform
