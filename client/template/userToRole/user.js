@@ -29,7 +29,15 @@ Template.userToRoleUpdate.helpers({
         return user;
     }
 });
-
+Template.userToRole.helpers({
+    selector(){
+        debugger
+        if (!Roles.userIsInRole(Meteor.userId(), ['super'])) {
+            return {roles: {$nin: ['super']}}
+        }
+        return {};
+    }
+});
 //hook
 AutoForm.hooks({
     userToRoleInsert: { //id autoform
