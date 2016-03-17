@@ -1,6 +1,6 @@
 // Generate
 Template.paymentRptGen.helpers({
-    data(){
+    paymentRptDoc(){
         let fromDate = FlowRouter.getQueryParam('fromDate');
         let toDate = FlowRouter.getQueryParam('toDate');
 

@@ -1,6 +1,6 @@
 <!--index-->
 <template name="student">
-    <h2 class="page-header">Student</h2>
+    <!--<h2 class="page-header">Student</h2>-->
     <p>
         <a href="{{pathFor 'studentInsert'}}" class="btn btn-primary">Add New</a>
     </p>
@@ -9,9 +9,9 @@
 <!--insert-->
 <template name="studentInsert">
     <div class="panel panel-default">
-        <div class="panel-heading">
-            <legend>Student Insert</legend>
-        </div>
+        <!--<div class="panel-heading">-->
+            <!--<legend>Student Insert</legend>-->
+        <!--</div>-->
         <div class="panel-body">
             {{#autoForm collection="Collection.Student" id="studentInsert" type="insert"}}
                 <fieldset>
@@ -42,11 +42,11 @@
 <template name="studentUpdate">
     {{#if Template.subscriptionsReady}}
         <div class="panel panel-default">
-            <div class="panel-heading">
-                <legend>Student Update</legend>
-            </div>
+            <!--<div class="panel-heading">-->
+                <!--<legend>Student Update</legend>-->
+            <!--</div>-->
             <div class="panel-body">
-                {{#autoForm collection="Collection.Student" doc=data id="studentUpdate" type="update"}}
+                {{#autoForm collection="Collection.Student" doc=studentDoc id="studentUpdate" type="update"}}
                     <fieldset>
                         <div class="row">
                             <div class="col-xs-6 col-md-4">
@@ -76,6 +76,7 @@
 </template>
 <!--action-->
 <template name='studentAction'>
-    <button class='jsUpdate fa fa-pencil btn btn-primary'></button>
-    <button class='jsRemove fa fa-remove btn btn-danger'></button>
+    {{>tabularAction}}
+    <!--<button class='jsUpdate fa fa-pencil btn btn-primary'></button>-->
+    <!--<button class='jsRemove fa fa-remove btn btn-danger'></button>-->
 </template>

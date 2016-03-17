@@ -1,5 +1,5 @@
 Template.registerAction.events({
-    'click .jsUpdate': function () {
+    'click #js-update': function () {
         FlowRouter.go('registerUpdate', {id: this._id});
     },
     'click .jsRemove': function () {
@@ -33,7 +33,7 @@ Template.registerUpdate.onCreated(function () {
 });
 
 Template.registerUpdate.helpers({
-    data: function () {
+    registerDoc: function () {
         var id = FlowRouter.getParam('id');
         var register = Collection.Register.findOne({_id: id});
         return register;

@@ -1,5 +1,5 @@
 Template.studentAction.events({
-    'click .jsUpdate': function () {
+    'click #js-update': function () {
         FlowRouter.go('studentUpdate', {id: this._id});
     },
     'click .jsRemove': function (error,result) {
@@ -21,7 +21,7 @@ Template.studentUpdate.onCreated(function () {
 });
 
 Template.studentUpdate.helpers({
-    data: function () {
+    studentDoc: function () {
         var studentId = FlowRouter.getParam('id');
         var student = Collection.Student.findOne(studentId);
         return student;

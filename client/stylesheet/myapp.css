@@ -1,1 +1,9 @@
-/* CSS declarations go here */
+.breadcrumb{
+    background: none;
+    float: right;
+    font-size: 14px;
+}
+.navbar-inverse {
+    /*background-color: #222;*/
+    /*border-color: #080808;*/
+}

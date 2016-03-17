@@ -1,10 +1,9 @@
 <!--Form-->
 <template name="osRpt">
-    <!--<h2 class="page-header">Report</h2>-->
     <div class="panel panel-default">
-        <div class="panel-heading">
-            <legend>Out Standing Report</legend>
-        </div>
+        <!--<div class="panel-heading">-->
+            <!--<legend>Out Standing Report</legend>-->
+        <!--</div>-->
         <div class="panel-body">
             {{#autoForm schema="Schema.OsRpt" id="osRpt"}}
                 <fieldset>
@@ -19,7 +18,7 @@
 <template name="osRptGen">
     <h2 style="text-align: center">Rabbit IT Solution</h2>
     <h3 style="text-align: center">OS Payment Report</h3>
-    Date: {{data.header.date}}
+    Date: {{osRptDoc.header.date}}
 
     <div class="table-responsive">
         <table class="table">
@@ -34,7 +33,7 @@
             </tr>
             </thead>
             <tbody>
-            {{#each data.content}}
+            {{#each osRptDoc.content}}
                 <tr>
                     <td>{{no @index}}</td>
                     <td>{{_id}}</td>

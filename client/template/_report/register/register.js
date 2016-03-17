@@ -1,6 +1,6 @@
 // Generate
 Template.registerRptGen.helpers({
-    data(){
+    registerRptDoc(){
         let fromDate = FlowRouter.getQueryParam('fromDate');
         let toDate = FlowRouter.getQueryParam('toDate');
         Meteor.call('registerRpt', fromDate, toDate, function (error, result) {
@@ -60,6 +60,7 @@ AutoForm.hooks({
         registerRpt: {
             onSubmit(insertDoc, updateDoc, currentDoc){
                 this.done(null, insertDoc);
+                return false;
             },
             onSuccess(formType, result){
                 let query = result;

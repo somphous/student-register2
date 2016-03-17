@@ -6,7 +6,7 @@ Schema.Subject = new SimpleSchema({
     },
     duration: {
         type: String,
-        label: "Duration",
+        label: "Duration"
     },
     price: {
         type: Number,
@@ -37,7 +37,7 @@ Schema.Subject = new SimpleSchema({
                         ['fontsize', ['fontsize']],
                         ['color', ['color']],
                         ['para', ['ul', 'ol', 'paragraph']],
-                        ['misc', ['fullscreen']],
+                        ['misc', ['fullscreen']]
                     ]
                 }
             }

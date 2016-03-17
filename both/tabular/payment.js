@@ -1,7 +1,18 @@
 TabularTables.Payment = new Tabular.Table({
     name: "Payment",
     collection: Collection.Payment,
+    // autowidth: false,
+    // columnDefs:[
+    //     {
+    //         'width': '1px',
+    //         'targets': 0
+    //     }
+    // ],
     columns: [
+        {
+            title: "Action",
+            tmpl: Meteor.isClient && Template.paymentAction
+        },
         {data: "_id", title: "ID"},
         {
             data: "paidDate",
@@ -50,9 +61,5 @@ TabularTables.Payment = new Tabular.Table({
             }
         },
         {data: "voucherId", title: "VoucherID"},
-        {
-            title: "Action",
-            tmpl: Meteor.isClient && Template.paymentAction
-        }
     ]
 });

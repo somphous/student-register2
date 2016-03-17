@@ -1,5 +1,5 @@
 Template.userToRoleAction.events({
-    'click .jsUpdate': function() {
+    'click #js-update': function() {
         FlowRouter.go('userToRoleUpdate', {
             id: this._id
         });
@@ -21,7 +21,7 @@ Template.userToRoleAction.events({
 });
 
 Template.userToRoleUpdate.helpers({
-    data: function() {
+    userToRoleDoc: function() {
         var id = FlowRouter.getParam('id');
         var user = Meteor.users.findOne({
             _id: id
@@ -31,7 +31,7 @@ Template.userToRoleUpdate.helpers({
 });
 Template.userToRole.helpers({
     selector(){
-        debugger
+        // debugger
         if (!Roles.userIsInRole(Meteor.userId(), ['super'])) {
             return {roles: {$nin: ['super']}}
         }

@@ -1,7 +1,18 @@
 TabularTables.Register = new Tabular.Table({
     name: "Register",
     collection: Collection.Register,
+    autowidth: false,
+    columnDefs:[
+        {
+            'width': '1px',
+            'targets': 0
+        }
+    ],
     columns: [
+        {
+            title: "Action",
+            tmpl: Meteor.isClient && Template.registerAction
+        },
         {
             data: "_id",
             title: "ID"
@@ -77,10 +88,6 @@ TabularTables.Register = new Tabular.Table({
             }
         },
         {data: "studentStatus", title: "Student Status"},
-        {data: "additionalInfo", title: "Additional Info"},
-        {
-            title: "Action",
-            tmpl: Meteor.isClient && Template.registerAction
-        }
+        {data: "InformationBy", title: "Information By"},
     ]
 });

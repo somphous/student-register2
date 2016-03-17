@@ -1,5 +1,5 @@
 Template.teacherAction.events({
-    'click .jsUpdate': function () {
+    'click #js-update': function () {
         FlowRouter.go('teacherUpdate', {id: this._id});
     },
     'click .jsRemove': function () {
@@ -27,7 +27,7 @@ Template.teacherUpdate.onCreated(function () {
 
 });
 Template.teacherUpdate.helpers({
-    data: function () {
+    teacherDoc: function () {
         var id = FlowRouter.getParam('id');
         var teacher = Collection.Teacher.findOne({_id: id});
         return teacher;

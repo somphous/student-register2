@@ -1,6 +1,6 @@
 // Generate
 Template.osRptGen.helpers({
-    data(){
+    osRptDoc(){
         let asAt = FlowRouter.getQueryParam('asAt');
         Meteor.call('outStandingRpt', asAt, function(error, result){
           if(!error){

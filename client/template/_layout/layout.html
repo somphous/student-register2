@@ -28,9 +28,15 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Data
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="{{pathFor 'student'}}">Student</a></li>
-                                <li><a href="{{pathFor 'register'}}">Register</a></li>
-                                <li><a href="{{pathFor 'payment'}}">Payment</a></li>
+                                <li class="{{isActiveRoute name='student'}}">
+                                    <a href="{{pathFor 'student'}}">Student</a>
+                                </li>
+                                <li class="{{isActiveRoute name='register'}}">
+                                    <a href="{{pathFor 'register'}}">Register</a>
+                                </li>
+                                <li class="{{isActiveRoute name='payment'}}">
+                                    <a href="{{pathFor 'payment'}}">Payment</a>
+                                </li>
                             </ul>
                         </li>
                     {{/if}}
@@ -41,8 +47,12 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Setting
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="{{pathFor 'subject'}}">Subject</a></li>
-                                <li><a href="{{pathFor 'teacher'}}">Teacher</a></li>
+                                <li class="{{isActiveRoute name='subject'}}">
+                                    <a href="{{pathFor 'subject'}}">Subject</a>
+                                </li>
+                                <li class="{{isActiveRoute name='teacher'}}">
+                                    <a href="{{pathFor 'teacher'}}">Teacher</a>
+                                </li>
                             </ul>
                         </li>
                     {{/if}}
@@ -53,15 +63,23 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Report
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="{{pathFor 'registerRpt'}}">Register</a></li>
-                                <li><a href="{{pathFor 'paymentRpt'}}">Payment</a></li>
-                                <li><a href="{{pathFor 'osRpt'}}">Out Standing</a></li>
+                                <li class="{{isActiveRoute name='registerRpt'}}">
+                                    <a href="{{pathFor 'registerRpt'}}">Register</a>
+                                </li>
+                                <li class="{{isActiveRoute name='paymentRpt'}}">
+                                    <a href="{{pathFor 'paymentRpt'}}">Payment</a>
+                                </li>
+                                <li class="{{isActiveRoute name='osRpt'}}">
+                                    <a href="{{pathFor 'osRpt'}}">Out Standing</a>
+                                </li>
                             </ul>
                         </li>
                     {{/if}}
                     {{#if isInRole 'Setting'}}
                         <!--User add roles-->
-                        <li><a href="{{pathFor 'userToRole'}}">Role</a></li>
+                        <li class="{{isActiveRoute name='userToRole'}}">
+                            <a href="{{pathFor 'userToRole'}}">Role</a>
+                        </li>
                     {{/if}}
                 </ul>
 
@@ -74,7 +92,11 @@
     </nav>
     <div class="container">
         <!--Breadcrumb-->
-        {{> breadcrumb}}
+        <legend style="font-size: 28px; font-weight: bold" class="animated lightSpeedIn">
+            {{pageHeader}}
+            {{> breadcrumb}}
+        </legend>
+
         <!--Content-->
         {{> Template.dynamic template=content}}
         <!--Footer-->

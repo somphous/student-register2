@@ -11,7 +11,7 @@ rabbitRoutes.route('/subject', {
     breadcrumb: {
         title: 'Subject',
         parent:'home'
-    },
+    }
 });
 rabbitRoutes.route('/subjectInsert', {
     name: "subjectInsert",
@@ -41,5 +41,5 @@ rabbitRoutes.route('/subjectUpdate/:id', {
     breadcrumb: {
         title: 'Subject Update',
         parent:'subject'
-    },
+    }
 });

@@ -2,9 +2,9 @@
 <template name="paymentRpt">
     <!--<h2 class="page-header">Report</h2>-->
     <div class="panel panel-default">
-        <div class="panel-heading">
-            <legend>Payment Report</legend>
-        </div>
+        <!--<div class="panel-heading">-->
+            <!--<legend>Payment Report</legend>-->
+        <!--</div>-->
         <div class="panel-body">
             {{#autoForm schema="Schema.PaymentRpt" id="paymentRpt"}}
                 <fieldset>
@@ -26,7 +26,7 @@
 <template name="paymentRptGen">
     <h2 style="text-align: center">Rabbit IT Solution</h2>
     <h3 style="text-align: center">Payment Report</h3>
-    Date: {{data.header.date}}
+    Date: {{paymentRptDoc.header.date}}
 
     <div class="table-responsive">
         <table class="table">
@@ -42,7 +42,7 @@
             </tr>
             </thead>
             <tbody>
-            {{#each data.content}}
+            {{#each paymentRptDoc.content}}
                 <tr>
                     <td align="center">{{no @index}}</td>
                     <td align="center">{{_id}}</td>

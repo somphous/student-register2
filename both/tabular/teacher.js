@@ -1,7 +1,18 @@
 TabularTables.Teacher = new Tabular.Table({
     name: "Teacher",
     collection: Collection.Teacher,
+    autowidth: false,
+    columnDefs:[
+        {
+            'width': '1px',
+            'targets': 0
+        }
+    ],
     columns: [
+        {
+            title: "Action",
+            tmpl: Meteor.isClient && Template.teacherAction
+        },
         {data: "_id", title: "ID"},
         {data: "name", title: "Name"},
         {data: "gender", title: "Gender"},
@@ -30,10 +41,5 @@ TabularTables.Teacher = new Tabular.Table({
         //         return '';
         //     }
         // },
-        
-        {
-            title: "Action",
-            tmpl: Meteor.isClient && Template.teacherAction
-        }
     ]
 });

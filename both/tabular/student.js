@@ -1,7 +1,18 @@
 TabularTables.Student = new Tabular.Table({
     name: "Student",
     collection: Collection.Student,
+    autowidth: false,
+    columnDefs:[
+        {
+            'width': '1px',
+            'targets': 0
+        }
+    ],
     columns: [
+        {
+            title: "Action",
+            tmpl: Meteor.isClient && Template.studentAction
+        },
         {data: "_id", title: "ID"},
         {data: "khmerName", title: "Khmer Name"},
         {data: "latinName", title: "Latin Name"},
@@ -53,9 +64,5 @@ TabularTables.Student = new Tabular.Table({
             }
 
         },
-        {
-            title: "Action",
-            tmpl: Meteor.isClient && Template.studentAction
-        }
     ]
 });

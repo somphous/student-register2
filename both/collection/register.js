@@ -57,6 +57,7 @@ Schema.Register = new SimpleSchema({
                         list.push({label: obj._id + ' : ' + obj.name, value: obj._id})
                     });
 
+                    
                     return list;
                 }
                 return [
@@ -181,34 +182,22 @@ Schema.Register = new SimpleSchema({
         type: String,
         label: "Student Status",
         optional: true,
-        min: 20,
+        min: 1,
         max: 1000,
         autoform: {
-            rows: 6
+            rows: 3,
+            placeholder:'Text here'
         }
     },
-    additionalInfo: {
+    InformationBy: {
         type: String,
-        label: "Additional Info",
+        label: "Inform By",
         optional: true,
+        min: 1,
+        max: 1000,
         autoform: {
-            afFieldInput: {
-                type: 'summernote',
-                class: 'editor',
-                settings: {
-                    height: 95,
-                    placeholder:'Text here',
-                    toolbar: [
-                        //[groupname, [button list]]
-                        ['style', ['bold', 'italic', 'underline']],
-                        ['font', ['strikethrough']],
-                        ['fontsize', ['fontsize']],
-                        ['color', ['color']],
-                        ['para', ['ul', 'ol', 'paragraph']],
-                        ['misc', ['fullscreen']],
-                    ]
-                }
-            }
+            rows: 3,
+            placeholder:'Text here'
         }
     }
 });

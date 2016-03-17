@@ -1,6 +1,6 @@
 <!--index-->
 <template name="userToRole">
-    <h2 class="page-header">User To Role</h2>
+    <!--<h2 class="page-header">User To Role</h2>-->
     <p>
         <a href="{{pathFor 'userToRoleInsert'}}" class="btn btn-primary">Add New</a>
     </p>
@@ -8,11 +8,10 @@
 </template>
 <!--insert-->
 <template name="userToRoleInsert">
-    <!--<h2 class="page-header">Add New UserToRole</h2>-->
     <div class="panel panel-default">
-        <div class="panel-heading">
-            <legend>UserToRole Insert</legend>
-        </div>
+        <!--<div class="panel-heading">-->
+            <!--<legend>UserToRole Insert</legend>-->
+        <!--</div>-->
         <div class="panel-body">
             {{#autoForm schema="Schema.UserToRole" id="userToRoleInsert"}}
                 <fieldset>
@@ -34,15 +33,15 @@
 <!--Update-->
 <template name="userToRoleUpdate">
     <div class="panel panel-default">
-        <div class="panel-heading">
-            <legend>Role Update </legend>
-        </div>
+        <!--<div class="panel-heading">-->
+            <!--<legend>Role Update </legend>-->
+        <!--</div>-->
         <div class="panel-body">
             {{#autoForm schema="Schema.UserToRole" id="userToRoleUpdate"}}
                 <fieldset>
                     <div class="row">
                         <div class="col-md-6">
-                            {{>afQuickField name= "usernames" value=data._id}}
+                            {{>afQuickField name= "usernames" value=userToRoleDoc._id}}
                         </div>
                         <div class="col-md-6">
                             {{>afQuickField name= "roles" value=data.roles}}
@@ -57,6 +56,7 @@
 
 <!--action-->
 <template name='userToRoleAction'>
-    <button class='jsUpdate fa fa-pencil btn btn-primary'></button>
-    <button class='jsRemove fa fa-remove btn btn-danger'></button>
+    {{>tabularAction}}
+    <!--<button class='jsUpdate fa fa-pencil btn btn-primary'></button>-->
+    <!--<button class='jsRemove fa fa-remove btn btn-danger'></button>-->
 </template>
