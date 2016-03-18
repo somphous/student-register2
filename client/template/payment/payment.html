@@ -8,24 +8,21 @@
 <!--insert-->
 <template name="paymentInsert">
     <div class="panel panel-default">
-        <!--<div class="panel-heading">-->
-        <!--<legend>Payment Insert</legend>-->
-        <!--</div>-->
         <div class="panel-body">
             {{#autoForm collection="Collection.Payment" id="paymentInsert" type="insert"}}
                 <fieldset>
                     <div class="row">
                         <div class="col-xs-6 col-md-3">
-                            {{>afQuickField name= "paidDate" readOnly="ture"}}
-                            {{>afQuickField name= "studentId" options=option}}
+                            {{>afQuickField name= "paidDate"}}
+                            {{>afQuickField name= "studentId" options=studentId}}
                         </div>
                         <div class="col-xs-6 col-md-3">
                             {{>afQuickField name= "registerId" options=registerId}}
-                            {{>afQuickField name= "dueAmount" value=dueAmount readOnly="ture"}}
+                            {{>afQuickField name= "dueAmount" value=dueAmount readOnly="ture" class="jsDueAmount"}}
                         </div>
                         <div class="col-xs-6 col-md-3">
-                            {{>afQuickField name= "paidAmount"}}
-                            {{>afQuickField name= "osAmount" value=osAmount readOnly="ture"}}
+                            {{>afQuickField name= "paidAmount" class="jsPaidAmount"}}
+                            {{>afQuickField name= "osAmount" value=osAmount readOnly="ture" class="jsOsAmount"}}
                         </div>
                         <div class="col-xs-6 col-md-3">
                             {{>afQuickField name= "voucherId"}}
@@ -42,26 +39,23 @@
 <template name="paymentUpdate">
     {{#if Template.subscriptionsReady}}
         <div class="panel panel-default">
-            <!--<div class="panel-heading">-->
-            <!--<legend>Payment Update</legend>-->
-            <!--</div>-->
             <div class="panel-body">
-                {{#autoForm collection="Collection.Payment" doc=paymentUpdate id="paymentUpdate" type="update"}}
+                {{#autoForm collection="Collection.Payment" doc=paymentDoc id="paymentUpdate" type="update"}}
                     <fieldset>
                         <div class="row">
                             <div class="col-xs-6 col-md-3">
                                 {{>afQuickField name= "paidDate"}}
                                 <!--{{>afQuickField name= "studentId" readonly="true" class="hidden"}}-->
                                 <label>Student</label>
-                                <input type="text" class="form-control" value="{{paymentUpdate._student.latinName}}" readonly="true">
+                                <input type="text" class="form-control" value="{{paymentDoc._student.latinName}}" readonly="true">
                             </div>
                             <div class="col-xs-6 col-md-3">
                                 {{>afQuickField name= "registerId" readonly="true"}}
-                                {{>afQuickField name= "dueAmount" readonly="true"}}
+                                {{>afQuickField name= "dueAmount" readonly="true" class="jsDueAmount"}}
                             </div>
                             <div class="col-xs-6 col-md-3">
-                                {{>afQuickField name= "paidAmount"}}
-                                {{>afQuickField name= "osAmount" readonly="true"}}
+                                {{>afQuickField name= "paidAmount" class="jsPaidAmount" class="jsPaidAmount"}}
+                                {{>afQuickField name= "osAmount" readonly="true" class="jsOsAmount"}}
                             </div>
                             <div class="col-xs-6 col-md-3">
                                 {{>afQuickField name= "voucherId" readonly="true"}}
@@ -79,7 +73,5 @@
 </template>
 <!--action-->
 <template name='paymentAction'>
-    <!--{{>tabularAction}}-->
-    <button class='jsUpdate fa fa-pencil btn btn-primary'></button>
-    <button class='jsRemove fa fa-remove btn btn-danger'></button>
+    {{>tabularAction}}
 </template>

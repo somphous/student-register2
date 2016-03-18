@@ -21,6 +21,110 @@ Template.registerInsert.onCreated(function () {
     this.subscribe("students");
     this.subscribe("subjects");
 });
+Template.registerInsert.events({
+    'change .jsSubjectId': function () {
+        let discount = $(".jsDiscount").val();
+        let price = $(".jsPrice").val();
+        let amount;
+        amount = price - discount;
+        $(".jsAmount").val(amount);
+        // $(".jsDiscount").val(0);
+    },
+    'keyup .jsDiscount': function () {
+        let discount = $(".jsDiscount").val();
+        let price = $(".jsPrice").val();
+        //discount=0;
+
+        // let amount;
+        // amount = price - discount;
+        // $(".jsAmount").val(amount);
+        $(".jsAmount").val(price - discount);
+    }
+
+});
+
+Template.registerInsert.helpers({
+    studentId: function () {
+        var data = Collection.Student.find();
+        var list = [
+            {label: '(Select One)', value: ''}
+        ];
+
+        data.forEach(function (obj) {
+            list.push({label: obj._id + ' : ' + obj.latinName, value: obj._id})
+        });
+        return list;
+    },
+    subjectId: function () {
+        var data = Collection.Subject.find();
+        var list = [
+            {label: '(Select One)', value: ''}
+        ];
+
+        data.forEach(function (obj) {
+            list.push({label: obj._id + ' : ' + obj.name + ' | Price: ' + obj.price, value: obj._id});
+        });
+        return list;
+    },
+    teacherId: function () {
+        let subjectId= AutoForm.getFieldValue('subjectId');
+        if(!_.isUndefined(subjectId)){
+            let subject = Collection.Subject.findOne(subjectId);
+            let arr =[
+                subject.name
+            ];
+
+            var data = Collection.Teacher.find({subject: {$in: arr}});
+            var list = [
+            ];
+
+            data.forEach(function (obj) {
+                list.push({label: obj._id + ' : ' + obj.name, value: obj._id})
+            });
+
+
+            return list;
+        }
+        return [
+            {label: '(Select One)', value: ''}
+        ];
+    },
+    day: function () {
+        return [
+            {label: '(Select One)', value: ''},
+            {label: "Monday-Friday", value: 'mondayFriday'},
+            {label: "Saturday-Sunday", value: 'saturdaySunday'}
+        ];
+    },
+    time: function () {
+        let day = AutoForm.getFieldValue('day');
+        if (day == "mondayFriday") {
+            return [
+                {label: '(Select One)', value: ''},
+                {label: "8:00-9:00am", value: '8:00-9:00'},
+                {label: "9:00-10:00am", value: '9:00-10:00'},
+                {label: "10:00-11:00am", value: '10:00-11:00'},
+                {label: "11:00-12:00am", value: '11:00-12:00'},
+                {label: "2:00-3:00pm", value: '2:00-3:00'},
+                {label: "3:00-4:00pm", value: '3:00-4:00'},
+                {label: "4:00-5:00pm", value: '4:00-5:00'},
+                {label: "5:00-6:00pm", value: '5:00-6:00'}
+            ];
+        }
+        else {
+            return [
+                {label: '(Select One)', value: ''},
+                {label: "8:00-11:00am", value: '8:00-11:00'},
+                {label: "2:00-3:00pm", value: '2:00-3:00'}
+            ];
+        }
+    },
+    amount: function () {
+        let price = AutoForm.getFieldValue('price');
+        let discount = AutoForm.getFieldValue('discount');
+        return price - discount;
+    }
+});
 
 //Update
 Template.registerUpdate.onCreated(function () {
@@ -31,7 +135,110 @@ Template.registerUpdate.onCreated(function () {
     this.subscribe("students", registerId);
     this.subscribe("subjects", registerId);
 });
+Template.registerUpdate.helpers({
+    studentId: function () {
+        var data = Collection.Student.find();
+        var list = [
+            {label: '(Select One)', value: ''}
+        ];
 
+        data.forEach(function (obj) {
+            list.push({label: obj._id + ' : ' + obj.latinName, value: obj._id})
+        });
+        return list;
+    },
+    subjectId: function () {
+        var data = Collection.Subject.find();
+        var list = [
+            {label: '(Select One)', value: ''}
+        ];
+
+        data.forEach(function (obj) {
+            list.push({label: obj._id + ' : ' + obj.name + ' | Price: ' + obj.price, value: obj._id});
+        });
+        return list;
+    },
+    teacherId: function () {
+        let subjectId= AutoForm.getFieldValue('subjectId');
+        if(!_.isUndefined(subjectId)){
+            let subject = Collection.Subject.findOne(subjectId);
+            let arr =[
+                subject.name
+            ];
+
+            var data = Collection.Teacher.find({subject: {$in: arr}});
+            var list = [
+            ];
+
+            data.forEach(function (obj) {
+                list.push({label: obj._id + ' : ' + obj.name, value: obj._id})
+            });
+
+
+            return list;
+        }
+        return [
+            {label: '(Select One)', value: ''}
+        ];
+    },
+    day: function () {
+        return [
+            {label: '(Select One)', value: ''},
+            {label: "Monday-Friday", value: 'mondayFriday'},
+            {label: "Saturday-Sunday", value: 'saturdaySunday'}
+        ];
+    },
+    time: function () {
+        let day = AutoForm.getFieldValue('day');
+        if (day == "mondayFriday") {
+            return [
+                {label: '(Select One)', value: ''},
+                {label: "8:00-9:00am", value: '8:00-9:00'},
+                {label: "9:00-10:00am", value: '9:00-10:00'},
+                {label: "10:00-11:00am", value: '10:00-11:00'},
+                {label: "11:00-12:00am", value: '11:00-12:00'},
+                {label: "2:00-3:00pm", value: '2:00-3:00'},
+                {label: "3:00-4:00pm", value: '3:00-4:00'},
+                {label: "4:00-5:00pm", value: '4:00-5:00'},
+                {label: "5:00-6:00pm", value: '5:00-6:00'}
+            ];
+        }
+        else {
+            return [
+                {label: '(Select One)', value: ''},
+                {label: "8:00-11:00am", value: '8:00-11:00'},
+                {label: "2:00-3:00pm", value: '2:00-3:00'}
+            ];
+        }
+    },
+    amount: function () {
+        let price = AutoForm.getFieldValue('price');
+        let discount = AutoForm.getFieldValue('discount');
+        return price - discount;
+    }
+});
+
+Template.registerUpdate.events({
+    'change .jsSubjectId': function () {
+        let discount = $(".jsDiscount").val();
+        let price = $(".jsPrice").val();
+        let amount;
+        amount = price - discount;
+        $(".jsAmount").val(amount);
+        // $(".jsDiscount").val(0);
+    },
+    'keyup .jsDiscount': function () {
+        let discount = $(".jsDiscount").val();
+        let price = $(".jsPrice").val();
+        //discount=0;
+
+        // let amount;
+        // amount = price - discount;
+        // $(".jsAmount").val(amount);
+        $(".jsAmount").val(price - discount);
+    }
+
+});
 Template.registerUpdate.helpers({
     registerDoc: function () {
         var id = FlowRouter.getParam('id');

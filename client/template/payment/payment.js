@@ -1,5 +1,5 @@
 Template.paymentAction.events({
-    'click .jsUpdate': function () {
+    'click #js-update': function () {
         FlowRouter.go('paymentUpdate', {id: this._id});
     },
     'click .jsRemove': function () {
@@ -22,7 +22,7 @@ Template.paymentInsert.onCreated(function () {
     this.subscribe("subjects");
 });
 Template.paymentInsert.helpers({
-    option: function () {
+    studentId: function () {
         var list = [];
         // list.push({label: "(Select All)", value: ""});
         Collection.Student.find()
@@ -105,6 +105,14 @@ Template.paymentInsert.helpers({
 
 
 });
+Template.paymentInsert.events({
+    'keyup .jsPaidAmount': function () {
+        let paidAmount= $('.jsPaidAmount').val();
+        let dueAmount =$('.jsDueAmount').val();
+        $('.jsOsAmount').val(dueAmount-paidAmount);
+    }
+});
+
 // Update
 Template.paymentUpdate.onCreated(function () {
     let paymentId = FlowRouter.getParam("id");
@@ -113,21 +121,22 @@ Template.paymentUpdate.onCreated(function () {
     this.subscribe("students");
     this.subscribe("subjects");
 });
-// Template.paymentUpdate.onRendered(function () {
-//     // debugger
-//     // $("#dueAmount").val(this.data.dueAmount);
-//     let data = this.data;
-//     debugger;
-//     // $("#studentId").val(this.data.studentId);
-//     // $("#registerId").val(this.data.registerId);
-// });
-
+Template.paymentUpdate.events({
+    'keyup .jsPaidAmount': function () {
+        let paidAmount= $('.jsPaidAmount').val();
+        let dueAmount =$('.jsDueAmount').val();
+        $('.jsOsAmount').val(dueAmount-paidAmount);
+    }
+});
 Template.paymentUpdate.helpers({
-    paymentUpdate: function () {
+    paymentDoc: function () {
         var id = FlowRouter.getParam('id');
         var payment = Collection.Payment.findOne({_id: id});
         return payment;
-    }
+    },
+    // studentId:function () {
+    //   
+    // }
 });
 //hook
 AutoForm.hooks({

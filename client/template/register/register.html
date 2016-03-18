@@ -19,18 +19,18 @@
                     <div class="row">
                         <div class="col-xs-6 col-md-3">
                             {{>afQuickField name= "regDate"}}
-                            {{>afQuickField name= "studentId"}}
-                            {{>afQuickField name= "subjectId"}}
+                            {{>afQuickField name= "studentId" options=studentId class="jsSubjectId"}}
+                            {{>afQuickField name= "subjectId" options=subjectId}}
                         </div>
                         <div class="col-xs-6 col-md-3">
-                            {{>afQuickField name= "price"}}
-                            {{>afQuickField name= "discount"}}
-                            {{>afQuickField name= "amount"}}
+                            {{>afQuickField name= "price" class="jsPrice"}}
+                            {{>afQuickField name= "discount" class="jsDiscount"}}
+                            {{>afQuickField name= "amount" value=amount class="jsAmount"}}
                         </div>
                         <div class="col-xs-6 col-md-3">
-                            {{>afQuickField name= "teacherId"}}
-                            {{>afQuickField name= "day"}}
-                            {{>afQuickField name= "time"}}
+                            {{>afQuickField name= "teacherId" options=teacherId}}
+                            {{>afQuickField name= "day" options=day}}
+                            {{>afQuickField name= "time" options=time}}
                         </div>
                         <div class="col-md-6 col-md-3">
                             {{>afQuickField name= "studentStatus"}}
@@ -57,18 +57,20 @@
                         <div class="row">
                             <div class="col-xs-6 col-md-3">
                                 {{>afQuickField name= "regDate"}}
-                                {{>afQuickField name= "studentId"}}
-                                {{>afQuickField name= "subjectId"}}
+                                <!--{{>afQuickField name= "studentId" options=studentId}}-->
+                                <label>Student</label>
+                                <input type="text" class="form-control" value="{{registerDoc._student.latinName}}" readonly="true">
+                                {{>afQuickField name= "subjectId" options=subjectId class="jsSubjectId"}}
                             </div>
                             <div class="col-xs-6 col-md-3">
-                                {{>afQuickField name= "price"}}
-                                {{>afQuickField name= "discount"}}
-                                {{>afQuickField name= "amount"}}
+                                {{>afQuickField name= "price" class="jsPrice"}}
+                                {{>afQuickField name= "discount" class="jsDiscount"}}
+                                {{>afQuickField name= "amount" value=amount class="jsAmount"}}
                             </div>
                             <div class="col-xs-6 col-md-3">
-                                {{>afQuickField name= "teacherId"}}
-                                {{>afQuickField name= "day"}}
-                                {{>afQuickField name= "time"}}
+                                {{>afQuickField name= "teacherId" options=teacherId}}
+                                {{>afQuickField name= "day" options=day}}
+                                {{>afQuickField name= "time" options=time}}
                             </div>
                             <div class="col-md-6 col-md-3">
                                 {{>afQuickField name= "studentStatus"}}

@@ -5,17 +5,17 @@ Schema.Register = new SimpleSchema({
         label: "StudentID",
         autoform: {
             type: "select2",
-            options: function () {
-                var data = Collection.Student.find();
-                var list = [
-                    {label: '(Select One)', value: ''}
-                ];
-
-                data.forEach(function (obj) {
-                    list.push({label: obj._id + ' : ' + obj.latinName, value: obj._id})
-                });
-                return list;
-            }
+            // options: function () {
+            //     var data = Collection.Student.find();
+            //     var list = [
+            //         {label: '(Select One)', value: ''}
+            //     ];
+            //
+            //     data.forEach(function (obj) {
+            //         list.push({label: obj._id + ' : ' + obj.latinName, value: obj._id})
+            //     });
+            //     return list;
+            // }
         }
     },
     subjectId: {
@@ -23,17 +23,17 @@ Schema.Register = new SimpleSchema({
         label: "SubjectID",
         autoform: {
             type: "select2",
-            options: function () {
-                var data = Collection.Subject.find();
-                var list = [
-                    {label: '(Select One)', value: ''}
-                ];
-
-                data.forEach(function (obj) {
-                    list.push({label: obj._id + ' : ' + obj.name + ' | Price: ' + obj.price, value: obj._id});
-                });
-                return list;
-            }
+            // options: function () {
+            //     var data = Collection.Subject.find();
+            //     var list = [
+            //         {label: '(Select One)', value: ''}
+            //     ];
+            //
+            //     data.forEach(function (obj) {
+            //         list.push({label: obj._id + ' : ' + obj.name + ' | Price: ' + obj.price, value: obj._id});
+            //     });
+            //     return list;
+            // }
         }
     },
     teacherId: {
@@ -41,29 +41,29 @@ Schema.Register = new SimpleSchema({
         label: "TeacherID",
         autoform: {
             type: "select2",
-            options: function () {
-                let subjectId= AutoForm.getFieldValue('subjectId');
-                if(!_.isUndefined(subjectId)){
-                    let subject = Collection.Subject.findOne(subjectId);
-                    let arr =[
-                        subject.name
-                    ];
-
-                    var data = Collection.Teacher.find({subject: {$in: arr}});
-                    var list = [
-                    ];
-
-                    data.forEach(function (obj) {
-                        list.push({label: obj._id + ' : ' + obj.name, value: obj._id})
-                    });
-
-                    
-                    return list;
-                }
-                return [
-                    {label: '(Select One)', value: ''}
-                ];
-            }
+            // options: function () {
+            //     let subjectId= AutoForm.getFieldValue('subjectId');
+            //     if(!_.isUndefined(subjectId)){
+            //         let subject = Collection.Subject.findOne(subjectId);
+            //         let arr =[
+            //             subject.name
+            //         ];
+            //
+            //         var data = Collection.Teacher.find({subject: {$in: arr}});
+            //         var list = [
+            //         ];
+            //
+            //         data.forEach(function (obj) {
+            //             list.push({label: obj._id + ' : ' + obj.name, value: obj._id})
+            //         });
+            //
+            //        
+            //         return list;
+            //     }
+            //     return [
+            //         {label: '(Select One)', value: ''}
+            //     ];
+            // }
         }
     },
     regDate: {
@@ -85,13 +85,13 @@ Schema.Register = new SimpleSchema({
         label: "Study Day",
         autoform: {
             type: "select2",
-            options: function () {
-                return [
-                    {label: '(Select One)', value: ''},
-                    {label: "Monday-Friday", value: 'mondayFriday'},
-                    {label: "Saturday-Sunday", value: 'saturdaySunday'}
-                ];
-            }
+            // options: function () {
+            //     return [
+            //         {label: '(Select One)', value: ''},
+            //         {label: "Monday-Friday", value: 'mondayFriday'},
+            //         {label: "Saturday-Sunday", value: 'saturdaySunday'}
+            //     ];
+            // }
 
         }
     },
@@ -100,29 +100,29 @@ Schema.Register = new SimpleSchema({
         label: "Study Time",
         autoform: {
             type: "select2",
-            options: function () {
-                let day = AutoForm.getFieldValue('day');
-                if (day == "mondayFriday") {
-                    return [
-                        {label: '(Select One)', value: ''},
-                        {label: "8:00-9:00am", value: '8:00-9:00'},
-                        {label: "9:00-10:00am", value: '9:00-10:00'},
-                        {label: "10:00-11:00am", value: '10:00-11:00'},
-                        {label: "11:00-12:00am", value: '11:00-12:00'},
-                        {label: "2:00-3:00pm", value: '2:00-3:00'},
-                        {label: "3:00-4:00pm", value: '3:00-4:00'},
-                        {label: "4:00-5:00pm", value: '4:00-5:00'},
-                        {label: "5:00-6:00pm", value: '5:00-6:00'}
-                    ];
-                }
-                else {
-                    return [
-                        {label: '(Select One)', value: ''},
-                        {label: "8:00-11:00am", value: '8:00-11:00'},
-                        {label: "2:00-3:00pm", value: '2:00-3:00'}
-                    ];
-                }
-            }
+            // options: function () {
+            //     let day = AutoForm.getFieldValue('day');
+            //     if (day == "mondayFriday") {
+            //         return [
+            //             {label: '(Select One)', value: ''},
+            //             {label: "8:00-9:00am", value: '8:00-9:00'},
+            //             {label: "9:00-10:00am", value: '9:00-10:00'},
+            //             {label: "10:00-11:00am", value: '10:00-11:00'},
+            //             {label: "11:00-12:00am", value: '11:00-12:00'},
+            //             {label: "2:00-3:00pm", value: '2:00-3:00'},
+            //             {label: "3:00-4:00pm", value: '3:00-4:00'},
+            //             {label: "4:00-5:00pm", value: '4:00-5:00'},
+            //             {label: "5:00-6:00pm", value: '5:00-6:00'}
+            //         ];
+            //     }
+            //     else {
+            //         return [
+            //             {label: '(Select One)', value: ''},
+            //             {label: "8:00-11:00am", value: '8:00-11:00'},
+            //             {label: "2:00-3:00pm", value: '2:00-3:00'}
+            //         ];
+            //     }
+            // }
         }
     },
     price: {
@@ -166,11 +166,11 @@ Schema.Register = new SimpleSchema({
 
         autoform: {
             readonly: true,
-            value: function () {
-                let price = AutoForm.getFieldValue('price');
-                let discount = AutoForm.getFieldValue('discount');
-                return price - discount;
-            },
+            // value: function () {
+            //     let price = AutoForm.getFieldValue('price');
+            //     let discount = AutoForm.getFieldValue('discount');
+            //     return price - discount;
+            // },
             type: "inputmask",
             afFieldInput: {
                 inputmaskOptions: inputmaskOptions.currency()
