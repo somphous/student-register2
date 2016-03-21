@@ -50,7 +50,7 @@ Schema.Student = new SimpleSchema({
         }
     },
     telephone: {
-        type: Number,
+        type: String,
         label: 'Telephone',
         optional: true
     },

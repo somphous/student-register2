@@ -2,7 +2,7 @@ Template.studentAction.events({
     'click #js-update': function () {
         FlowRouter.go('studentUpdate', {id: this._id});
     },
-    'click .jsRemove': function (error,result) {
+    'click .jsRemove': function (error, result) {
         var self = this;
         alertify.confirm("Are you sure want to delete?",
             function () {
@@ -29,55 +29,35 @@ Template.studentUpdate.helpers({
 });
 //hook
 AutoForm.hooks({
-        studentInsert: {//id autoform
-            // before: {
-            //     insert: function (doc) {
-            //         doc._id = idGenerator.gen(Collection.Student, 3);
-            //         return doc;
-            //     }
-            // },
-            onSuccess(formType, id){
-                //Bert.Alert('Successfully Added', 'success', 'growl-top-right');
-                alertify.success('Successfully Added');
-                // FlowRouter.go('student');
-            },
-            onError(formType, error){
-                alertify.error(error.message);
-                //Bert.alert(error.message, 'danger', 'growl-top-right');
-            }
-        },
-
-
-        // studentInsert: {//id autoform
-        //     onSubmit: function (insertDoc, updateDoc, CurrentDoc) {
-        //         this.event.preventDefault();
-        //         Meteor.call('student.insert', insertDoc);
-        //         this.done();
-        //     },
-        //     onSuccess(onSubmit, result)
-        //     {
-        //         alertify.success('Successfully Added');
-        //
-        //     }
-        //     ,
-        //     onError(formType, error)
-        //     {
-        //         alertify.error(error.message);
-        //         //Bert.alert(error.message, 'danger', 'growl-top-right');
+    studentInsert: {//id autoform
+        // before: {
+        //     insert: function (doc) {
+        //         doc._id = idGenerator.gen(Collection.Student, 3);
+        //         return doc;
         //     }
         // },
-        studentUpdate: {//id autoform
-            onSuccess(formType, id){
-                //Bert.Alert('Successfully Added', 'success', 'growl-top-right');
-                alertify.success('Successfully Added');
-                FlowRouter.go('student');
-            },
-            onError(formType, error){
-                alertify.error(error.message);
-                //Bert.alert(error.message, 'danger', 'growl-top-right');
-            }
+        onSuccess(formType, id){
+            //Bert.Alert('Successfully Added', 'success', 'growl-top-right');
+            alertify.success('Successfully Added');
+            // FlowRouter.go('student');
+        },
+        onError(formType, error){
+            alertify.error(error.message);
+            //Bert.alert(error.message, 'danger', 'growl-top-right');
+        }
+    },
+
+    studentUpdate: {//id autoform
+        onSuccess(formType, id){
+            //Bert.Alert('Successfully Added', 'success', 'growl-top-right');
+            alertify.success('Successfully Added');
+            FlowRouter.go('student');
+        },
+        onError(formType, error){
+            alertify.error(error.message);
+            //Bert.alert(error.message, 'danger', 'growl-top-right');
         }
     }
-);
+});
 
 

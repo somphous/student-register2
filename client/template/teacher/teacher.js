@@ -9,9 +9,10 @@ Template.teacherAction.events({
                 Collection.Teacher.remove({_id: self._id}); /// remove by _id?
                 alertify.success('Deleted');
             },
-            function () {
-                alertify.error('Cancel');
-            });
+            // function () {
+            //     alertify.error('Cancel');
+            // }
+        );
     }
 });
 // Insert
@@ -35,27 +36,28 @@ Template.teacherUpdate.helpers({
 });
 //hook
 AutoForm.hooks({
-        teacherInsert: {//id autofor
-            onSuccess(formType, id){
-                //Bert.Alert('Successfully Added', 'success', 'growl-top-right');
-                alertify.success('Successfully Added');
-                // FlowRouter.go('teacher');
-            },
-            onError(formType, error){
-                alertify.error(error.message);
-                //Bert.alert(error.message, 'danger', 'growl-top-right');
-            }
+    teacherInsert: {//id autoform
+        onSuccess(formType, result){
+            //Bert.Alert('Successfully Added', 'success', 'growl-top-right');
+            alertify.success('Successfully Added');
+            // FlowRouter.go('teacher');
         },
-        teacherUpdate: {//id autoform
-            onSuccess(formType, id){
-                //Bert.Alert('Successfully Added', 'success', 'growl-top-right');
-                alertify.success('Successfully Added');
-                FlowRouter.go('teacher');
-            },
-            onError(formType, error){
-                alertify.error(error.message);
-                //Bert.alert(error.message, 'danger', 'growl-top-right');
-            }
+        onError(formType, error){
+            alertify.error(error.message);
+            //Bert.alert(error.message, 'danger', 'growl-top-right');
+        }
+    },
+    teacherUpdate: {//id autoform
+        onSuccess(formType, result){
+            console.log('success');
+            //Bert.Alert('Successfully Added', 'success', 'growl-top-right');
+            alertify.success('Updated');
+            // FlowRouter.go('teacher');
+        },
+        onError(formType, error){
+            console.log('error');
+            alertify.error(error.message);
+            //Bert.alert(error.message, 'danger', 'growl-top-right');
         }
     }
-);
+});

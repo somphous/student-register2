@@ -1,0 +1,41 @@
+<template name="subjectRptGen">
+    <h2 style="text-align: center">Rabbit IT Solution</h2>
+    <h3 style="text-align: center">Subject Report</h3>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>No</th>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Duration</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each data}}
+                <tr>
+                    <td>{{no @index}}</td>
+                    <td>{{_id}}</td>
+                    <td>{{name}}</td>
+                    <td>{{price}}</td>
+                    <td>{{duration}}</td>
+                </tr>
+            {{/each}}
+            <!--<tr>-->
+                <!--<td colspan="6"></td>-->
+                <!--<td align="center">Grand Total</td>-->
+                <!--<td align="center">{{numFormat data.amount "$ 0,0.00"}}</td>-->
+            <!--</tr>-->
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <div class="pull-right" style="text-align: left; width: 30%;">
+            Date:......../........./.........<br><br>
+            Prepared By ...........
+        </div>
+    </div>
+</template>
+

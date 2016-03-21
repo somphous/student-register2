@@ -199,6 +199,20 @@ Schema.Register = new SimpleSchema({
             rows: 3,
             placeholder:'Text here'
         }
+    },_student: {
+        type: Object,
+        optional: true,
+        blackbox: true
+    },
+    _subject: {
+        type: Object,
+        optional: true,
+        blackbox: true
+    },
+    _teacher: {
+        type: Object,
+        optional: true,
+        blackbox: true
     }
 });
 Collection.Register.attachSchema(Schema.Register);

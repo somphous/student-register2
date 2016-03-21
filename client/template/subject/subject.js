@@ -64,8 +64,9 @@ Template.subjectAction.events({
 
 //Update
 // Template.subjectUpdate.onCreated(function () {
-//     let subjectId = FlowRouter.getParam("id");
-//     this.subscribe("subject", subjectId);
+//     // let subjectId = FlowRouter.getParam("id");
+//     // this.subscribe("subject", subjectId);
+//     debugger
 // });
 // Template.subjectUpdate.helpers({
 //     data: function () {
@@ -88,8 +89,15 @@ AutoForm.hooks({
             }
         },
         subjectUpdate:{//id autoform
+            before:{
+                update(doc){
+                    return doc;
+                }
+
+            },
             onSuccess(formType, id){
                 //Bert.Alert('Successfully Added', 'success', 'growl-top-right');
+
                 alertify.success('Successfully Added');
                 FlowRouter.go('subject');
             },

@@ -1,4 +1,5 @@
 Collection.Teacher = new Mongo.Collection('teacher');
+
 Schema.Teacher = new SimpleSchema({
     name: {
         type: String,

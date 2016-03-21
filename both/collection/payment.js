@@ -142,7 +142,16 @@ Schema.Payment = new SimpleSchema({
         label: "VoucherId",
         decimal: true,
         optional: true
+    },
+    _student: {
+        type: Object,
+        optional: true,
+        blackbox: true
+    },
+    _subject: {
+        type: Object,
+        optional: true,
+        blackbox: true
     }
-
 });
 Collection.Payment.attachSchema(Schema.Payment);
