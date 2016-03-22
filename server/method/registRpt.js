@@ -13,7 +13,7 @@ Meteor.methods({
         let selector = {
             regDate: {$gte: fromDate, $lte: toDate}
         };
-        let option = {$sort: {regDate: 1}};
+        let option = {sort: {regDate: 1}};
 
         let tempContent = Collection.Register.find(selector, option);
 
@@ -22,21 +22,23 @@ Meteor.methods({
         let content = [];
         tempContent.forEach(function (obj) {
             total += obj.amount;
+            
             // find student
-            let studentDoc = Collection.Student.findOne(obj.studentId);
-            obj._student = studentDoc;
+            // let studentDoc = Collection.Student.findOne(obj.studentId);
+            // obj._student = studentDoc;
 
             // find subject
             //let registerDoc= Collection.Register.findOne(obj.registerId);
-            let subjectDoc = Collection.Subject.findOne(obj.subjectId);
-            obj._subject = subjectDoc;
+            // let subjectDoc = Collection.Subject.findOne(obj.subjectId);
+            // obj._subject = subjectDoc;
 
             content.push(obj);
         });
 
-        data.content = content;
         data.amount = total;
-
+        // console.log(data.amount);
+        
+        data.content = content;
         return data;
     }
 });

@@ -18,17 +18,7 @@ Meteor.methods({
        let tempContent = Collection.Payment.find(selector, option);
        let content = [];
        tempContent.forEach(function (obj) {
-
            total += obj.paidAmount;
-           // find student
-           let studentDoc = Collection.Student.findOne(obj.studentId);
-           obj._student = studentDoc;
-
-           // find subject
-           let registerDoc= Collection.Register.findOne(obj.registerId)
-           let subjectDoc = Collection.Subject.findOne(registerDoc.subjectId);
-           obj._subject = subjectDoc;
-
            content.push(obj);
        });
 
