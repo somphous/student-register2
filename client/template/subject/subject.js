@@ -11,7 +11,7 @@ Template.subject.events({
 
         alertify.subject(renderTemplate(Template.subjectInsert))
             .set({
-                title: fa('plus', ' Subject')
+                title: fa('plus', ' Status')
             })
             .maximize();
     }
@@ -19,14 +19,14 @@ Template.subject.events({
 
 Template.subjectAction.events({
     'click #js-update': function (error, result) {
-        Meteor.call('findOne', 'Collection.Subject', {_id: this._id}, {}, function (error, subject) {
+        Meteor.call('findOne', 'Collection.Status', {_id: this._id}, {}, function (error, subject) {
             if (error) {
                 Bert.alert(error.message, 'danger', 'growl-bottom-right');
             }
             else {
                 alertify.subject(renderTemplate(Template.subjectUpdate, subject))
                     .set({
-                        title: fa('edit', ' Subject')
+                        title: fa('edit', ' Status')
                     })
                     .maximize();
             }
@@ -36,7 +36,7 @@ Template.subjectAction.events({
         var self = this;
         alertify.confirm("Are you sure want to delete?",
             function () {
-                Collection.Subject.remove({_id: self._id}); /// remove by _id?
+                Collection.Status.remove({_id: self._id}); /// remove by _id?
                 alertify.success('Deleted');
             },
             function () {
@@ -44,14 +44,14 @@ Template.subjectAction.events({
             });
     },
     'click #js-show': function () {
-        Meteor.call('findOne', 'Collection.Subject', {_id: this._id}, {}, function (error, subject) {
+        Meteor.call('findOne', 'Collection.Status', {_id: this._id}, {}, function (error, subject) {
             if (error) {
                 Bert.alert(error.message, 'danger', 'growl-bottom-right');
             }
             else {
                 alertify.subject(renderTemplate(Template.subjectShow, subject))
                     .set({
-                        title: fa('eye', ' Subject')
+                        title: fa('eye', ' Status')
                     });
             }
         });
@@ -66,7 +66,7 @@ Template.subjectAction.events({
 //         var self = this;
 //         alertify.confirm("Are you sure want to delete?",
 //             function () {
-//                 Collection.Subject.remove({_id: self._id}); /// remove by _id?
+//                 Collection.Status.remove({_id: self._id}); /// remove by _id?
 //                 alertify.success('Deleted');
 //             },
 //             function () {
@@ -84,7 +84,7 @@ Template.subjectAction.events({
 // Template.subjectUpdate.helpers({
 //     data: function () {
 //         var id = FlowRouter.getParam('id');
-//         var subject = Collection.Subject.findOne({_id: id});
+//         var subject = Collection.Status.findOne({_id: id});
 //         return subject;
 //     }
 // });
@@ -96,7 +96,7 @@ Template.subjectShow.onCreated(function () {
 
 Template.subjectShow.helpers({
     data: function () {
-        return Collection.Subject.findOne(this._id);
+        return Collection.Status.findOne(this._id);
     }
 });
 //hook

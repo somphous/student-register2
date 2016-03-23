@@ -59,35 +59,74 @@ Template.studentShow.helpers({
 
     },
     currentAddress: function () {
-        var str = "<table class='table table-bordered'><thead>" +
-            // "<tr>" +
-            "House Number :" + this.currentAddress.numberHouse+"<br>"+
-            "Group Number :" + this.currentAddress.groupHouse +"<br>"+
-            "Village :" + this.currentAddress.village +"<br>"+
-            "Commune :" + this.currentAddress.commune +"<br>"+
-            "District :" + this.currentAddress.district +"<br>"+
-            "Province :" + this.currentAddress.province +
+        var str = "<table><thead>" +
+            "<tr>" +
+            "<th>House Number :<th>" +
+            '<td>' + this.currentAddress.numberHouse + '<td>' + "<br>" +
+            "<tr>" +
 
-            // "</tr>" +
+            "<tr>" +
+            "<th>Group Number :<th>" +
+            '<td>' + this.currentAddress.groupHouse + '<td>' + "<br>" +
+            "<tr>" +
+
+            "<tr>" +
+            "<th>Village :<th>" +
+            '<td>' + this.currentAddress.village + '<td>' + "<br>" +
+            "<tr>" +
+
+            "<tr>" +
+            "<th>Commune :<th>" +
+            '<td>' + this.currentAddress.commune + '<td>' + "<br>" +
+            "<tr>" +
+
+            "<tr>" +
+            "<th>District :<th>" +
+            '<td>' + this.currentAddress.district + '<td>' + "<br>" +
+            "<tr>" +
+
+            "<tr>" +
+            "<th>Province :<th>" +
+            '<td>' + this.currentAddress.province + '<td>' + "<br>" +
+            "<tr>" +
+
             "</thead><tbody>";
-            str += '<tr>' +
-        '</tr>';
+        str += '<tr>' +
+            '</tr>';
         str += "</tbody></table>";
         return new Spacebars.SafeString(str);
     },
     emergencyContact: function () {
-        var str = "<table class='table table-bordered'><thead>" +
-            // "<tr>" +
-            "Name :" + this.emergencyContact.name+"<br>"+
-            "Gender :" + this.emergencyContact.gender +"<br>"+
-            "Relation :" + this.emergencyContact.relation +"<br>"+
-            "Telephone :" + this.emergencyContact.telephone +"<br>"+
-            "Email :" + this.emergencyContact.email +
+        var str = "<table><thead>" +
 
-            // "</tr>" +
+            "<tr>" +
+            "<th>Name :<th>" +
+            '<td>' + this.emergencyContact.name + '<td>' + "<br>" +
+            "<tr>" +
+
+            "<tr>" +
+            "<th>Gender :<th>" +
+            '<td>' + this.emergencyContact.gender + '<td>' + "<br>" +
+            "<tr>" +
+
+            "<tr>" +
+            "<th>Relation :<th>" +
+            '<td>' + this.emergencyContact.relation + '<td>' + "<br>" +
+            "<tr>" +
+
+            "<tr>" +
+            "<th>Telephone :<th>" +
+            '<td>' + this.emergencyContact.telephone + '<td>' + "<br>" +
+            "<tr>" +
+
+            "<tr>" +
+            "<th>Email :<th>" +
+            '<td>' + this.emergencyContact.email + '<td>' + "<br>" +
+            "<tr>" +
+                
             "</thead><tbody>";
-            str += '<tr>' +
-        '</tr>';
+        str += '<tr>' +
+            '</tr>';
         str += "</tbody></table>";
         return new Spacebars.SafeString(str);
     }
