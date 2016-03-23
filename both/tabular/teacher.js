@@ -29,8 +29,9 @@ TabularTables.Teacher = new Tabular.Table({
         },
         {data: "telephone", title: "Telephone"},
         {data: "subject", title: "Subject"},
-        {data: "day", title: "Day"},
-        {data: "time", title: "Time"},
+        // {data: "day", title: "Day"},
+        // {data: "time", title: "Time"},
+        
         // {
         //     data: "_subject",
         //     title: "Subject Name",

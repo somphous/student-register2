@@ -42,6 +42,19 @@ Template.subjectAction.events({
             function () {
                 alertify.error('Cancel');
             });
+    },
+    'click #js-show': function () {
+        Meteor.call('findOne', 'Collection.Subject', {_id: this._id}, {}, function (error, subject) {
+            if (error) {
+                Bert.alert(error.message, 'danger', 'growl-bottom-right');
+            }
+            else {
+                alertify.subject(renderTemplate(Template.subjectShow, subject))
+                    .set({
+                        title: fa('eye', ' Subject')
+                    });
+            }
+        });
     }
 });
 
@@ -75,6 +88,17 @@ Template.subjectAction.events({
 //         return subject;
 //     }
 // });
+
+//Show
+Template.subjectShow.onCreated(function () {
+    this.subscribe('subjects');
+});
+
+Template.subjectShow.helpers({
+    data: function () {
+        return Collection.Subject.findOne(this._id);
+    }
+});
 //hook
 AutoForm.hooks({
         subjectInsert:{//id autoform

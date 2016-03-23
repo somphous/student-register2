@@ -4,7 +4,7 @@ Template.subjectRptGen.onCreated(function () {
 });
 Template.subjectRptGen.helpers({
     data(){
-        return Collection.Subject.find();
+        return Collection.Subject.find({},{sort: {_id:1}});
     },
     no(index) {
         console.log(index);

@@ -19,14 +19,14 @@
                             {{>afQuickField name= "birthDate"}}
                         </div>
                         <div class="col-xs-6 col-md-3">
-                            {{>afQuickField name= "time"}}
                             {{>afQuickField name= "telephone"}}
-                        </div>
-                        <div class="col-xs-6 col-md-3">
                             {{>afQuickField name= "subject"}}
                         </div>
                         <div class="col-xs-6 col-md-3">
-                            {{>afQuickField name= "day"}}
+                        </div>
+                        <div class="col-xs-6 col-md-3">
+                            <!--{{>afQuickField name= "day"}}-->
+                            <!--{{>afQuickField name= "time"}}-->
                         </div>
                     </div>
                     <Button type="submit" class="btn btn-primary fa fa-save"> Save</Button>
@@ -50,14 +50,14 @@
                                 {{>afQuickField name= "birthDate"}}
                             </div>
                             <div class="col-xs-6 col-md-3">
-                                {{>afQuickField name= "time"}}
                                 {{>afQuickField name= "telephone"}}
-                            </div>
-                            <div class="col-xs-6 col-md-3">
                                 {{>afQuickField name= "subject"}}
                             </div>
                             <div class="col-xs-6 col-md-3">
-                                {{>afQuickField name= "day"}}
+                            </div>
+                            <div class="col-xs-6 col-md-3">
+                                <!--{{>afQuickField name= "day"}}-->
+                                <!--{{>afQuickField name= "time"}}-->
                             </div>
                         </div>
                         <Button type="submit" class="btn btn-primary fa fa-save"> Save</Button>
@@ -69,9 +69,37 @@
         {{> spinner}}
     {{/if}}
 </template>
+
+<!--Show-->
+<template name="teacherShow">
+    {{#if Template.subscriptionsReady}}
+        {{#with data}}
+            <dl class="dl-horizontal">
+                <dt>ID:</dt>
+                <dd>{{_id}}</dd>
+
+                <dt>Name:</dt>
+                <dd>{{name}}</dd>
+
+                <dt>Gender:</dt>
+                <dd>{{gender}}</dd>
+
+                <dt>Date of Birth:</dt>
+                <dd>{{moFormat birthDate "DD/MM/YYYY"}}</dd>
+
+                <dt>Telephone:</dt>
+                <dd>{{telephone}}</dd>
+
+                <dt>Subject:</dt>
+                <dd>{{subject}}</dd>
+            </dl>
+        {{/with}}
+    {{else}}
+        {{> spinner}}
+    {{/if}}
+</template>
+
 <!--action-->
 <template name='teacherAction'>
     {{>tabularAction}}
-    <!--<button class='jsUpdate fa fa-pencil btn btn-primary'></button>-->
-    <!--<button class='jsRemove fa fa-remove btn btn-danger'></button>-->
 </template>

@@ -1,3 +1,9 @@
+//Alertify
+Template.payment.onRendered(function () {
+    // Create new  alertify
+    createNewAlertify('payment');
+});
+
 Template.paymentAction.events({
     'click #js-update': function () {
         FlowRouter.go('paymentUpdate', {id: this._id});
@@ -12,7 +18,21 @@ Template.paymentAction.events({
             function () {
                 alertify.error('Cancel');
             });
+    },
+    'click #js-show': function () {
+        Meteor.call('findOne', 'Collection.Payment', {_id: this._id}, {}, function (error, payment) {
+            if (error) {
+                Bert.alert(error.message, 'danger', 'growl-bottom-right');
+            }
+            else {
+                alertify.payment(renderTemplate(Template.paymentShow, payment))
+                    .set({
+                        title: fa('eye', ' Payment')
+                    });
+            }
+        });
     }
+
 });
 //Insert
 Template.paymentInsert.onCreated(function () {
@@ -138,6 +158,18 @@ Template.paymentUpdate.helpers({
     //   
     // }
 });
+
+//Show
+Template.paymentShow.onCreated(function () {
+    this.subscribe('payments');
+});
+
+Template.paymentShow.helpers({
+    data: function () {
+        return Collection.Payment.findOne(this._id);
+    }
+});
+
 //hook
 AutoForm.hooks({
         paymentInsert: {//id autoform

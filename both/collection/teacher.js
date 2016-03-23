@@ -54,23 +54,23 @@ Schema.Teacher = new SimpleSchema({
             }
         }
     },
-    day: {
-        type: [String],
-        label: "Day",
-        autoform: {
-            type: "select-multiple",
-            options: function () {
-                return [
-                    {label: '(Select One)', value: ''},
-                    {label: "Weekday", value: 'weekday'},
-                    {label: "Weekend", value: 'weekend'}
-                ];
-            }
-        }
-    },
-    time:{
-        type: String,
-        label: "Time"
-    }
+    // day: {
+    //     type: [String],
+    //     label: "Day",
+    //     autoform: {
+    //         type: "select-multiple",
+    //         options: function () {
+    //             return [
+    //                 {label: '(Select One)', value: ''},
+    //                 {label: "Weekday", value: 'weekday'},
+    //                 {label: "Weekend", value: 'weekend'}
+    //             ];
+    //         }
+    //     }
+    // },
+    // time:{
+    //     type: String,
+    //     label: "Time"
+    // }
 });
 Collection.Teacher.attachSchema(Schema.Teacher);

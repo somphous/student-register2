@@ -1,3 +1,9 @@
+//Alertify
+Template.register.onRendered(function () {
+    // Create new  alertify
+    createNewAlertify('register');
+});
+
 Template.registerAction.events({
     'click #js-update': function () {
         FlowRouter.go('registerUpdate', {id: this._id});
@@ -12,6 +18,19 @@ Template.registerAction.events({
             function () {
                 alertify.error('Cancel');
             });
+    },
+    'click #js-show': function () {
+        Meteor.call('findOne', 'Collection.Register', {_id: this._id}, {}, function (error, register) {
+            if (error) {
+                Bert.alert(error.message, 'danger', 'growl-bottom-right');
+            }
+            else {
+                alertify.register(renderTemplate(Template.registerShow, register))
+                    .set({
+                        title: fa('eye', ' Register')
+                    });
+            }
+        });
     }
 });
 
@@ -67,16 +86,15 @@ Template.registerInsert.helpers({
         return list;
     },
     teacherId: function () {
-        let subjectId= AutoForm.getFieldValue('subjectId');
-        if(!_.isUndefined(subjectId)){
+        let subjectId = AutoForm.getFieldValue('subjectId');
+        if (!_.isUndefined(subjectId)) {
             let subject = Collection.Subject.findOne(subjectId);
-            let arr =[
+            let arr = [
                 subject.name
             ];
 
             var data = Collection.Teacher.find({subject: {$in: arr}});
-            var list = [
-            ];
+            var list = [];
 
             data.forEach(function (obj) {
                 list.push({label: obj._id + ' : ' + obj.name, value: obj._id})
@@ -159,16 +177,15 @@ Template.registerUpdate.helpers({
         return list;
     },
     teacherId: function () {
-        let subjectId= AutoForm.getFieldValue('subjectId');
-        if(!_.isUndefined(subjectId)){
+        let subjectId = AutoForm.getFieldValue('subjectId');
+        if (!_.isUndefined(subjectId)) {
             let subject = Collection.Subject.findOne(subjectId);
-            let arr =[
+            let arr = [
                 subject.name
             ];
 
             var data = Collection.Teacher.find({subject: {$in: arr}});
-            var list = [
-            ];
+            var list = [];
 
             data.forEach(function (obj) {
                 list.push({label: obj._id + ' : ' + obj.name, value: obj._id})
@@ -246,6 +263,18 @@ Template.registerUpdate.helpers({
         return register;
     }
 });
+
+//Show
+Template.registerShow.onCreated(function () {
+    this.subscribe('registers');
+});
+
+Template.registerShow.helpers({
+    data: function () {
+        return Collection.Register.findOne(this._id);
+    }
+});
+
 //hook
 AutoForm.hooks({
     registerInsert: {//id autoform

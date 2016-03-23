@@ -74,6 +74,48 @@
         {{> spinner}}
     {{/if}}
 </template>
+
+<!--Show-->
+<template name="studentShow">
+    {{#if Template.subscriptionsReady}}
+        {{#with data}}
+            <dl class="dl-horizontal">
+                <dt>ID:</dt>
+                <dd>{{_id}}</dd>
+
+                <dt>Khmer Name:</dt>
+                <dd>{{khmerName}}</dd>
+
+                <dt>Latin Name:</dt>
+                <dd>{{latinName}}</dd>
+
+                <dt>Gender:</dt>
+                <dd>{{gender}}</dd>
+
+                <dt>Marital Status:</dt>
+                <dd>{{maritalStatus}}</dd>
+
+                <dt>Date Of Birth:</dt>
+                <dd>{{moFormat birthDate "DD/MM/YYYY"}}</dd>
+
+                <dt>Telephone:</dt>
+                <dd>{{telephone}}</dd>
+
+                <dt>Email:</dt>
+                <dd>{{email}}</dd>
+
+                <dt>Current Address:</dt>
+                <dd>{{currentAddress}}</dd>
+
+                <dt>Emergency Contact:</dt>
+                <dd>{{emergencyContact}}</dd>
+            </dl>
+        {{/with}}
+    {{else}}
+        {{> spinner}}
+    {{/if}}
+</template>
+
 <!--action-->
 <template name='studentAction'>
     {{>tabularAction}}

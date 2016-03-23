@@ -30,7 +30,7 @@ Meteor.methods({
             // find subject
             //let registerDoc= Collection.Register.findOne(obj.registerId);
             // let subjectDoc = Collection.Subject.findOne(obj.subjectId);
-            // obj._subject = subjectDoc;
+            // console.log(subjectDoc);
 
             content.push(obj);
         });

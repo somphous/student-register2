@@ -1,3 +1,9 @@
+//Alertify
+Template.teacher.onRendered(function () {
+    // Create new  alertify
+    createNewAlertify('teacher');
+});
+
 Template.teacherAction.events({
     'click #js-update': function () {
         FlowRouter.go('teacherUpdate', {id: this._id});
@@ -13,7 +19,21 @@ Template.teacherAction.events({
             //     alertify.error('Cancel');
             // }
         );
+    },
+    'click #js-show': function () {
+        Meteor.call('findOne', 'Collection.Teacher', {_id: this._id}, {}, function (error, teacher) {
+            if (error) {
+                Bert.alert(error.message, 'danger', 'growl-bottom-right');
+            }
+            else {
+                alertify.teacher(renderTemplate(Template.teacherShow, teacher))
+                    .set({
+                        title: fa('eye', ' Teacher')
+                    });
+            }
+        });
     }
+
 });
 // Insert
 Template.teacherInsert.onCreated(function () {
@@ -34,6 +54,18 @@ Template.teacherUpdate.helpers({
         return teacher;
     }
 });
+
+//Show
+Template.teacherShow.onCreated(function () {
+    this.subscribe('teachers');
+});
+
+Template.teacherShow.helpers({
+    data: function () {
+        return Collection.Teacher.findOne(this._id);
+    }
+});
+
 //hook
 AutoForm.hooks({
     teacherInsert: {//id autoform

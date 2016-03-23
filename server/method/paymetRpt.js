@@ -19,6 +19,11 @@ Meteor.methods({
        let content = [];
        tempContent.forEach(function (obj) {
            total += obj.paidAmount;
+
+           // find subject
+           let registerDoc= Collection.Register.findOne(obj.registerId);
+           let subjectDoc = Collection.Subject.findOne(registerDoc.subjectId);
+           obj._subject = subjectDoc;
            content.push(obj);
        });
 

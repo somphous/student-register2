@@ -87,6 +87,54 @@
         {{> spinner}}
     {{/if}}
 </template>
+
+<!--Show-->
+<template name="registerShow">
+    {{#if Template.subscriptionsReady}}
+        {{#with data}}
+            <dl class="dl-horizontal">
+                <dt>ID:</dt>
+                <dd>{{_id}}</dd>
+
+                <dt>Register Date:</dt>
+                <dd>{{moFormat regDate "DD/MM/YYYY"}}</dd>
+
+                <dt>Student:</dt>
+                <dd>{{_student.latinName}}</dd>
+
+                <dt>Subject:</dt>
+                <dd>{{_subject.name}}</dd>
+
+                <dt>Price:</dt>
+                <dd>{{numFormat price "$ 0,0.00"}}</dd>
+
+                <dt>Discount:</dt>
+                <dd>{{numFormat discount "$ 0,0.00"}}</dd>
+
+                <dt>Amoount:</dt>
+                <dd>{{numFormat amount "$ 0,0.00"}}</dd>
+
+                <dt>Teacher:</dt>
+                <dd>{{_teacher.name}}</dd>
+
+                <dt>Day:</dt>
+                <dd>{{day}}</dd>
+
+                <dt>Time:</dt>
+                <dd>{{time}}</dd>
+
+                <dt>Student Status:</dt>
+                <dd>{{studentStatus}}</dd>
+
+                <dt>Inform By:</dt>
+                <dd>{{InformationBy}}</dd>
+            </dl>
+        {{/with}}
+    {{else}}
+        {{> spinner}}
+    {{/if}}
+</template>
+
 <!--action-->
 <template name='registerAction'>
     {{>tabularAction}}
