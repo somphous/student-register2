@@ -27,7 +27,26 @@ TabularTables.Status = new Tabular.Table({
         },
         {
             data: "status",
-            title: "Status"
+            title: "Status",
+            render(val){
+                if (!_.isUndefined(val)) {
+                    if (val == 'Active'){
+                        return "<span class='label label-success'>" + val + "</span>"
+                    }
+                    if (val == 'Close'){
+                        return "<span class='label label-default'>" + val + "</span>"
+                    }
+                    if (val == 'Suspend'){
+                        return "<span class='label label-primary'>" + val + "</span>"
+                    }
+                    if (val == 'Cancel'){
+                        return "<span class='label label-warning'>" + val + "</span>"
+                    }
+                }
+                else {
+                    return 'Never';
+                }
+            }
         },
         {
             data: "description",

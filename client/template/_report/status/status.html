@@ -1,0 +1,55 @@
+<!--Form-->
+<template name="statusRpt">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            {{#autoForm schema="Schema.StatusRpt" id="statusRpt"}}
+                <fieldset>
+                    {{>afQuickField name= "asAt"}}
+                    {{>afQuickField name= "status"}}
+                </fieldset>
+                <Button type="submit" class="btn btn-primary"> View</Button>
+            {{/autoForm}}
+        </div>
+    </div>
+</template>
+
+<template name="statusRptGen">
+    <h2 style="text-align: center">Rabbit IT Solution</h2>
+    <h3 style="text-align: center">OS Payment Report</h3>
+    Date: {{statusRptDoc.header.date}}
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>No</th>
+                <th>Reg ID</th>
+                <th>Reg Date</th>
+                <th>Student</th>
+                <th>Subject</th>
+                <th>OS Amount</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each statusRptDoc.content}}
+                <tr>
+                    <td>{{no @index}}</td>
+                    <td>{{_id}}</td>
+                    <td>{{moFormat statusDate "DD/MM/YYYY"}}</td>
+                    <td>{{status}}</td>
+                    <td>{{description}}</td>
+                    <td>{{studentId}}</td>
+                    <td>{{registerId}}</td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <div class="pull-right" style="text-align: left; width: 30%;">
+            Date:......../........./.........<br><br>
+            Prepared By ...........
+        </div>
+    </div>
+</template>
+

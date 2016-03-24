@@ -107,11 +107,10 @@ Template.statusUpdate.onRendered(function () {
 Template.statusUpdate.helpers({
     status: function () {
         return [
-            // {label:'(Select One)',value:''},
+            {label: 'Active', value: 'Active'},
             {label: 'Close', value: 'Close'},
             {label: 'Suspend', value: 'Suspend'},
-            {label: 'Cancel', value: 'Cancel'},
-            {label: 'Active', value: 'Active'}
+            {label: 'Cancel', value: 'Cancel'}
         ]
     },
     // studentId: function () {
@@ -140,8 +139,7 @@ Template.statusUpdate.helpers({
     //     });
     //     return list;
     // }
-
-
+    
 });
 
 //Show
