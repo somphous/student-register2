@@ -4,10 +4,37 @@ Template.register.onRendered(function () {
     createNewAlertify('register');
 });
 
+//insert
+Template.register.events({
+    'click #js-insert': function (error, result) {
+
+        alertify.register(renderTemplate(Template.registerInsert))
+            .set({
+                title: fa('plus', ' Register')
+            })
+            .maximize();
+    }
+});
+
 Template.registerAction.events({
-    'click #js-update': function () {
-        FlowRouter.go('registerUpdate', {id: this._id});
+    'click #js-update': function (error, result) {
+        Meteor.call('findOne', 'Collection.Register', {_id: this._id}, {}, function (error, register) {
+            if (error) {
+                Bert.alert(error.message, 'danger', 'growl-bottom-right');
+            }
+            else {
+                alertify.register(renderTemplate(Template.registerUpdate, register))
+                    .set({
+                        title: fa('edit', ' Register')
+                    })
+                    .maximize();
+            }
+        });
     },
+
+    // 'click #js-update': function () {
+    //     FlowRouter.go('registerUpdate', {id: this._id});
+    // },
     'click .jsRemove': function () {
         var self = this;
         alertify.confirm("Are you sure want to delete?",
@@ -145,14 +172,14 @@ Template.registerInsert.helpers({
 });
 
 //Update
-Template.registerUpdate.onCreated(function () {
-    let registerId = FlowRouter.getParam("id");
-    this.subscribe("register", registerId);
-
-    this.subscribe("teachers", registerId);
-    this.subscribe("students", registerId);
-    this.subscribe("subjects", registerId);
-});
+// Template.registerUpdate.onCreated(function () {
+//     let registerId = FlowRouter.getParam("id");
+//     this.subscribe("register", registerId);
+//
+//     this.subscribe("teachers", registerId);
+//     this.subscribe("students", registerId);
+//     this.subscribe("subjects", registerId);
+// });
 Template.registerUpdate.helpers({
     studentId: function () {
         var data = Collection.Student.find();
@@ -256,24 +283,24 @@ Template.registerUpdate.events({
     }
 
 });
-Template.registerUpdate.helpers({
-    registerDoc: function () {
-        var id = FlowRouter.getParam('id');
-        var register = Collection.Register.findOne({_id: id});
-        return register;
-    }
-});
+// Template.registerUpdate.helpers({
+//     registerDoc: function () {
+//         var id = FlowRouter.getParam('id');
+//         var register = Collection.Register.findOne({_id: id});
+//         return register;
+//     }
+// });
 
 //Show
-Template.registerShow.onCreated(function () {
-    this.subscribe('registers');
-});
-
-Template.registerShow.helpers({
-    data: function () {
-        return Collection.Register.findOne(this._id);
-    }
-});
+// Template.registerShow.onCreated(function () {
+//     this.subscribe('registers');
+// });
+//
+// Template.registerShow.helpers({
+//     data: function () {
+//         return Collection.Register.findOne(this._id);
+//     }
+// });
 
 //hook
 AutoForm.hooks({
@@ -292,7 +319,7 @@ AutoForm.hooks({
         onSuccess(formType, id){
             //Bert.Alert('Successfully Added', 'success', 'growl-top-right');
             alertify.success('Successfully Updated');
-            FlowRouter.go('register');
+            alertify.register().close();
         },
         onError(formType, error){
             alertify.error(error.message);

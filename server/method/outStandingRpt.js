@@ -1,7 +1,7 @@
 Meteor.methods({
     outStandingRpt(asAt){
         let data = {};
-        let totalOsAmount = 0;
+        let total = 0;
 
         asAt = moment(asAt).toDate(); //convert to international date
 
@@ -33,7 +33,7 @@ Meteor.methods({
                 obj.osAmount = obj.amount;
                 content.push(obj);
             }
-            totalOsAmount += obj.osAmount;
+            total += obj.osAmount;
             //find student
             // let studentDoc = Collection.Student.findOne(obj.studentId);
             // obj._student = studentDoc;
@@ -44,9 +44,8 @@ Meteor.methods({
 
 
         });
+        data.osAmount = {total:total};
         data.content = content;
-        data.osAmount = totalOsAmount;
-
         return data;
 
     }

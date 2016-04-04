@@ -32,7 +32,7 @@
 
 <!--update-->
 <template name="subjectUpdate">
-    {{#if Template.subscriptionsReady}}
+    <!--{{#if Template.subscriptionsReady}}-->
         <div class="panel panel-default">
             <div class="panel-body">
                 {{#autoForm collection="Collection.Subject" doc=this id="subjectUpdate" type="update"}}
@@ -52,15 +52,15 @@
                 {{/autoForm}}
             </div>
         </div>
-    {{else}}
-        {{> spinner}}
-    {{/if}}
+    <!--{{else}}-->
+        <!--{{> spinner}}-->
+    <!--{{/if}}-->
 </template>
 
 <!--Show-->
 <template name="subjectShow">
-    {{#if Template.subscriptionsReady}}
-        {{#with data}}
+    <!--{{#if Template.subscriptionsReady}}-->
+        <!--{{#with data}}-->
             <dl class="dl-horizontal">
                 <dt>ID:</dt>
                 <dd>{{_id}}</dd>
@@ -77,10 +77,10 @@
                 <dt>Description:</dt>
                 <dd>{{description}}</dd>
             </dl>
-        {{/with}}
-    {{else}}
-        {{> spinner}}
-    {{/if}}
+        <!--{{/with}}-->
+    <!--{{else}}-->
+        <!--{{> spinner}}-->
+    <!--{{/if}}-->
 </template>
 
 <!--action-->

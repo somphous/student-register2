@@ -1,3 +1,6 @@
+Template.paymentRptGen.onCreated(function () {
+    this.subscribe('company');
+});
 // Generate
 Template.paymentRptGen.helpers({
     paymentRptDoc(){
@@ -10,6 +13,9 @@ Template.paymentRptGen.helpers({
             }
         });
         return Session.get('paymentRptResult');
+    },
+    company(){
+        return Collection.Company.find();
     },
     no(index){
         console.log(index);

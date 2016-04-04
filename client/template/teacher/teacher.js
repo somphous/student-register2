@@ -5,9 +5,24 @@ Template.teacher.onRendered(function () {
 });
 
 Template.teacherAction.events({
-    'click #js-update': function () {
-        FlowRouter.go('teacherUpdate', {id: this._id});
+    'click #js-update': function (error, result) {
+        Meteor.call('findOne', 'Collection.Teacher', {_id: this._id}, {}, function (error, teacher) {
+            if (error) {
+                Bert.alert(error.message, 'danger', 'growl-bottom-right');
+            }
+            else {
+                alertify.teacher(renderTemplate(Template.teacherUpdate, teacher))
+                    .set({
+                        title: fa('edit', ' Teacher')
+                    })
+                    .maximize();
+            }
+        });
     },
+
+    // 'click #js-update': function () {
+    //     FlowRouter.go('teacherUpdate', {id: this._id});
+    // },
     'click .jsRemove': function () {
         var self = this;
         alertify.confirm("Are you sure want to delete?",
@@ -15,9 +30,9 @@ Template.teacherAction.events({
                 Collection.Teacher.remove({_id: self._id}); /// remove by _id?
                 alertify.success('Deleted');
             },
-            // function () {
-            //     alertify.error('Cancel');
-            // }
+            function () {
+                alertify.error('Cancel');
+            }
         );
     },
     'click #js-show': function () {
@@ -40,31 +55,41 @@ Template.teacherInsert.onCreated(function () {
     this.subscribe("subjects");
 });
 
-//Update
-Template.teacherUpdate.onCreated(function () {
-    let teacherId = FlowRouter.getParam("id");
-    this.subscribe("teacher", teacherId);
-    this.subscribe("subjects", teacherId);
+Template.teacher.events({
+    'click #js-insert': function (error, result) {
 
-});
-Template.teacherUpdate.helpers({
-    teacherDoc: function () {
-        var id = FlowRouter.getParam('id');
-        var teacher = Collection.Teacher.findOne({_id: id});
-        return teacher;
+        alertify.teacher(renderTemplate(Template.teacherInsert))
+            .set({
+                title: fa('plus', ' Teacher')
+            })
+            .maximize();
     }
 });
+
+//Update
+// Template.teacherUpdate.onCreated(function () {
+//     let teacherId = FlowRouter.getParam("id");
+//     this.subscribe("teacher", teacherId);
+//     this.subscribe("subjects", teacherId);
+// });
+// Template.teacherUpdate.helpers({
+//     teacherDoc: function () {
+//         var id = FlowRouter.getParam('id');
+//         var teacher = Collection.Teacher.findOne({_id: id});
+//         return teacher;
+//     }
+// });
 
 //Show
-Template.teacherShow.onCreated(function () {
-    this.subscribe('teachers');
-});
+// Template.teacherShow.onCreated(function () {
+//     this.subscribe('teachers');
+// });
 
-Template.teacherShow.helpers({
-    data: function () {
-        return Collection.Teacher.findOne(this._id);
-    }
-});
+// Template.teacherShow.helpers({
+//     data: function () {
+//         return Collection.Teacher.findOne(this._id);
+//     }
+// });
 
 //hook
 AutoForm.hooks({
@@ -84,7 +109,7 @@ AutoForm.hooks({
             console.log('success');
             //Bert.Alert('Successfully Added', 'success', 'growl-top-right');
             alertify.success('Updated');
-            // FlowRouter.go('teacher');
+            alertify.teacher().close();
         },
         onError(formType, error){
             console.log('error');

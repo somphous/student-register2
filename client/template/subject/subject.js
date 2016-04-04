@@ -11,7 +11,7 @@ Template.subject.events({
 
         alertify.subject(renderTemplate(Template.subjectInsert))
             .set({
-                title: fa('plus', ' Status')
+                title: fa('plus', ' Subject')
             })
             .maximize();
     }
@@ -19,14 +19,14 @@ Template.subject.events({
 
 Template.subjectAction.events({
     'click #js-update': function (error, result) {
-        Meteor.call('findOne', 'Collection.Status', {_id: this._id}, {}, function (error, subject) {
+        Meteor.call('findOne', 'Collection.Subject', {_id: this._id}, {}, function (error, subject) {
             if (error) {
                 Bert.alert(error.message, 'danger', 'growl-bottom-right');
             }
             else {
                 alertify.subject(renderTemplate(Template.subjectUpdate, subject))
                     .set({
-                        title: fa('edit', ' Status')
+                        title: fa('edit', ' Subject')
                     })
                     .maximize();
             }
@@ -36,7 +36,7 @@ Template.subjectAction.events({
         var self = this;
         alertify.confirm("Are you sure want to delete?",
             function () {
-                Collection.Status.remove({_id: self._id}); /// remove by _id?
+                Collection.Subject.remove({_id: self._id}); /// remove by _id?
                 alertify.success('Deleted');
             },
             function () {
@@ -44,14 +44,14 @@ Template.subjectAction.events({
             });
     },
     'click #js-show': function () {
-        Meteor.call('findOne', 'Collection.Status', {_id: this._id}, {}, function (error, subject) {
+        Meteor.call('findOne', 'Collection.Subject', {_id: this._id}, {}, function (error, subject) {
             if (error) {
                 Bert.alert(error.message, 'danger', 'growl-bottom-right');
             }
             else {
                 alertify.subject(renderTemplate(Template.subjectShow, subject))
                     .set({
-                        title: fa('eye', ' Status')
+                        title: fa('eye', ' Subject')
                     });
             }
         });
@@ -90,15 +90,15 @@ Template.subjectAction.events({
 // });
 
 //Show
-Template.subjectShow.onCreated(function () {
-    this.subscribe('subjects');
-});
-
-Template.subjectShow.helpers({
-    data: function () {
-        return Collection.Status.findOne(this._id);
-    }
-});
+// Template.subjectShow.onCreated(function () {
+//     this.subscribe('subjects');
+// });
+//
+// Template.subjectShow.helpers({
+//     data: function () {
+//         return Collection.Status.findOne(this._id);
+//     }
+// });
 //hook
 AutoForm.hooks({
         subjectInsert:{//id autoform
@@ -113,17 +113,17 @@ AutoForm.hooks({
             }
         },
         subjectUpdate:{//id autoform
-            before:{
-                update(doc){
-                    return doc;
-                }
-
-            },
+            // before:{
+            //     update(doc){
+            //         return doc;
+            //     }
+            //
+            // },
             onSuccess(formType, id){
                 //Bert.Alert('Successfully Added', 'success', 'growl-top-right');
 
                 alertify.success('Successfully Added');
-                FlowRouter.go('subject');
+                alertify.subject().close();
             },
             onError(formType, error){
                 alertify.error(error.message);

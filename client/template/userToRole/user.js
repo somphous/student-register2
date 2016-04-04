@@ -1,9 +1,42 @@
+//Alertify
+Template.userToRole.onRendered(function () {
+    // Create new  alertify
+    createNewAlertify('userToRole'); //subject is name of alertify
+});
+
+//insert
+Template.userToRole.events({
+    'click #js-insert': function (error, result) {
+
+        alertify.userToRole(renderTemplate(Template.userToRoleInsert))
+            .set({
+                title: fa('plus', ' Status')
+            })
+            .maximize();
+    }
+});
+
 Template.userToRoleAction.events({
-    'click #js-update': function() {
-        FlowRouter.go('userToRoleUpdate', {
-            id: this._id
+    'click #js-update': function (error, result) {
+        Meteor.call('findOne', 'Meteor.users', {_id: this._id}, {}, function (error, userToRole) {
+            if (error) {
+                Bert.alert(error.message, 'danger', 'growl-bottom-right');
+            }
+            else {
+                alertify.userToRole(renderTemplate(Template.userToRoleUpdate, userToRole))
+                    .set({
+                        title: fa('edit', ' UserToRole')
+                    })
+                    .maximize();
+            }
         });
     },
+
+    // 'click #js-update': function() {
+    //     FlowRouter.go('userToRoleUpdate', {
+    //         id: this._id
+    //     });
+    // },
     'click .jsRemove': function() {
         var self = this;
         alertify.confirm("Are you sure want to delete?",
@@ -17,6 +50,19 @@ Template.userToRoleAction.events({
             function () {
                 alertify.error('Cancel');
             });
+    },
+    'click #js-show': function () {
+        Meteor.call('findOne', 'Meteor.users', {_id: this._id}, {}, function (error, result) {
+            if (error) {
+                Bert.alert(error.message, 'danger', 'growl-bottom-right');
+            }
+            else {
+                alertify.userToRole(renderTemplate(Template.userToRoleShow, result))
+                    .set({
+                        title: fa('eye', ' UserToRole')
+                    });
+            }
+        });
     }
 });
 

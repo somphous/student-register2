@@ -1,5 +1,5 @@
 Meteor.methods({
-    registerRpt(fromDate, toDate){
+    registerRpt(fromDate, toDate, subject, day){
         let data = {};
         let total = 0;
 
@@ -17,28 +17,33 @@ Meteor.methods({
 
         let tempContent = Collection.Register.find(selector, option);
 
-        //console.log(tempContent.count());
-
         let content = [];
         tempContent.forEach(function (obj) {
-            total += obj.amount;
-            
-            // find student
-            // let studentDoc = Collection.Student.findOne(obj.studentId);
-            // obj._student = studentDoc;
+            if (obj.subjectId == subject) {
+                if (obj.day == day) {
+                    total += obj.amount;
+                    content.push(obj);
 
-            // find subject
-            //let registerDoc= Collection.Register.findOne(obj.registerId);
-            // let subjectDoc = Collection.Subject.findOne(obj.subjectId);
-            // console.log(subjectDoc);
+                } else if (day == null) {
+                    total += obj.amount;
+                    content.push(obj);
+                }
+            } else if (subject == null) {
+                if (obj.day == day) {
+                    total += obj.amount;
+                    content.push(obj);
 
-            content.push(obj);
+                }
+                else if (day == null) {
+                    total += obj.amount;
+                    content.push(obj);
+                }
+            }
         });
 
-        data.amount = total;
-        // console.log(data.amount);
-        
+        data.footer = {total: total};
         data.content = content;
         return data;
     }
-});
+})
+;

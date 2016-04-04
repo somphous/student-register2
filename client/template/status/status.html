@@ -26,6 +26,7 @@
                     </div>
                 </fieldset>
                 <Button type="submit" class="btn btn-primary fa fa-save"> Save</Button>
+                <Button type="reset" class="btn btn-default fa fa-refresh"> Save</Button>
             {{/autoForm}}
         </div>
     </div>
@@ -33,7 +34,7 @@
 
 <!--update-->
 <template name="statusUpdate">
-    {{#if Template.subscriptionsReady}}
+    <!--{{#if Template.subscriptionsReady}}-->
         <div class="panel panel-default">
             <div class="panel-body">
                 {{#autoForm collection="Collection.Status" doc=this id="statusUpdate" type="update"}}
@@ -58,39 +59,39 @@
                 {{/autoForm}}
             </div>
         </div>
-    {{else}}
-        {{> spinner}}
-    {{/if}}
+    <!--{{else}}-->
+        <!--{{> spinner}}-->
+    <!--{{/if}}-->
 </template>
 
 <!--Show-->
 <template name="statusShow">
-    {{#if Template.subscriptionsReady}}
-        {{#with data}}
+    <!--{{#if Template.subscriptionsReady}}-->
+        <!--{{#with data}}-->
             <dl class="dl-horizontal">
                 <dt>ID:</dt>
                 <dd>{{_id}}</dd>
 
                 <dt>Name:</dt>
-                <dd>{{statusDate}}</dd>
+                <dd>{{moFormat statusDate "DD/MM/YYYY"}}</dd>
 
-                <dt>Duration:</dt>
+                <dt>Status:</dt>
                 <dd>{{status}}</dd>
 
-                <dt>Price:</dt>
+                <dt>Description:</dt>
                 <dd>{{description}}</dd>
 
-                <dt>Description:</dt>
-                <dd>{{stduentId}}</dd>
+                <dt>Student:</dt>
+                <dd>{{studentId}}</dd>
 
-                <dt>Description:</dt>
+                <dt>RegisterId:</dt>
                 <dd>{{registerId}}</dd>
 
             </dl>
-        {{/with}}
-    {{else}}
-        {{> spinner}}
-    {{/if}}
+        <!--{{/with}}-->
+    <!--{{else}}-->
+        <!--{{> spinner}}-->
+    <!--{{/if}}-->
 </template>
 
 <!--action-->

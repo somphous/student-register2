@@ -20,7 +20,8 @@ Schema.Status=new SimpleSchema({
     },
     description:{
         type: String,
-        label: 'Description'
+        label: 'Description',
+        optional: true
     },
     studentId:{
         type: String,

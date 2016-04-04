@@ -4,10 +4,43 @@ Template.payment.onRendered(function () {
     createNewAlertify('payment');
 });
 
-Template.paymentAction.events({
-    'click #js-update': function () {
-        FlowRouter.go('paymentUpdate', {id: this._id});
+//insert
+Template.payment.events({
+    'click #js-insert': function (error, result) {
+
+        alertify.payment(renderTemplate(Template.paymentInsert))
+            .set({
+                title: fa('plus', ' Payment')
+            })
+            .maximize();
     },
+    'click #js-savePrint': function () {
+        // FlowRouter.go('printPayment',{id:this._id});
+        let path = FlowRouter.path('printPayment', {id: this._id});
+        window.open(path, '_blank');
+    }
+
+});
+
+Template.paymentAction.events({
+    'click #js-update': function (error, result) {
+        Meteor.call('findOne', 'Collection.Payment', {_id: this._id}, {}, function (error, payment) {
+            if (error) {
+                Bert.alert(error.message, 'danger', 'growl-bottom-right');
+            }
+            else {
+                alertify.payment(renderTemplate(Template.paymentUpdate, payment))
+                    .set({
+                        title: fa('edit', ' Payment')
+                    })
+                    .maximize();
+            }
+        });
+    },
+
+    // 'click #js-update': function () {
+    //     FlowRouter.go('paymentUpdate', {id: this._id});
+    // },
     'click .jsRemove': function () {
         var self = this;
         alertify.confirm("Are you sure want to delete?",
@@ -31,8 +64,12 @@ Template.paymentAction.events({
                     });
             }
         });
+    },
+    'click #js-print': function () {
+        // FlowRouter.go('printPayment',{id:this._id});
+        let path = FlowRouter.path('printPayment', {id: this._id});
+        window.open(path, '_blank');
     }
-
 });
 //Insert
 Template.paymentInsert.onCreated(function () {
@@ -53,122 +90,118 @@ Template.paymentInsert.helpers({
         return list
     },
     registerId: function () {
-                var studentId = AutoForm.getFieldValue('studentId');
-                //console.log(studentId);
+        var studentId = AutoForm.getFieldValue('studentId');
+        //console.log(studentId);
 
-                var data = Collection.Register.find({studentId: studentId});
-                var list = [
-                    // {label: '(Select One)', value: ''}
-                ];
+        var data = Collection.Register.find({studentId: studentId});
+        var list = [
+            // {label: '(Select One)', value: ''}
+        ];
 
-                if (data) {
-                    data.forEach(function (obj) {
-                        var label;
-                        // Get subject
-                        var subject = Collection.Subject.findOne(obj.subjectId);
-
-                        // Check last paid
-                        var lastPaid = Collection.Payment.findOne({registerId: obj._id}, {sort: {_id: -1}});
-
-                        // console.log(lastPaid);
-
-                        if (lastPaid) {
-                            if (math.round(lastPaid.osAmount, 2) > 0) {
-                                label = obj._id + ' | ' + subject.name + ' | ' + lastPaid.osAmount;
-                                list.push({label: label, value: obj._id});
-                            }
-                        } else {
-                            label = obj._id + ' | ' + subject.name + ' | ' + obj.amount;
-                            list.push({label: label, value: obj._id});
-                        }
-                    });
-                }
-
-                return list;
-    },
-    dueAmount: function () {
-            let dueAmount = 0;
-            let registerId = AutoForm.getFieldValue('registerId');
-
-            if (registerId) {
-                let data = Collection.Register.findOne(registerId);
-                // if (data) {
-                dueAmount = data.amount;
+        if (data) {
+            data.forEach(function (obj) {
+                var label;
+                // Get subject
+                var subject = Collection.Subject.findOne(obj.subjectId);
 
                 // Check last paid
-                var lastPaid = Collection.Payment.findOne(
-                    {registerId: registerId},
-                    {sort: {_id: -1}}
-                ); // _id in payment
+                var lastPaid = Collection.Payment.findOne({registerId: obj._id}, {sort: {_id: -1}});
+
+                // console.log(lastPaid);
 
                 if (lastPaid) {
-                    // dueAmount = lastPaid.osAmount;
-                    dueAmount = lastPaid.osAmount;
-                    // return dueAmount;
+                    if (math.round(lastPaid.osAmount, 2) > 0) {
+                        label = obj._id + ' | ' + subject.name + ' | ' + lastPaid.osAmount;
+                        list.push({label: label, value: obj._id});
+                    }
+                } else {
+                    label = obj._id + ' | ' + subject.name + ' | ' + obj.amount;
+                    list.push({label: label, value: obj._id});
                 }
-                // }
-            }
-            return dueAmount;
-        },
-        osAmount: function () {
-            let osAmount = 0;
-            let dueAmount = AutoForm.getFieldValue('dueAmount');
-            let paidAmount = AutoForm.getFieldValue('paidAmount');
-            return dueAmount - paidAmount;
-    
-        },
-        type: "inputmask",
-        afFieldInput: {
-            inputmaskOptions: inputmaskOptions.currency()
+            });
         }
 
+        return list;
+    },
+    dueAmount: function () {
+        let dueAmount = 0;
+        let registerId = AutoForm.getFieldValue('registerId');
+
+        if (registerId) {
+            let data = Collection.Register.findOne(registerId);
+            // if (data) {
+            dueAmount = data.amount;
+
+            // Check last paid
+            var lastPaid = Collection.Payment.findOne(
+                {registerId: registerId},
+                {sort: {_id: -1}}
+            ); // _id in payment
+
+            if (lastPaid) {
+                // dueAmount = lastPaid.osAmount;
+                dueAmount = lastPaid.osAmount;
+                // return dueAmount;
+            }
+            // }
+        }
+        return dueAmount;
+    },
+    osAmount: function () {
+        let osAmount = 0;
+        let dueAmount = AutoForm.getFieldValue('dueAmount');
+        let paidAmount = AutoForm.getFieldValue('paidAmount');
+        return dueAmount - paidAmount;
+
+    },
+    type: "inputmask",
+    afFieldInput: {
+        inputmaskOptions: inputmaskOptions.currency()
+    }
 
 
 });
 Template.paymentInsert.events({
     'keyup .jsPaidAmount': function () {
-        let paidAmount= $('.jsPaidAmount').val();
-        let dueAmount =$('.jsDueAmount').val();
-        $('.jsOsAmount').val(dueAmount-paidAmount);
+        let paidAmount = $('.jsPaidAmount').val();
+        let dueAmount = $('.jsDueAmount').val();
+        $('.jsOsAmount').val(dueAmount - paidAmount);
     }
 });
 
 // Update
-Template.paymentUpdate.onCreated(function () {
-    let paymentId = FlowRouter.getParam("id");
-    this.subscribe("payment", paymentId);
-    this.subscribe("registers");
-    this.subscribe("students");
-    this.subscribe("subjects");
-});
+// Template.paymentUpdate.onCreated(function () {
+//     let paymentId = FlowRouter.getParam("id");
+//     this.subscribe("payment", paymentId);
+//     this.subscribe("registers");
+//     this.subscribe("students");
+//     this.subscribe("subjects");
+// });
 Template.paymentUpdate.events({
     'keyup .jsPaidAmount': function () {
-        let paidAmount= $('.jsPaidAmount').val();
-        let dueAmount =$('.jsDueAmount').val();
-        $('.jsOsAmount').val(dueAmount-paidAmount);
+        let paidAmount = $('.jsPaidAmount').val();
+        let dueAmount = $('.jsDueAmount').val();
+        $('.jsOsAmount').val(dueAmount - paidAmount);
     }
 });
-Template.paymentUpdate.helpers({
-    paymentDoc: function () {
-        var id = FlowRouter.getParam('id');
-        var payment = Collection.Payment.findOne({_id: id});
-        return payment;
-    },
-    // studentId:function () {
-    //   
-    // }
-});
+// Template.paymentUpdate.helpers({
+//     paymentDoc: function () {
+//         var id = FlowRouter.getParam('id');
+//         var payment = Collection.Payment.findOne({_id: id});
+//         return payment;
+//     },
+// });
 
 //Show
-Template.paymentShow.onCreated(function () {
-    this.subscribe('payments');
-});
-
-Template.paymentShow.helpers({
-    data: function () {
-        return Collection.Payment.findOne(this._id);
-    }
-});
+// Template.paymentShow.onCreated(function () {
+//     this.subscribe('payments');
+// });
+//
+// Template.paymentShow.helpers({
+//     data: function () {
+//         return Collection.Payment.findOne(this._id);
+//     }
+// });
 
 //hook
 AutoForm.hooks({
@@ -185,7 +218,7 @@ AutoForm.hooks({
                 onSuccess(formType, id){
                     //Bert.Alert('Successfully Added', 'success', 'growl-top-right');
                     alertify.success('Successfully Updated');
-                    FlowRouter.go('payment');
+                    alertify.payment().close();
                 },
                 onError(formType, error){
                     alertify.error(error.message);

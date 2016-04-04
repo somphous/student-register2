@@ -28,5 +28,22 @@ Schema.RegisterRpt = new SimpleSchema({
             }
 
         }
+    },
+    subject:{
+        type: String,
+        label: 'Subject',
+        optional : true,
+        autoform: {
+            type: "select2"
+        }
+    },
+    day:{
+        type: String,
+        label: 'Day',
+        optional : true,
+        autoform: {
+            type: "select2"
+        }
     }
+
 });

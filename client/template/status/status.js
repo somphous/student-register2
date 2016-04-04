@@ -143,15 +143,15 @@ Template.statusUpdate.helpers({
 });
 
 //Show
-Template.statusShow.onCreated(function () {
-    this.subscribe('statuses');
-});
+// Template.statusShow.onCreated(function () {
+//     this.subscribe('statuses');
+// });
 
-Template.statusShow.helpers({
-    data: function () {
-        return Collection.Status.findOne(this._id);
-    }
-});
+// Template.statusShow.helpers({
+//     data: function () {
+//         return Collection.Status.findOne(this._id);
+//     }
+// });
 Template.statusInsert.onCreated(function () {
     this.subscribe('students');
     this.subscribe('registers');
@@ -179,9 +179,8 @@ AutoForm.hooks({
             // },
             onSuccess(formType, id){
                 //Bert.Alert('Successfully Added', 'success', 'growl-top-right');
-
                 alertify.success('Successfully Added');
-                FlowRouter.go('status');
+                alertify.status().close();
             },
             onError(formType, error){
                 alertify.error(error.message);

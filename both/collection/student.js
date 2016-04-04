@@ -52,7 +52,6 @@ Schema.Student = new SimpleSchema({
     telephone: {
         type: String,
         label: 'Telephone',
-        optional: true
     },
     email: {
         type: String,

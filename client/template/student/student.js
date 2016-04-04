@@ -4,10 +4,37 @@ Template.student.onRendered(function () {
     createNewAlertify('student');
 });
 
+//insert
+Template.student.events({
+    'click #js-insert': function (error, result) {
+
+        alertify.student(renderTemplate(Template.studentInsert))
+            .set({
+                title: fa('plus', ' Student')
+            })
+            .maximize();
+    }
+});
+
 Template.studentAction.events({
-    'click #js-update': function () {
-        FlowRouter.go('studentUpdate', {id: this._id});
+    'click #js-update': function (error, result) {
+        Meteor.call('findOne', 'Collection.Student', {_id: this._id}, {}, function (error, student) {
+            if (error) {
+                Bert.alert(error.message, 'danger', 'growl-bottom-right');
+            }
+            else {
+                alertify.student(renderTemplate(Template.studentUpdate, student))
+                    .set({
+                        title: fa('edit', ' Student')
+                    })
+                    .maximize();
+            }
+        });
     },
+
+    // 'click #js-update': function () {
+    //     FlowRouter.go('studentUpdate', {id: this._id});
+    // },
     'click .jsRemove': function (error, result) {
         var self = this;
         alertify.confirm("Are you sure want to delete?",
@@ -35,29 +62,28 @@ Template.studentAction.events({
 
 });
 //Update
-Template.studentUpdate.onCreated(function () {
-    let studentId = FlowRouter.getParam("id");
-    this.subscribe("student", studentId);
-});
+// Template.studentUpdate.onCreated(function () {
+//     let studentId = FlowRouter.getParam("id");
+//     this.subscribe("student", studentId);
+// });
 
-Template.studentUpdate.helpers({
-    studentDoc: function () {
-        var studentId = FlowRouter.getParam('id');
-        var student = Collection.Student.findOne(studentId);
-        return student;
-    }
-});
+// Template.studentUpdate.helpers({
+//     studentDoc: function () {
+//         var studentId = FlowRouter.getParam('id');
+//         var student = Collection.Student.findOne(studentId);
+//         return student;
+//     }
+// });
+
 //Show
-Template.studentShow.onCreated(function () {
-    this.subscribe('students');
-
-});
+// Template.studentShow.onCreated(function () {
+//     this.subscribe('students');
+// });
 
 Template.studentShow.helpers({
-    data: function () {
-        return Collection.Student.findOne(this._id);
-
-    },
+    // data: function () {
+    //     return Collection.Student.findOne(this._id);
+    // },
     currentAddress: function () {
         var str = "<table><thead>" +
             "<tr>" +
@@ -150,7 +176,7 @@ AutoForm.hooks({
         onSuccess(formType, id){
             //Bert.Alert('Successfully Added', 'success', 'growl-top-right');
             alertify.success('Successfully Added');
-            FlowRouter.go('student');
+            alertify.student().close();
         },
         onError(formType, error){
             alertify.error(error.message);

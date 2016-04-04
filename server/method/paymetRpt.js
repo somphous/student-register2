@@ -27,8 +27,8 @@ Meteor.methods({
            content.push(obj);
        });
 
+       data.paidAmount = {total: total};
        data.content = content;
-       data.paidAmount = total;
 
        return data;
 
