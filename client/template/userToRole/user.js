@@ -12,7 +12,7 @@ Template.userToRole.events({
             .set({
                 title: fa('plus', ' Status')
             })
-            .maximize();
+            // .maximize();
     }
 });
 
@@ -27,7 +27,7 @@ Template.userToRoleAction.events({
                     .set({
                         title: fa('edit', ' UserToRole')
                     })
-                    .maximize();
+                    // .maximize();
             }
         });
     },
@@ -112,7 +112,7 @@ AutoForm.hooks({
         },
         onSuccess(formType, result) {
             alertify.success('Successfully Updated');
-            FlowRouter.go('userToRole')
+            alertify.userToRole().close();
         },
         onError(formType, error) {
             alertify.error(error.message);

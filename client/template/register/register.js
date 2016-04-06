@@ -172,14 +172,14 @@ Template.registerInsert.helpers({
 });
 
 //Update
-// Template.registerUpdate.onCreated(function () {
-//     let registerId = FlowRouter.getParam("id");
-//     this.subscribe("register", registerId);
-//
-//     this.subscribe("teachers", registerId);
-//     this.subscribe("students", registerId);
-//     this.subscribe("subjects", registerId);
-// });
+Template.registerUpdate.onCreated(function () {
+    let registerId = FlowRouter.getParam("id");
+    this.subscribe("register", registerId);
+
+    this.subscribe("teachers", registerId);
+    this.subscribe("students", registerId);
+    this.subscribe("subjects", registerId);
+});
 Template.registerUpdate.helpers({
     studentId: function () {
         var data = Collection.Student.find();

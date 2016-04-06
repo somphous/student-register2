@@ -13,11 +13,6 @@ Template.payment.events({
                 title: fa('plus', ' Payment')
             })
             .maximize();
-    },
-    'click #js-savePrint': function () {
-        // FlowRouter.go('printPayment',{id:this._id});
-        let path = FlowRouter.path('printPayment', {id: this._id});
-        window.open(path, '_blank');
     }
 
 });
@@ -29,6 +24,10 @@ Template.paymentAction.events({
                 Bert.alert(error.message, 'danger', 'growl-bottom-right');
             }
             else {
+                Meteor.subscribe('payments');
+                Meteor.subscribe('registers');
+                Meteor.subscribe('students');
+                Meteor.subscribe('subjects');
                 alertify.payment(renderTemplate(Template.paymentUpdate, payment))
                     .set({
                         title: fa('edit', ' Payment')
@@ -139,7 +138,6 @@ Template.paymentInsert.helpers({
             ); // _id in payment
 
             if (lastPaid) {
-                // dueAmount = lastPaid.osAmount;
                 dueAmount = lastPaid.osAmount;
                 // return dueAmount;
             }
@@ -166,7 +164,11 @@ Template.paymentInsert.events({
         let paidAmount = $('.jsPaidAmount').val();
         let dueAmount = $('.jsDueAmount').val();
         $('.jsOsAmount').val(dueAmount - paidAmount);
+    },
+    'click #js-savePrint': function () {
+        Session.set('print', true)
     }
+
 });
 
 // Update
@@ -183,6 +185,7 @@ Template.paymentUpdate.events({
         let dueAmount = $('.jsDueAmount').val();
         $('.jsOsAmount').val(dueAmount - paidAmount);
     }
+
 });
 // Template.paymentUpdate.helpers({
 //     paymentDoc: function () {
@@ -206,28 +209,53 @@ Template.paymentUpdate.events({
 //hook
 AutoForm.hooks({
         paymentInsert: {//id autoform
-            onSuccess(formType, id){
+            before: {
+                insert: function (doc) {
+                    doc._id = idGenerator.gen(Collection.Payment, 3);
+                    return doc;
+                }
+            },
+            onSuccess(formType, result){
+
+                var paymentId = result;
+                var printSession = Session.get('print');
+
+                if (printSession) {
+                    Session.set('print', false);
+                    let paymentDoc = Collection.Payment.findOne({_id: paymentId});
+                    let q = paymentDoc._id;
+                    let url = '/rabbit/printPayment/' + q;
+                    window.open(url);
+                    // let path = FlowRouter.path('printPayment', paymentDoc._id);
+                    // window.open(path, '_blank');
+                    alertify.payment().close();
+                }
+
                 //Bert.Alert('Successfully Added', 'success', 'growl-top-right');
                 alertify.success('Successfully Added');
             },
             onError(formType, error){
                 alertify.error(error.message);
                 //Bert.alert(error.message, 'danger', 'growl-top-right');
-            },
-            paymentUpdate: {//id autoform
-                onSuccess(formType, id){
-                    //Bert.Alert('Successfully Added', 'success', 'growl-top-right');
-                    alertify.success('Successfully Updated');
-                    alertify.payment().close();
-                },
-                onError(formType, error){
-                    alertify.error(error.message);
-                    //Bert.alert(error.message, 'danger', 'growl-top-right');
-                }
             }
 
+        },
+        paymentUpdate: {//id autoform
+            onSuccess(formType, result)
+            {
+                //Bert.Alert('Successfully Added', 'success', 'growl-top-right');
+                alertify.success('Successfully Updated');
+                alertify.payment().close();
+            }
+            ,
+            onError(formType, error)
+            {
+                alertify.error(error.message);
+                //Bert.alert(error.message, 'danger', 'growl-top-right');
+            }
         }
     }
-);
+)
+;
 
 
