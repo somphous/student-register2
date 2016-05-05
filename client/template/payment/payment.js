@@ -246,8 +246,7 @@ AutoForm.hooks({
                 //Bert.Alert('Successfully Added', 'success', 'growl-top-right');
                 alertify.success('Successfully Updated');
                 alertify.payment().close();
-            }
-            ,
+            },
             onError(formType, error)
             {
                 alertify.error(error.message);
