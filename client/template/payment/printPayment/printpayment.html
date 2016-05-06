@@ -37,23 +37,23 @@
             {{#with data}}
                 <table width="100%" class="table">
                     <tr>
-                        <th>ឈ្មោះសិស្ស/Student Name:</th>
+                        <td>ឈ្មោះសិស្ស/Student Name:</td>
                         <td>{{_student.latinName}}</td>
                     </tr>
                     <tr>
-                        <th>ចំនួនទឹកប្រាក់ដែលត្រូវបង់/DueAmount:</th>
+                        <td>ចំនួនទឹកប្រាក់ដែលត្រូវបង់/DueAmount:</td>
                         <td>{{numFormat dueAmount "$ 0,0.00"}}</td>
                     </tr>
                     <tr>
-                        <th>ចំនួនទឹកប្រាក់ដែលបានបង់/Paid Amount:</th>
+                        <td>ចំនួនទឹកប្រាក់ដែលបានបង់/Paid Amount:</td>
                         <td>{{numFormat paidAmount "$ 0,0.00"}}</td>
                     </tr>
                     <tr>
-                        <th>ទឹកប្រាក់ជាអក្សរ/In Word:</th>
+                        <td>ទឹកប្រាក់ជាអក្សរ/In Word:</td>
                         <td>{{toWords paidAmount}} ដុល្លា</td>
                     </tr>
                     <tr>
-                        <th>បរិយាយ/Description:</th>
+                        <td>បរិយាយ/Description:</td>
                         <td>{{_subject.name}}</td>
                     </tr>
                 </table>
