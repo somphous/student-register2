@@ -108,7 +108,30 @@ Schema.Student = new SimpleSchema({
     },
     'emergencyContact.email': {
         type: String
+    },
+    photo: {
+        type: String,
+        autoform: {
+            afFieldInput: {
+                type: 'fileUpload',
+                collection: 'Files',
+                accept: 'image/*'
+            }
+        },
+        optional: true
     }
 
 });
 Collection.Student.attachSchema(Schema.Student);
+
+Files.allow({
+    insert: function (userId, doc) {
+        return true;
+    },
+    update: function(userId, doc, fieldNames, modifier){
+        return true;
+    },
+    download: function (userId) {
+        return true;
+    }
+})

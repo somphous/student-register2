@@ -75,3 +75,15 @@ check
 
 theara:collection-cache
 underscorestring:underscore.string
+
+#file insert phot
+cfs:standard-packages
+cfs:gridfs
+yogiben:autoform-file
+peerlibrary:fs
+ostrio:meteor-root
+czbaker:lightbox2
+theara:lightbox-helpers
+
+meteorhacks:aggregate
+danappelxx:hover.css

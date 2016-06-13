@@ -63,6 +63,6 @@ TabularTables.Student = new Tabular.Table({
                 return '';
             }
 
-        },
+        }
     ]
 });

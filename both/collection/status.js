@@ -18,11 +18,36 @@ Schema.Status=new SimpleSchema({
         type:String,
         label:'Status'
     },
-    description:{
+    // description:{
+    //     type: String,
+    //     label: 'Description',
+    //     optional: true
+    // },
+    description: {
         type: String,
-        label: 'Description',
-        optional: true
+        label: "Description",
+        optional: true,
+        autoform: {
+            afFieldInput: {
+                type: 'summernote',
+                class: 'editor',
+                settings: {
+                    height: 130,
+                    placeholder:'Text here',
+                    toolbar: [
+                        //[groupname, [button list]]
+                        ['style', ['bold', 'italic', 'underline']],
+                        ['font', ['strikethrough']],
+                        ['fontsize', ['fontsize']],
+                        ['color', ['color']],
+                        ['para', ['ul', 'ol', 'paragraph']],
+                        ['misc', ['fullscreen']]
+                    ]
+                }
+            }
+        }
     },
+
     studentId:{
         type: String,
         label: 'Stduent Id'

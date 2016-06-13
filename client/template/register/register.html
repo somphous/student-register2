@@ -29,8 +29,9 @@
                             {{>afQuickField name= "time" options=time}}
                         </div>
                         <div class="col-md-6 col-md-3">
-                            {{>afQuickField name= "studentStatus"}}
                             {{>afQuickField name= "InformationBy"}}
+                            {{>afQuickField name= "studentOccupation"}}
+                            <!--{{>afQuickField name= "informDescription"}}-->
                         </div>
                     </div>
                 </fieldset>
@@ -42,90 +43,91 @@
 </template>
 <!--update-->
 <template name="registerUpdate">
-    <!--{{#if Template.subscriptionsReady}}-->
-        <div class="panel panel-default">
-            <div class="panel-body">
-                {{#autoForm collection="Collection.Register" doc=this id="registerUpdate" type="update"}}
-                    <fieldset>
-                        <div class="row">
-                            <div class="col-xs-6 col-md-3">
-                                {{>afQuickField name= "regDate"}}
-                                <!--{{>afQuickField name= "studentId" options=studentId}}-->
-                                <label>Student</label>
-                                <input type="text" class="form-control" value="{{this._student.latinName}}" readonly="true">
-                                {{>afQuickField name= "subjectId" options=subjectId class="jsSubjectId"}}
-                            </div>
-                            <div class="col-xs-6 col-md-3">
-                                {{>afQuickField name= "price" class="jsPrice"}}
-                                {{>afQuickField name= "discount" class="jsDiscount"}}
-                                {{>afQuickField name= "amount" value=amount class="jsAmount"}}
-                            </div>
-                            <div class="col-xs-6 col-md-3">
-                                {{>afQuickField name= "teacherId" options=teacherId}}
-                                {{>afQuickField name= "day" options=day}}
-                                {{>afQuickField name= "time" options=time}}
-                            </div>
-                            <div class="col-md-6 col-md-3">
-                                {{>afQuickField name= "studentStatus"}}
-                                {{>afQuickField name= "InformationBy"}}
-                            </div>
+<!--{{#if Template.subscriptionsReady}}-->
+    <div class="panel panel-default">
+        <div class="panel-body">
+            {{#autoForm collection="Collection.Register" doc=this id="registerUpdate" type="update"}}
+                <fieldset>
+                    <div class="row">
+                        <div class="col-xs-6 col-md-3">
+                            {{>afQuickField name= "regDate"}}
+                            <!--{{>afQuickField name= "studentId" options=studentId}}-->
+                            <label>Student</label>
+                            <input type="text" class="form-control" value="{{this._student.latinName}}" readonly="true">
+                            {{>afQuickField name= "subjectId" options=subjectId class="jsSubjectId"}}
                         </div>
-                    </fieldset>
-                    <Button type="submit" class="btn btn-primary fa fa-save"> Save</Button>
-                    <Button type="reset" class="btn btn-default fa fa-eraser"> Save</Button>
-                {{/autoForm}}
-            </div>
+                        <div class="col-xs-6 col-md-3">
+                            {{>afQuickField name= "price" class="jsPrice"}}
+                            {{>afQuickField name= "discount" class="jsDiscount"}}
+                            {{>afQuickField name= "amount" value=amount class="jsAmount"}}
+                        </div>
+                        <div class="col-xs-6 col-md-3">
+                            {{>afQuickField name= "teacherId" options=teacherId}}
+                            {{>afQuickField name= "day" options=day}}
+                            {{>afQuickField name= "time" options=time}}
+                        </div>
+                        <div class="col-md-6 col-md-3">
+                            {{>afQuickField name= "InformationBy"}}
+                            {{>afQuickField name= "studentOccupation"}}
+                            <!--{{>afQuickField name= "informDescription"}}-->
+                        </div>
+                    </div>
+                </fieldset>
+                <Button type="submit" class="btn btn-primary fa fa-save"> Save</Button>
+                <Button type="reset" class="btn btn-default fa fa-eraser"> Save</Button>
+            {{/autoForm}}
         </div>
-    <!--{{else}}-->
-        <!--{{> spinner}}-->
-    <!--{{/if}}-->
+    </div>
+        <!--{{else}}-->
+    <!--{{> spinner}}-->
+        <!--{{/if}}-->
 </template>
 
 <!--Show-->
 <template name="registerShow">
-    <!--{{#if Template.subscriptionsReady}}-->
+<!--{{#if Template.subscriptionsReady}}-->
         <!--{{#with data}}-->
-            <dl class="dl-horizontal">
-                <dt>ID:</dt>
-                <dd>{{_id}}</dd>
+        <dl class="dl-horizontal">
+            <dt>ID:</dt>
+            <dd>{{_id}}</dd>
 
-                <dt>Register Date:</dt>
-                <dd>{{moFormat regDate "DD/MM/YYYY"}}</dd>
+            <dt>Register Date:</dt>
+            <dd>{{moFormat regDate "DD/MM/YYYY"}}</dd>
 
-                <dt>Student:</dt>
-                <dd>{{_student.latinName}}</dd>
+            <dt>Student:</dt>
+            <dd>{{_student.latinName}}</dd>
 
-                <dt>Subject:</dt>
-                <dd>{{_subject.name}}</dd>
+            <dt>Subject:</dt>
+            <dd>{{_subject.name}}</dd>
 
-                <dt>Price:</dt>
-                <dd>{{numFormat price "$ 0,0.00"}}</dd>
+            <dt>Price:</dt>
+            <dd>{{numFormat price "$ 0,0.00"}}</dd>
 
-                <dt>Discount:</dt>
-                <dd>{{numFormat discount "$ 0,0.00"}}</dd>
+            <dt>Discount:</dt>
+            <dd>{{numFormat discount "$ 0,0.00"}}</dd>
 
-                <dt>Amoount:</dt>
-                <dd>{{numFormat amount "$ 0,0.00"}}</dd>
+            <dt>Amoount:</dt>
+            <dd>{{numFormat amount "$ 0,0.00"}}</dd>
 
-                <dt>Teacher:</dt>
-                <dd>{{_teacher.name}}</dd>
+            <dt>Teacher:</dt>
+            <dd>{{_teacher.name}}</dd>
 
-                <dt>Day:</dt>
-                <dd>{{day}}</dd>
+            <dt>Day:</dt>
+            <dd>{{day}}</dd>
 
-                <dt>Time:</dt>
-                <dd>{{time}}</dd>
+            <dt>Time:</dt>
+            <dd>{{time}}</dd>
 
-                <dt>Student Status:</dt>
-                <dd>{{studentStatus}}</dd>
+            <dt>Student Status:</dt>
+            <dd>{{studentStatus}}</dd>
 
-                <dt>Inform By:</dt>
-                <dd>{{InformationBy}}</dd>
-            </dl>
-        <!--{{/with}}-->
-    <!--{{else}}-->
-        <!--{{> spinner}}-->
-    <!--{{/if}}-->
+            <dt>Inform By:</dt>
+            <dd>{{InformationBy}}</dd>
+        </dl>
+            <!--{{/with}}-->
+        <!--{{else}}-->
+    <!--{{> spinner}}-->
+        <!--{{/if}}-->
 </template>
 
 <!--action-->

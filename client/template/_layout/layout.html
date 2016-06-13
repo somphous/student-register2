@@ -19,13 +19,14 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="{{pathFor 'home'}}">Home</a></li>
+                    <li><a href="{{pathFor 'home'}}" class="fa fa-home" style="font-size: 16px">
+                        Home</a></li>
 
 
                     <!--Data-->
                     {{#if isInRole 'Data'}}
                         <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Data
+                            <a class="dropdown-toggle " data-toggle="dropdown" href="#">Data
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li class="{{isActiveRoute name='student'}}">
@@ -56,6 +57,10 @@
                                 <li class="{{isActiveRoute name='teacher'}}">
                                     <a href="{{pathFor 'teacher'}}">Teacher</a>
                                 </li>
+                                <li class="{{isActiveRoute name='userToRole'}}">
+                                    <a href="{{pathFor 'userToRole'}}">Role</a>
+                                </li>
+
                             </ul>
                         </li>
                     {{/if}}
@@ -66,6 +71,10 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Report
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
+                                <li class="{{isActiveRoute name='activeStudentRpt'}}">
+                                    <a href="{{pathFor 'activeStudentRpt'}}">
+                                        <i class="fa fa-file-o" aria-hidden="true"></i> Active Student Reprot</a>
+                                </li>
                                 <li class="{{isActiveRoute name='registerRpt'}}">
                                     <a href="{{pathFor 'registerRpt'}}">Register</a>
                                 </li>
@@ -85,12 +94,12 @@
                             </ul>
                         </li>
                     {{/if}}
-                    {{#if isInRole 'Setting'}}
-                        <!--User add roles-->
-                        <li class="{{isActiveRoute name='userToRole'}}">
-                            <a href="{{pathFor 'userToRole'}}">Role</a>
-                        </li>
-                    {{/if}}
+                    <!--{{#if isInRole 'Setting'}}-->
+                        <!--&lt;!&ndash;User add roles&ndash;&gt;-->
+                        <!--<li class="{{isActiveRoute name='userToRole'}}">-->
+                            <!--<a href="{{pathFor 'userToRole'}}">Role</a>-->
+                        <!--</li>-->
+                    <!--{{/if}}-->
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">

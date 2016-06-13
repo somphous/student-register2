@@ -14,19 +14,18 @@
             {{#autoForm collection="Collection.Teacher" id="teacherInsert" type="insert"}}
                 <fieldset>
                     <div class="row">
-                        <div class="col-xs-6 col-md-6">
+                        <div class="col-xs-6 col-md-4">
                             {{>afQuickField name= "name"}}
                             {{>afQuickField name= "gender"}}
                             {{>afQuickField name= "birthDate"}}
                         </div>
-                        <div class="col-xs-6 col-md-6">
+                        <div class="col-xs-6 col-md-4">
                             {{>afQuickField name= "telephone"}}
                             {{>afQuickField name= "subject"}}
                         </div>
-                        <!--<div class="col-xs-6 col-md-4">-->
-                            <!--&lt;!&ndash;{{>afQuickField name= "day"}}&ndash;&gt;-->
-                            <!--&lt;!&ndash;{{>afQuickField name= "time"}}&ndash;&gt;-->
-                        <!--</div>-->
+                        <div class="col-xs-6 col-md-4">
+                            {{>afQuickField name= "description"}}
+                        </div>
                     </div>
                     <Button type="submit" class="btn btn-primary fa fa-save"> Save</Button>
                     <Button type="reset" class="btn btn-default fa fa-refresh"> Save</Button>
@@ -38,63 +37,62 @@
 
 <!--update-->
 <template name="teacherUpdate">
-    <!--{{#if Template.subscriptionsReady}}-->
-        <div class="panel panel-default">
-            <div class="panel-body">
-                {{#autoForm collection="Collection.Teacher" doc=this id="teacherUpdate" type="update"}}
-                    <fieldset>
-                        <div class="row">
-                            <div class="col-xs-6 col-md-6">
-                                {{>afQuickField name= "name"}}
-                                {{>afQuickField name= "gender"}}
-                                {{>afQuickField name= "birthDate"}}
-                            </div>
-                            <div class="col-xs-6 col-md-6">
-                                {{>afQuickField name= "telephone"}}
-                                {{>afQuickField name= "subject"}}
-                            </div>
-                            <!--<div class="col-xs-6 col-md-3">-->
-                                <!--&lt;!&ndash;{{>afQuickField name= "day"}}&ndash;&gt;-->
-                                <!--&lt;!&ndash;{{>afQuickField name= "time"}}&ndash;&gt;-->
-                            <!--</div>-->
+<!--{{#if Template.subscriptionsReady}}-->
+    <div class="panel panel-default">
+        <div class="panel-body">
+            {{#autoForm collection="Collection.Teacher" doc=this id="teacherUpdate" type="update"}}
+                <fieldset>
+                    <div class="row">
+                        <div class="col-xs-6 col-md-4">
+                            {{>afQuickField name= "name"}}
+                            {{>afQuickField name= "gender"}}
+                            {{>afQuickField name= "birthDate"}}
                         </div>
-                        <Button type="submit" class="btn btn-primary fa fa-save"> Save</Button>
-                    </fieldset>
-                {{/autoForm}}
-            </div>
+                        <div class="col-xs-6 col-md-4">
+                            {{>afQuickField name= "telephone"}}
+                            {{>afQuickField name= "subject"}}
+                        </div>
+                        <div class="col-xs-6 col-md-4">
+                            {{>afQuickField name= "description"}}
+                        </div>
+                    </div>
+                    <Button type="submit" class="btn btn-primary fa fa-save"> Save</Button>
+                </fieldset>
+            {{/autoForm}}
         </div>
-    <!--{{else}}-->
-        <!--{{> spinner}}-->
-    <!--{{/if}}-->
+    </div>
+        <!--{{else}}-->
+    <!--{{> spinner}}-->
+        <!--{{/if}}-->
 </template>
 
 <!--Show-->
 <template name="teacherShow">
-    <!--{{#if Template.subscriptionsReady}}-->
+<!--{{#if Template.subscriptionsReady}}-->
         <!--{{#with data}}-->
-            <dl class="dl-horizontal">
-                <dt>ID:</dt>
-                <dd>{{_id}}</dd>
+        <dl class="dl-horizontal">
+            <dt>ID:</dt>
+            <dd>{{_id}}</dd>
 
-                <dt>Name:</dt>
-                <dd>{{name}}</dd>
+            <dt>Name:</dt>
+            <dd>{{name}}</dd>
 
-                <dt>Gender:</dt>
-                <dd>{{gender}}</dd>
+            <dt>Gender:</dt>
+            <dd>{{gender}}</dd>
 
-                <dt>Date of Birth:</dt>
-                <dd>{{moFormat birthDate "DD/MM/YYYY"}}</dd>
+            <dt>Date of Birth:</dt>
+            <dd>{{moFormat birthDate "DD/MM/YYYY"}}</dd>
 
-                <dt>Telephone:</dt>
-                <dd>{{telephone}}</dd>
+            <dt>Telephone:</dt>
+            <dd>{{telephone}}</dd>
 
-                <dt>Subject:</dt>
-                <dd>{{subject}}</dd>
-            </dl>
-        <!--{{/with}}-->
-    <!--{{else}}-->
-        <!--{{> spinner}}-->
-    <!--{{/if}}-->
+            <dt>Subject:</dt>
+            <dd>{{subject}}</dd>
+        </dl>
+            <!--{{/with}}-->
+        <!--{{else}}-->
+    <!--{{> spinner}}-->
+        <!--{{/if}}-->
 </template>
 
 <!--action-->

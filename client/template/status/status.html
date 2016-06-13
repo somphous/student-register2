@@ -14,14 +14,16 @@
             {{#autoForm collection="Collection.Status" id="statusInsert" type="insert"}}
                 <fieldset>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-xs-6 col-md-4">
                             {{>afQuickField name= "statusDate" }}
-                            {{>afQuickField name= "status" options=status}}
-                            {{>afQuickField name= "description"}}
-                        </div>
-                        <div class="col-md-6">
                             {{>afQuickField name= "studentId" options=studentId}}
+                        </div>
+                        <div class="col-xs-6 col-md-4">
                             {{>afQuickField name= "registerId" options=registerId}}
+                            {{>afQuickField name= "status" options=status}}
+                        </div>
+                        <div class="col-xs-6 col-md-4">
+                            {{>afQuickField name= "description"}}
                         </div>
                     </div>
                 </fieldset>
@@ -34,64 +36,64 @@
 
 <!--update-->
 <template name="statusUpdate">
-    <!--{{#if Template.subscriptionsReady}}-->
-        <div class="panel panel-default">
-            <div class="panel-body">
-                {{#autoForm collection="Collection.Status" doc=this id="statusUpdate" type="update"}}
-                    <fieldset>
-                        <div class="row">
-                            <div class="col-md-6">
-                                {{>afQuickField name= "statusDate"}}
-                                {{>afQuickField name= "status" options=status}}
-                                {{>afQuickField name= "description"}}
-                            </div>
-                            <div class="col-md-6">
-                                <!--{{>afQuickField name= "stduentId" options=studentId}}-->
-                                <label>Student</label>
-                                <input type="text" class="form-control" value="{{this._student.latinName}}" readonly="true">
-
-                                {{>afQuickField name= "registerId" id="register-id"}}
-
-                            </div>
+<!--{{#if Template.subscriptionsReady}}-->
+    <div class="panel panel-default">
+        <div class="panel-body">
+            {{#autoForm collection="Collection.Status" doc=this id="statusUpdate" type="update"}}
+                <fieldset>
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{>afQuickField name= "statusDate"}}
+                            {{>afQuickField name= "status" options=status}}
+                            {{>afQuickField name= "description"}}
                         </div>
-                    </fieldset>
-                    <Button type="submit" class="btn btn-primary fa fa-save"> Save</Button>
-                {{/autoForm}}
-            </div>
+                        <div class="col-md-6">
+                            <!--{{>afQuickField name= "stduentId" options=studentId}}-->
+                            <label>Student</label>
+                            <input type="text" class="form-control" value="{{this._student.latinName}}" readonly="true">
+
+                            {{>afQuickField name= "registerId" id="register-id"}}
+
+                        </div>
+                    </div>
+                </fieldset>
+                <Button type="submit" class="btn btn-primary fa fa-save"> Save</Button>
+            {{/autoForm}}
         </div>
-    <!--{{else}}-->
-        <!--{{> spinner}}-->
-    <!--{{/if}}-->
+    </div>
+        <!--{{else}}-->
+    <!--{{> spinner}}-->
+        <!--{{/if}}-->
 </template>
 
 <!--Show-->
 <template name="statusShow">
-    <!--{{#if Template.subscriptionsReady}}-->
+<!--{{#if Template.subscriptionsReady}}-->
         <!--{{#with data}}-->
-            <dl class="dl-horizontal">
-                <dt>ID:</dt>
-                <dd>{{_id}}</dd>
+        <dl class="dl-horizontal">
+            <dt>ID:</dt>
+            <dd>{{_id}}</dd>
 
-                <dt>Name:</dt>
-                <dd>{{moFormat statusDate "DD/MM/YYYY"}}</dd>
+            <dt>Name:</dt>
+            <dd>{{moFormat statusDate "DD/MM/YYYY"}}</dd>
 
-                <dt>Status:</dt>
-                <dd>{{status}}</dd>
+            <dt>Status:</dt>
+            <dd>{{status}}</dd>
 
-                <dt>Description:</dt>
-                <dd>{{description}}</dd>
+            <dt>Description:</dt>
+            <dd>{{description}}</dd>
 
-                <dt>Student:</dt>
-                <dd>{{studentId}}</dd>
+            <dt>Student:</dt>
+            <dd>{{studentId}}</dd>
 
-                <dt>RegisterId:</dt>
-                <dd>{{registerId}}</dd>
+            <dt>RegisterId:</dt>
+            <dd>{{registerId}}</dd>
 
-            </dl>
-        <!--{{/with}}-->
-    <!--{{else}}-->
-        <!--{{> spinner}}-->
-    <!--{{/if}}-->
+        </dl>
+            <!--{{/with}}-->
+        <!--{{else}}-->
+    <!--{{> spinner}}-->
+        <!--{{/if}}-->
 </template>
 
 <!--action-->

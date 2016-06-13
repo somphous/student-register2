@@ -54,6 +54,31 @@ Schema.Teacher = new SimpleSchema({
             }
         }
     },
+    description: {
+        type: String,
+        label: "Description",
+        optional: true,
+        autoform: {
+            afFieldInput: {
+                type: 'summernote',
+                class: 'editor',
+                settings: {
+                    height: 130,
+                    placeholder:'Text here',
+                    toolbar: [
+                        //[groupname, [button list]]
+                        ['style', ['bold', 'italic', 'underline']],
+                        ['font', ['strikethrough']],
+                        ['fontsize', ['fontsize']],
+                        ['color', ['color']],
+                        ['para', ['ul', 'ol', 'paragraph']],
+                        ['misc', ['fullscreen']]
+                    ]
+                }
+            }
+        }
+    }
+
     // day: {
     //     type: [String],
     //     label: "Day",

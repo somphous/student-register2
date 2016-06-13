@@ -178,9 +178,9 @@ Schema.Register = new SimpleSchema({
 
         }
     },
-    studentStatus: {
+    studentOccupation: {
         type: String,
-        label: "Student Status",
+        label: "Student Occupation",
         optional: true,
         min: 1,
         max: 1000,
@@ -189,17 +189,36 @@ Schema.Register = new SimpleSchema({
             placeholder:'Text here'
         }
     },
+    // informDescription: {
+    //     type: String,
+    //     label: "Inform By",
+    //     optional: true,
+    //     min: 1,
+    //     max: 1000,
+    //     autoform: {
+    //         rows: 3,
+    //         placeholder:'Text here'
+    //     }
+    // },
     InformationBy: {
         type: String,
-        label: "Inform By",
+        label: 'InformDescription',
         optional: true,
-        min: 1,
-        max: 1000,
         autoform: {
-            rows: 3,
-            placeholder:'Text here'
+            type: 'select2',
+            options: function () {
+                return [
+                    {label: '(Select One)', value: ''},
+                    {label: 'Friend', value: 'friend'},
+                    {label: 'Staff', value: 'staff'},
+                    {label: 'Leaflet', value: 'leaflet'},
+                    {label: 'TV', value: 'TV'},
+                    {label: 'Radio', value: 'radio'}
+                ];
+            }
         }
-    },_student: {
+    },
+    _student: {
         type: Object,
         optional: true,
         blackbox: true

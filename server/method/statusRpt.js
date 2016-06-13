@@ -27,9 +27,9 @@ Meteor.methods({
         let option = {sort: {statusDate: 1}};
         let temp = Collection.Status.find(selector, option);
         let content = [];
-
+        
         temp.forEach(function (obj) {
-
+        
             if (obj.status == status) {
                 if (obj.status == 'Active') {
                     countActive += 1;
@@ -43,7 +43,7 @@ Meteor.methods({
                 if (obj.status == 'Close') {
                     countClosed += 1;
                 }
-                
+        
                 content.push(obj);
             }
             else if (status == null) {
@@ -61,8 +61,10 @@ Meteor.methods({
                 }
                 content.push(obj);
             }
-
+        
         });
+
+
 
         data.content = content;
         
