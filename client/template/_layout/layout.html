@@ -26,20 +26,20 @@
                     <!--Data-->
                     {{#if isInRole 'Data'}}
                         <li class="dropdown">
-                            <a class="dropdown-toggle " data-toggle="dropdown" href="#">Data
+                            <a class="fa fa-database" data-toggle="dropdown" href="#"> Data
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li class="{{isActiveRoute name='student'}}">
-                                    <a href="{{pathFor 'student'}}">Student</a>
+                                    <a href="{{pathFor 'student'}}" class="fa fa-graduation-cap"> Student</a>
                                 </li>
                                 <li class="{{isActiveRoute name='register'}}">
-                                    <a href="{{pathFor 'register'}}">Register</a>
+                                    <a href="{{pathFor 'register'}}" class="fa fa-pencil-square-o"> Register</a>
                                 </li>
                                 <li class="{{isActiveRoute name='payment'}}">
-                                    <a href="{{pathFor 'payment'}}">Payment</a>
+                                    <a href="{{pathFor 'payment'}} " class="fa fa-money"> Payment</a>
                                 </li>
                                 <li class="{{isActiveRoute name='status'}}">
-                                    <a href="{{pathFor 'status'}}">Status</a>
+                                    <a href="{{pathFor 'status'}}" class="fa fa-user-md"> Status</a>
                                 </li>
                             </ul>
                         </li>
@@ -48,17 +48,17 @@
                     <!--Setting-->
                     {{#if isInRole 'Setting'}}
                         <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Setting
+                            <a class="dropdown-toggle fa fa-cog" data-toggle="dropdown" href="#"> Setting
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li class="{{isActiveRoute name='subject'}}">
-                                    <a href="{{pathFor 'subject'}}">Subject</a>
+                                    <a href="{{pathFor 'subject'}}" class="fa fa-book"> Subject</a>
                                 </li>
                                 <li class="{{isActiveRoute name='teacher'}}">
-                                    <a href="{{pathFor 'teacher'}}">Teacher</a>
+                                    <a href="{{pathFor 'teacher'}} " class="fa fa-users"> Teacher</a>
                                 </li>
                                 <li class="{{isActiveRoute name='userToRole'}}">
-                                    <a href="{{pathFor 'userToRole'}}">Role</a>
+                                    <a href="{{pathFor 'userToRole'}}" class="fa fa-key"> Role</a>
                                 </li>
 
                             </ul>
@@ -68,27 +68,27 @@
                     <!--Report-->
                     {{#if isInRole 'Report'}}
                         <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Report
+                            <a class="dropdown-toggle fa fa-file" data-toggle="dropdown" href="#"> Report
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li class="{{isActiveRoute name='activeStudentRpt'}}">
-                                    <a href="{{pathFor 'activeStudentRpt'}}">Student Report</a>
+                                    <a href="{{pathFor 'activeStudentRpt'}}" class="fa fa-file-o"> Student Report</a>
                                         <!--<i class="fa fa-file-o" aria-hidden="true"></i> Active Student Report</a>-->
                                 </li>
                                 <li class="{{isActiveRoute name='registerRpt'}}">
-                                    <a href="{{pathFor 'registerRpt'}}">Register</a>
+                                    <a href="{{pathFor 'registerRpt'}}" class="fa fa-file-o"> Register</a>
                                 </li>
                                 <li class="{{isActiveRoute name='paymentRpt'}}">
-                                    <a href="{{pathFor 'paymentRpt'}}">Payment</a>
+                                    <a href="{{pathFor 'paymentRpt'}}" class="fa fa-file-o"> Payment</a>
                                 </li>
                                 <li class="{{isActiveRoute name='osRpt'}}">
-                                    <a href="{{pathFor 'osRpt'}}">Out Standing</a>
+                                    <a href="{{pathFor 'osRpt'}}" class="fa fa-file-o"> OutStanding</a>
                                 </li>
                                 <li class="{{isActiveRoute name='subjectRptGen'}}">
-                                    <a href="{{pathFor 'subjectRptGen'}}" target="_blank">Subject</a>
+                                    <a href="{{pathFor 'subjectRptGen'}}" class="fa fa-file-o" target="_blank"> Subject</a>
                                 </li>
                                 <li class="{{isActiveRoute name='statusRpt'}}">
-                                    <a href="{{pathFor 'statusRpt'}}">Status</a>
+                                    <a href="{{pathFor 'statusRpt'}}" class="fa fa-file-o" > Status</a>
                                 </li>
 
                             </ul>

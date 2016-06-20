@@ -1,0 +1,155 @@
+
+.info-box.purple {
+    background: #4a148c;
+    border: 1px solid #4a148c;
+    margin-left: 15px;
+    margin-top: 10px;
+    box-shadow: 1px 1px 5px #888888;
+}
+
+.info-box.blue {
+    background: #0d47a1;
+    border: 1px solid #0d47a1;
+    margin-left: 4px;
+    margin-top: 10px;
+    box-shadow: 1px 1px 5px #888888;
+}
+
+.info-box.red {
+    background: #d50000;
+    border: 1px solid #d50000;
+    margin-left: -6px;
+    margin-top: 10px;
+    box-shadow: 1px 1px 5px #888888;
+}
+
+.info-box.blue-light {
+    background: #01579b;
+    border: 1px solid #01579b;
+    margin-left: -15px;
+    margin-top: 10px;
+    box-shadow: 1px 1px 5px #888888;
+}
+
+.info-box.teal {
+    background: #004d40;
+    border: 1px solid #004d40;
+    margin-left: 15px;
+    box-shadow: 1px 1px 5px #888888;
+}
+
+.info-box.green {
+    background: #1b5e20;
+    border: 1px solid #1b5e20;
+    margin-left: 4px;
+    box-shadow: 1px 1px 5px #888888;
+}
+
+.info-box.orange {
+    background: #e65100;
+    border: 1px solid #e65100;
+    margin-left: -6px;
+    box-shadow: 1px 1px 5px #888888;
+}
+
+.info-box.black {
+    background: #616161;
+    border: 1px solid #616161;
+    margin-left: -15px;
+    box-shadow: 1px 1px 5px #888888;
+}
+
+.info-box {
+    height: 125px;
+    width: 262px;
+    margin-bottom: 12px;
+}
+
+.info-box > a > i:hover {
+    color: white;
+}
+
+.info-box i {
+    display: block;
+    height: 124px;
+    font-size: 65px;
+    line-height: 125px;
+    width: 110px;
+    float: left;
+    text-align: center;
+    border-right: 2px solid rgba(255, 255, 255, 0.5);
+    margin-right: 15px;
+    padding-right: 30;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.fa {
+    display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.h1-dashboard {
+    font-size: 33px;
+    margin-top: 7px;
+    color: #BFDDDA;
+}
+
+.h1-dashboard:hover {
+    color: white;
+}
+
+.no-underline:hover {
+    text-decoration: none;
+}
+
+.simple-text {
+    color: #BFDDDA;
+    font-size: 12px;
+}
+
+.dashboard-a {
+    color: #BFDDDA;
+}
+
+.dashboard-a:hover {
+    color: white;
+}
+
+.img-dashboard {
+    margin-top: 3px;
+}
+
+/*Panel*/
+.panel-success > .panel-heading {
+    color: #FFFFFF;
+    background-color: #00796B;
+    border-color: #00796B;
+}
+.panel-success {
+    border-color: #00796B;
+}
+.panel{
+    border-radius: 0px;
+}
+.panel-heading {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+/*server Timer*/
+.label-teal {
+    background-color: white;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    color: #00796B;
+}
