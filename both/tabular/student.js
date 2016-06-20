@@ -31,38 +31,38 @@ TabularTables.Student = new Tabular.Table({
         {data: "maritalStatus", title: "Marital Status"},
         {data: "telephone", title: "Telephone"},
         {data: "email", title: "Email"},
-        {
-            data: "currentAddress",
-            title: "Current Address",
-            render(val){
-                if (!_.isUndefined(val)) {
-                    return val.numberHouse + ', ' +
-                        val.groupHouse + ', ' +
-                        val.village + ', ' +
-                        val.commune + ', ' +
-                        val.district + ', ' +
-                        val.province
-                        ;
-                }
-                return '';
-            }
-
-        },
-        {
-            data: "emergencyContact",
-            title: "Emergency Contact",
-            render(val){
-                if (!_.isUndefined(val)) {
-                    return val.name + ', ' +
-                        val.gender + ', ' +
-                        val.relation + ', ' +
-                        val.telephone + ', ' +
-                        val.email
-                        ;
-                }
-                return '';
-            }
-
-        }
+        // {
+        //     data: "currentAddress",
+        //     title: "Current Address",
+        //     render(val){
+        //         if (!_.isUndefined(val)) {
+        //             return val.numberHouse + ', ' +
+        //                 val.groupHouse + ', ' +
+        //                 val.village + ', ' +
+        //                 val.commune + ', ' +
+        //                 val.district + ', ' +
+        //                 val.province
+        //                 ;
+        //         }
+        //         return '';
+        //     }
+        //
+        // },
+        // {
+        //     data: "emergencyContact",
+        //     title: "Emergency Contact",
+        //     render(val){
+        //         if (!_.isUndefined(val)) {
+        //             return val.name + ', ' +
+        //                 val.gender + ', ' +
+        //                 val.relation + ', ' +
+        //                 val.telephone + ', ' +
+        //                 val.email
+        //                 ;
+        //         }
+        //         return '';
+        //     }
+        //
+        // }
     ]
 });
