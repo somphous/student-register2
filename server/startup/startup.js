@@ -3,7 +3,7 @@ Meteor.startup(function () {
         let superId = Accounts.createUser({
             username: 'super',
             email: 'super@learn.com',
-            password: 'super123'
+            password: 'kai123'
         });
         Roles.addUsersToRoles(superId, ['Setting', 'Data', 'Report', 'super'])
     }

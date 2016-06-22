@@ -26,6 +26,7 @@ AutoForm.hooks({
         osRpt: {
             onSubmit(insertDoc, updateDoc, currentDoc){
                 this.done(null, insertDoc);
+                return false;
             },
             onSuccess(formType, result){
                 let query = result;
