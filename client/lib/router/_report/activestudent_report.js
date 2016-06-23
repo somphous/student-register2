@@ -1,12 +1,12 @@
 rabbitRoutes.route('/activeStudentRpt', {
     name: "activeStudentRpt",
     action: function (params, queryParams) {
-        // if(Roles.userIsInRole(Meteor.userId(),['Report'])){
+        if(Roles.userIsInRole(Meteor.userId(),['Report'])){
         BlazeLayout.render('mainLayout', {content: "activeStudentRpt"});
-        // }
-        // else {
-        //     FlowRouter.go('home');
-        // }
+        }
+        else {
+            FlowRouter.go('home');
+        }
     },
     breadcrumb: {
         title: 'Active Student Report',
@@ -16,11 +16,11 @@ rabbitRoutes.route('/activeStudentRpt', {
 rabbitRoutes.route('/activeStudentRptGen', {
     name: "activeStudentRptGen",
     action: function (params, queryParams) {
-        // if(Roles.userIsInRole(Meteor.userId(),['Report'])){
+        if(Roles.userIsInRole(Meteor.userId(),['Report'])){
         BlazeLayout.render('reportLayout', {content: "activeStudentRptGen"});
-        // }
-        // else {
-        //     FlowRouter.go('home');
-        // }
+        }
+        else {
+            FlowRouter.go('home');
+        }
     }
 });
