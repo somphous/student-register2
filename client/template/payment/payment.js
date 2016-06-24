@@ -149,7 +149,9 @@ Template.paymentInsert.helpers({
         let osAmount = 0;
         let dueAmount = AutoForm.getFieldValue('dueAmount');
         let paidAmount = AutoForm.getFieldValue('paidAmount');
-        return dueAmount - paidAmount;
+        osAmount = dueAmount - paidAmount;
+        // return dueAmount - paidAmount;
+        return osAmount
 
     },
     type: "inputmask",

@@ -119,6 +119,7 @@ Schema.Payment = new SimpleSchema({
     osAmount: {
         type: Number,
         label: "OS Amount",
+        defaultValue: 0,
         decimal: true,
         autoform: {
             //readonly: true,

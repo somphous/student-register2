@@ -163,7 +163,7 @@ Schema.Register = new SimpleSchema({
         type: Number,
         label: "Amount",
         decimal: true,
-
+        defaultValue: 0,
         autoform: {
             readonly: true,
             // value: function () {

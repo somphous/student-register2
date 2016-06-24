@@ -22,14 +22,18 @@ Meteor.methods({
             let lastPaid = Collection.Payment.findOne({
                 registerId: obj._id,
                 paidDate: {$lte: asAt}
-            }, {sort: {paidDate: -1}}); //{_id: '1', regDate: '02/04/2016', osAmount: 10}, undefined
+            }, {sort: {paidDate: 1}}); //{_id: '1', regDate: '02/04/2016', osAmount: 10}, undefined
             if (lastPaid) {
                 // check os amount
                 if (lastPaid.osAmount > 0) {
                     obj.osAmount = lastPaid.osAmount;
                     content.push(obj);
                 }
-            } else {
+                else{
+                    obj.osAmount=0;
+                }
+            }
+            else {
                 obj.osAmount = obj.amount;
                 content.push(obj);
             }
