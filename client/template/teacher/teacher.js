@@ -106,13 +106,13 @@ AutoForm.hooks({
     },
     teacherUpdate: {//id autoform
         onSuccess(formType, result){
-            console.log('success');
+            // console.log('success');
             //Bert.Alert('Successfully Added', 'success', 'growl-top-right');
             alertify.success('Updated');
             alertify.teacher().close();
         },
         onError(formType, error){
-            console.log('error');
+            // console.log('error');
             alertify.error(error.message);
             //Bert.alert(error.message, 'danger', 'growl-top-right');
         }
