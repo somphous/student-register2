@@ -1,29 +1,27 @@
 <!--Tabular-->
-<template name="status">
+<template name="attendance">
     <p>
-        <!--<a href="{{pathFor 'statusInsert'}}" class="btn btn-primary">Add New</a>-->
+        <!--<a href="{{pathFor 'attendanceInsert'}}" class="btn btn-primary">Add New</a>-->
         <button class="btn btn-primary" id="js-insert">Add New</button>
     </p>
-    {{> tabular table=TabularTables.Status class="table table-striped table-bordered table-condensed"}}
+    {{> tabular table=TabularTables.Attendance class="table table-striped table-bordered table-condensed"}}
 </template>
 
 <!--Add New-->
-<template name="statusInsert">
+<template name="attendanceInsert">
     <div class="panel panel-default">
         <div class="panel-body">
-            {{#autoForm collection="Collection.Status" id="statusInsert" type="insert"}}
+            {{#autoForm collection="Collection.Attendance" id="attendanceInsert" type="insert"}}
                 <fieldset>
                     <div class="row">
                         <div class="col-xs-6 col-md-4">
-                            {{>afQuickField name= "statusDate" }}
+                            {{>afQuickField name= "attendanceDate" }}
+                        </div>
+                        <div class="col-xs-6 col-md-4">
                             {{>afQuickField name= "studentId" options=studentId}}
                         </div>
                         <div class="col-xs-6 col-md-4">
-                            {{>afQuickField name= "registerId" options=registerId}}
-                            {{>afQuickField name= "status" options=status}}
-                        </div>
-                        <div class="col-xs-6 col-md-4">
-                            {{>afQuickField name= "description"}}
+                            {{>afQuickField name= "absent"}}
                         </div>
                     </div>
                 </fieldset>
@@ -35,29 +33,24 @@
 </template>
 
 <!--update-->
-<template name="statusUpdate">
+<template name="attendanceUpdate">
 <!--{{#if Template.subscriptionsReady}}-->
     <div class="panel panel-default">
         <div class="panel-body">
-            {{#autoForm collection="Collection.Status" doc=this id="statusUpdate" type="update"}}
+            {{#autoForm collection="Collection.Attendance" doc=this id="attendanceUpdate" type="update"}}
                 <fieldset>
                     <div class="row">
                         <div class="col-xs-6 col-md-4">
-                            {{>afQuickField name= "statusDate"}}
-                            {{>afQuickField name= "status" options=status}}
+                            {{>afQuickField name= "attendanceDate" }}
                         </div>
                         <div class="col-xs-6 col-md-4">
-                            <!--{{>afQuickField name= "stduentId" options=studentId}}-->
+                            <!--{{>afQuickField name= "studentId" options=studentId}}-->
                             <label>Student</label>
-                            <input type="text" class="form-control" value="{{this._student.latinName}}" readonly="true">
-                            <label>RegisterId</label>
-                            <input type="text" class="form-control" value="{{registerId}}" readonly="true">
-
-                            <!--{{>afQuickField name= "registerId" id="register-id"}}-->
+                            <input type="text" class="form-control" value="{{this._student.khmerName}}" readonly="true">
 
                         </div>
                         <div class="col-xs-6 col-md-4">
-                            {{>afQuickField name= "description"}}
+                            {{>afQuickField name= "absent"}}
                         </div>
                     </div>
                 </fieldset>
@@ -71,7 +64,7 @@
 </template>
 
 <!--Show-->
-<template name="statusShow">
+<template name="attendanceShow">
 <!--{{#if Template.subscriptionsReady}}-->
         <!--{{#with data}}-->
         <dl class="dl-horizontal">
@@ -79,19 +72,13 @@
             <dd>{{_id}}</dd>
 
             <dt>Name:</dt>
-            <dd>{{moFormat statusDate "DD/MM/YYYY"}}</dd>
+            <dd>{{Name}}</dd>
 
-            <dt>Status:</dt>
-            <dd>{{status}}</dd>
+            <dt>AttendanceDate:</dt>
+            <dd>{{moFormat attendanceDate "DD/MM/YYYY"}}</dd>
 
-            <dt>Description:</dt>
-            <dd>{{description}}</dd>
-
-            <dt>Student:</dt>
-            <dd>{{studentId}}</dd>
-
-            <dt>RegisterId:</dt>
-            <dd>{{registerId}}</dd>
+            <dt>Absent:</dt>
+            <dd>{{absent}}</dd>
 
         </dl>
             <!--{{/with}}-->
@@ -101,6 +88,6 @@
 </template>
 
 <!--action-->
-<template name='statusAction'>
+<template name='attendanceAction'>
     {{>tabularAction}}
 </template>

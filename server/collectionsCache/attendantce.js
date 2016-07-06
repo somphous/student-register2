@@ -1,0 +1,1 @@
+Collection.Attendance.cacheDoc('student',Collection.Student,['khmerName']);
