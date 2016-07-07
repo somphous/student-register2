@@ -16,9 +16,9 @@ Schema.Payment = new SimpleSchema({
     },
     studentId: {
         type: String,
-        label: "StudentID"
-        // autoform: {
-        //     type: "select2",
+        label: "StudentID",
+        autoform: {
+            type: "select2",
         //     options: function () {
         //         var data = Collection.Student.find();
         //         var list = [
@@ -31,13 +31,13 @@ Schema.Payment = new SimpleSchema({
         //
         //         return list;
         //     }
-        // }
+        }
     },
     registerId: {
         type: String,
         label: "Register ID",
-        // autoform: {
-        //     type: "select2",
+        autoform: {
+            type: "select2",
         //     options: function () {
         //         var studentId = AutoForm.getFieldValue('studentId');
         //         //console.log(studentId);
@@ -72,7 +72,7 @@ Schema.Payment = new SimpleSchema({
         //
         //         return list;
         //     }
-        // }
+        }
     },
     dueAmount: {
         type: Number,

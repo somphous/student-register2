@@ -16,7 +16,10 @@ Schema.Status=new SimpleSchema({
     },
     status:{
         type:String,
-        label:'Status'
+        label:'Status',
+        autoform:{
+            type: "select2"
+        }
     },
     // description:{
     //     type: String,
@@ -50,11 +53,17 @@ Schema.Status=new SimpleSchema({
 
     studentId:{
         type: String,
-        label: 'Stduent Id'
+        label: 'Stduent Id',
+        autoform:{
+            type: "select2"
+        }
     },
     registerId:{
         type: String,
-        label: 'Register Id'
+        label: 'Register Id',
+        autoform:{
+            type: "select2"
+        }
     },
     _student: {
         type: Object,

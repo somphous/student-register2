@@ -41,6 +41,12 @@
                                 <li class="{{isActiveRoute name='status'}}">
                                     <a href="{{pathFor 'status'}}" class="fa fa-user-md"> Status</a>
                                 </li>
+                                <li class="{{isActiveRoute name='attendent'}}">
+                                    <a href="{{pathFor 'attendent'}}" class="fa fa-key" target="_blank"> Attendent-sheet</a>
+                                </li>
+                                <li class="{{isActiveRoute name='attendance'}}">
+                                    <a href="{{pathFor 'attendance'}}" class="fa fa-key"> Attendent</a>
+                                </li>
                             </ul>
                         </li>
                     {{/if}}
@@ -60,12 +66,7 @@
                                 <li class="{{isActiveRoute name='userToRole'}}">
                                     <a href="{{pathFor 'userToRole'}}" class="fa fa-key"> Role</a>
                                 </li>
-                                <li class="{{isActiveRoute name='attendent'}}">
-                                    <a href="{{pathFor 'attendent'}}" class="fa fa-key" target="_blank"> Attendent-sheet</a>
-                                </li>
-                                <li class="{{isActiveRoute name='attendance'}}">
-                                    <a href="{{pathFor 'attendance'}}" class="fa fa-key"> Attendent</a>
-                                </li>
+
 
                             </ul>
                         </li>
@@ -95,6 +96,9 @@
                                 </li>
                                 <li class="{{isActiveRoute name='statusRpt'}}">
                                     <a href="{{pathFor 'statusRpt'}}" class="fa fa-file-o" > Status</a>
+                                </li>
+                                <li class="{{isActiveRoute name='attendanceRpt'}}">
+                                    <a href="{{pathFor 'attendanceRpt'}}" class="fa fa-file-o" > Attendance</a>
                                 </li>
 
                             </ul>
