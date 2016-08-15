@@ -15,7 +15,15 @@
                     <div class="row">
                         <div class="col-xs-6 col-md-3">
                             {{>afQuickField name= "regDate"}}
+
+                            <!--<input class="form-control typeahead " name="studentId" type="text" placeholder="Type to query"-->
+                                   <!--autocomplete="off" spellcheck="off"-->
+                                   <!--data-source="studentIds" data-template='studentId' data-select='selected' data-highlight=true/>-->
+
+                            <!--</div>-->
+                            <!--<div class="row">-->
                             {{>afQuickField name= "studentId" options=studentId class="jsSubjectId"}}
+
                             {{>afQuickField name= "subjectId" options=subjectId}}
                         </div>
                         <div class="col-xs-6 col-md-3">
@@ -133,4 +141,7 @@
 <!--action-->
 <template name='registerAction'>
     {{>tabularAction}}
+</template>
+<template name="studentId">
+    <p class="student-name"><img src="{{img}}" width="120px" height="120px" class="img-circle"> | {{khmerName}} | Gender: {{gender}} | Phone: {{telephone}} </p>
 </template>

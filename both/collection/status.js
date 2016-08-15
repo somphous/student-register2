@@ -69,6 +69,11 @@ Schema.Status=new SimpleSchema({
         type: Object,
         optional: true,
         blackbox: true
+    },
+    _subject: {
+        type: Object,
+        optional: true,
+        blackbox: true
     }
 });
 Collection.Status.attachSchema(Schema.Status);

@@ -16,19 +16,19 @@ Meteor.methods({
             if (obj.status == 'Active') {
                 // total = total + 1;
                 content.push(obj);
-
             }
-            // content.push(obj);
-
 
             //find student
             let studentDoc = Collection.Student.findOne(obj.studentId);
             obj._student = studentDoc;
 
-        });
-        // footer
-        // data.footer = total;
+            // find subject
+            // let RegisterDoc=Collection.Register.findOne(obj.registerId);
+            // // console.log(RegisterDoc);
+            // let subjectDoc = Collection.Subject.findOne(RegisterDoc.subjectId);
+            // obj._subject = subjectDoc;
 
+        });
         data.content = content;
         return data;
 

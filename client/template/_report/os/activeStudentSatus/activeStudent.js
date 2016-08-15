@@ -16,7 +16,7 @@ Template.activeStudentRptGen.helpers({
         return Collection.Company.find();
     },
     no(index){
-        console.log(index);
+        // console.log(index);
         return index + 1;
     }
 });

@@ -63,9 +63,13 @@ Template.registerAction.events({
 
 // Insert
 Template.registerInsert.onCreated(function () {
+    // Meteor.typeahead.inject(); // inject typeahead on template render
     this.subscribe("teachers");
     this.subscribe("students");
     this.subscribe("subjects");
+});
+Template.registerInsert.onRendered(function () {
+    Meteor.typeahead.inject();
 });
 Template.registerInsert.events({
     'change .jsSubjectId': function () {
@@ -90,6 +94,26 @@ Template.registerInsert.events({
 });
 
 Template.registerInsert.helpers({
+    // studentIds: function(query, sync, callback) {
+    //     // console.log(query);
+    //     Meteor.call('search', query, {}, function(err, res) {
+    //         if (err) {
+    //             // console.log(err);
+    //             return;
+    //         }
+    //         // console.log(res)
+    //         callback(res);
+    //     });
+    // },
+    // selected: function(event, suggestion, datasetName) {
+    //     // event - the jQuery event object
+    //     // suggestion - the suggestion object
+    //     // datasetName - the name of the dataset the suggestion belongs to
+    //     // TODO your event handler here
+    //     $('.fk-result').val(suggestion._id);
+    //     // console.log(suggestion.name)
+    //     $('.tt-input').typeahead('val', suggestion.khmerName)
+    // },
     studentId: function () {
         var data = Collection.Student.find();
         var list = [
@@ -101,6 +125,7 @@ Template.registerInsert.helpers({
         });
         return list;
     },
+
     subjectId: function () {
         var data = Collection.Subject.find();
         var list = [
@@ -114,6 +139,7 @@ Template.registerInsert.helpers({
     },
     teacherId: function () {
         let subjectId = AutoForm.getFieldValue('subjectId');
+        
         if (!_.isUndefined(subjectId)) {
             let subject = Collection.Subject.findOne(subjectId);
             let arr = [

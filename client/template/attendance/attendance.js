@@ -68,7 +68,8 @@ Template.attendanceInsert.helpers({
                 list.push({label: obj._id + " | " + obj.latinName + ' | ' + obj.khmerName, value: obj._id});
             });
 
-        return list
+        return list;
+        
     }
 });
 

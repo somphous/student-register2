@@ -14,24 +14,33 @@ Template.attendent.helpers({
         return index + 1;
     },
     th(){
-        var str="";
-        for(i=1;i<=31;i++){
-          str += '<th style="width:27px">' + i + '</th>';
+        var str = "";
+        for (i = 1; i <= 31; i++) {
+            str += '<th style="width:27px">' + i + '</th>';
         }
         return new Spacebars.SafeString(str);
     },
     td(){
-        var str="";
-        for(i=1;i<=31;i++){
-          str += '<td style="width:27px">' +""+ '</td>';
+        var str = "";
+        for (i = 1; i <= 31; i++) {
+            str += '<td style="width:27px">' + "" + '</td>';
         }
         return new Spacebars.SafeString(str);
     },
+    blankTd(){
+        // for (j = 1; j <= 5; j++) {
+            var str = "";
+            for (i = 1; i <= 31; i++) {
+                str += '<td style="width:27px;height:20px">' + "" + '</td>';
+            }
+            return new Spacebars.SafeString(str);
+        // }
+    },
     thismonth(){
-        let today= new Date();
+        let today = new Date();
         return today;
         // return moment(today.format('mmmm'));
     }
 
-    
+
 });

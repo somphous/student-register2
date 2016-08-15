@@ -78,6 +78,7 @@ Schema.Payment = new SimpleSchema({
         type: Number,
         label: "Due Amount",
         decimal: true,
+        defaultValue:0
         // autoform: {
         //     type: "inputmask",
         //     afFieldInput: {

@@ -19,10 +19,12 @@ Meteor.methods({
 
         let content = [];
         tempContent.forEach(function (obj) {
+
+            total +=obj.absent;
             content.push(obj);
     });
 
-        // data.footer = {total: total};
+        data.footer = {total: total};
         data.content = content;
         return data;
     }

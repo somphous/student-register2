@@ -52,15 +52,19 @@
                             <input type="text" class="form-control" value="{{this._student.latinName}}" readonly="true">
                         </div>
                         <div class="col-xs-6 col-md-3">
-                            {{>afQuickField name= "registerId" readonly="true"}}
+                            <label>RegisterId</label>
+                            <input type="text" class="form-control" value="{{registerId}}" readonly="true">
+                            <!--{{>afQuickField name= "registerId" readonly="true" }}-->
                             {{>afQuickField name= "dueAmount" readonly="true" class="jsDueAmount"}}
                         </div>
                         <div class="col-xs-6 col-md-3">
-                            {{>afQuickField name= "paidAmount" class="jsPaidAmount" class="jsPaidAmount"}}
+                            {{>afQuickField name= "paidAmount" class="jsPaidAmount" }}
                             {{>afQuickField name= "osAmount" readonly="true" class="jsOsAmount"}}
                         </div>
                         <div class="col-xs-6 col-md-3">
-                            {{>afQuickField name= "voucherId" readonly="true"}}
+                            <label>VoucherId</label>
+                            <input type="text" class="form-control" value="{{voucherId}}" readonly="true">
+                            <!--{{>afQuickField name= "voucherId" readonly="true"}}-->
                         </div>
                     </div>
                 </fieldset>

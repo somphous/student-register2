@@ -90,9 +90,10 @@ Template.paymentInsert.helpers({
     },
     registerId: function () {
         var studentId = AutoForm.getFieldValue('studentId');
-        //console.log(studentId);
+        // console.log(studentId);
 
         var data = Collection.Register.find({studentId: studentId});
+        // console.log(studentId);
         var list = [
             // {label: '(Select One)', value: ''}
         ];
@@ -187,6 +188,7 @@ Template.paymentUpdate.events({
         let dueAmount = $('.jsDueAmount').val();
         $('.jsOsAmount').val(dueAmount - paidAmount);
     }
+    
 
 });
 // Template.paymentUpdate.helpers({

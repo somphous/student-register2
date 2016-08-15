@@ -13,3 +13,15 @@
 //         Collection.Student.insert(insertDoc)
 //     }
 // });
+Meteor.methods({
+    getStudentList(){
+        var list = [];
+        // list.push({label: "(Select All)", value: ""});
+        Collection.Student.find()
+            .forEach(function (obj) {
+                list.push({label: obj._id + " | " + obj.latinName + ' | ' + obj.khmerName, value: obj._id});
+            });
+
+        return list;
+    }
+});

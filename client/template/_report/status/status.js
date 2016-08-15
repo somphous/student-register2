@@ -16,7 +16,7 @@ Template.statusRptGen.helpers({
         return Session.get('statusRptResult');
     },
     no(index){
-        console.log(index);
+        // console.log(index);
         return index + 1;
     },
     // company(){

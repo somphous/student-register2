@@ -44,6 +44,7 @@
                 <tr class="bg-info">
                     <th rowspan="2">No</th>
                     <th rowspan="2">Name</th>
+                    <th rowspan="2">Subject</th>
                     <th colspan="31">{{moFormat thismonth "MMMM"}}</th>
                     <th rowspan="2">Phone</th>
                 </tr>
@@ -56,11 +57,19 @@
                     <tr>
                         <td>{{no @index}}</td>
                         <td>{{_student.khmerName}}</td>
+                        <td>{{_subject.subject}}</td>
                         {{td}}
                         <td>{{_student.telephone}}</td>
                     </tr>
 
                 {{/each}}
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    {{blankTd}}
+                    <td></td>
+                </tr>
                 <!--<tr>-->
                     <!--<td colspan="3"></td>-->
                     <!--<td align="center">Total</td>-->
@@ -70,7 +79,7 @@
             </table>
             <br>
             <!--sign-->
-            {{> signFooter}}
+            <!--{{> signFooter}}-->
         </div>
     </div>
 
