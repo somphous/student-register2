@@ -54,8 +54,8 @@
                     <thead class="content-header">
                     <tr class="bg-info">
                         <th>No</th>
-                        <th>Reg ID</th>
-                        <th>Reg Date</th>
+                        <th>ID</th>
+                        <th>Paid Date</th>
                         <th>Student</th>
                         <th>Subject</th>
                         <th>OS Amount</th>
@@ -67,7 +67,7 @@
                             <tr>
                                 <td>{{no @index}}</td>
                                 <td>{{_id}}</td>
-                                <td>{{moFormat regDate "DD/MM/YYYY"}}</td>
+                                <td>{{moFormat paidDate "DD/MM/YYYY"}}</td>
                                 <td>{{_student.latinName}}</td>
                                 <td>{{_subject.name}}</td>
                                 <td>{{numFormat osAmount "$ 0,0.00"}}</td>
