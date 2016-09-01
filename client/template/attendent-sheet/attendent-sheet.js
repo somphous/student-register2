@@ -30,7 +30,7 @@ Template.attendent.helpers({
     blankTd(){
         // for (j = 1; j <= 5; j++) {
             var str = "";
-            for (i = 1; i <= 31; i++) {
+            for (i = 1; i <= 30; i++) {
                 str += '<td style="width:27px;height:20px">' + "" + '</td>';
             }
             return new Spacebars.SafeString(str);

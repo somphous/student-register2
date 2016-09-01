@@ -63,32 +63,40 @@ Schema.Student = new SimpleSchema({
         optional: true
     },
     'currentAddress.numberHouse': {
-        type: String
+        type: String,
+        optional: true
     },
     'currentAddress.groupHouse': {
-        type: String
+        type: String,
+        optional: true
     },
     'currentAddress.village': {
-        type: String
+        type: String,
+        optional: true
     },
     'currentAddress.commune': {
-        type: String
+        type: String,
+        optional: true
     },
     'currentAddress.district': {
-        type: String
+        type: String,
+        optional: true
     },
     'currentAddress.province': {
-        type: String
+        type: String,
+        optional: true
     },
     emergencyContact: {
         type: Object,
         optional: true
     },
     'emergencyContact.name': {
-        type: String
+        type: String,
+        optional: true
     },
     'emergencyContact.gender': {
         type: String,
+        optional: true,
         autoform: {
             type: 'select2',
             options: function () {
@@ -101,16 +109,20 @@ Schema.Student = new SimpleSchema({
         }
     },
     'emergencyContact.relation': {
-        type: String
+        type: String,
+        optional: true
     },
     'emergencyContact.telephone': {
-        type: String
+        type: String,
+        optional: true
     },
     'emergencyContact.email': {
-        type: String
+        type: String,
+        optional: true
     },
     photo: {
         type: String,
+        optional: true,
         autoform: {
             afFieldInput: {
                 type: 'fileUpload',

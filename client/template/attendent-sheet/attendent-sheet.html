@@ -44,9 +44,9 @@
                 <tr class="bg-info">
                     <th rowspan="2">No</th>
                     <th rowspan="2">Name</th>
-                    <th rowspan="2">Subject</th>
-                    <th colspan="31">{{moFormat thismonth "MMMM"}}</th>
+                    <!--<th rowspan="2">Subject</th>-->
                     <th rowspan="2">Phone</th>
+                    <th colspan="31">{{moFormat thismonth "MMMM"}}</th>
                 </tr>
                 <tr>
                     {{th}}
@@ -57,9 +57,9 @@
                     <tr>
                         <td>{{no @index}}</td>
                         <td>{{_student.khmerName}}</td>
-                        <td>{{_subject.subject}}</td>
-                        {{td}}
+                        <!--<td>{{_subject.subject}}</td>-->
                         <td>{{_student.telephone}}</td>
+                        {{td}}
                     </tr>
 
                 {{/each}}

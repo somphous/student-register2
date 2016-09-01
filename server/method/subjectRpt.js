@@ -10,7 +10,7 @@ Meteor.methods({
         data.header = new Date();
 
         //content
-        let tempcontent = Collection.Student.find();
+        let tempcontent = Collection.Subject.find();
         let content = [];
         tempcontent.forEach(function (obj) {
             total = total + 1;

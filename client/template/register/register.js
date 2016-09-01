@@ -119,7 +119,7 @@ Template.registerInsert.helpers({
         var list = [
             {label: '(Select One)', value: ''}
         ];
-
+    
         data.forEach(function (obj) {
             list.push({label: obj._id + ' : ' + obj.latinName, value: obj._id})
         });
